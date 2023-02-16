@@ -328,7 +328,6 @@ void DMA_IRQHandler(void)
         DMA_CHx_EN(DMA_CH2, ENABLE); /*使能DMA_CH2通道*/
         RS485_RxFlag = 1;
     }
-    if (DMA_IF & )
 }
 
 /* USER IMPLEMENTED FUNCTIONS END */

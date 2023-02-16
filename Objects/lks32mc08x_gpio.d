@@ -1,0 +1,13 @@
+.\objects\lks32mc08x_gpio.o: LKS32MC08x_Periph_Driver\Source\lks32mc08x_gpio.c
+.\objects\lks32mc08x_gpio.o: .\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include\lks32mc08x.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include\basic.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm0.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\lks32mc08x_gpio.o: F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h
