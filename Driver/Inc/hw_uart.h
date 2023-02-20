@@ -27,9 +27,9 @@
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-void HW_UART_GPIO_Init(void);
-void HW_UART_Init(void);
-void HW_UART_DMA_Init(void);
+// void HW_UART_GPIO_Init(void);
+extern void HW_UART_Init(void);
+// void HW_UART_DMA_Init(void);
 
 /* USER STATEMENTS END */
 #endif

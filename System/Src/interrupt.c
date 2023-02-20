@@ -107,6 +107,11 @@ void HALL_IRQHandler(void)
  *******************************************************************************/
 void UTIMER0_IRQHandler(void) // 定时器0捕获电压
 {
+    // if (UTIMER_IF & Timer_IRQEna_Zero) // 判断UTimer0的CH0是否发生捕下降沿中断TIM0_CH0: P0.15
+    // {
+    //     UTIMER_IF = Timer_IRQEna_Zero; // 清除UTimer中断标志位
+    //     HW_485_SMUpdateState();
+    // }
 }
 
 /*******************************************************************************
@@ -291,6 +296,7 @@ void I2C0_IRQHandler(void)
 void SPI0_IRQHandler(void)
 {
 }
+
 /*******************************************************************************
  函数名称：    void UART0_IRQHandler(void)
  功能描述：    UART0中断处理函数
@@ -305,7 +311,10 @@ void SPI0_IRQHandler(void)
 void UART0_IRQHandler(void)
 {
     if (UART0_IF & UART_IF_RcvOver) {
-        UART0_IE = UART_IF_RcvOver;
+
+        UART0_IF = UART_IF_RcvOver;
+        printf("%02X ", UART0_BUFF);
+        // HW_485_SMTransition((const u8 *)&UART0_BUFF);
     }
 }
 
@@ -322,12 +331,11 @@ void UART0_IRQHandler(void)
  *******************************************************************************/
 void DMA_IRQHandler(void)
 {
-    if (DMA_IF & DMA_CH2_FIF) // DMA通道2完成中断标志
-    {
-        DMA_IF = DMA_CH2_FIF;
-        DMA_CHx_EN(DMA_CH2, ENABLE); /*使能DMA_CH2通道*/
-        RS485_RxFlag = 1;
-    }
+    // if (DMA_IF & DMA_CH2_FIF) // DMA通道2完成中断标志
+    // {
+    //     DMA_ClearIRQFlag(DMA_CH2, DMA_CH2_FIF);
+    //     DMA_CHx_EN(DMA_CH2, ENABLE); /*使能DMA_CH2通道*/
+    // }
 }
 
 /* USER IMPLEMENTED FUNCTIONS END */

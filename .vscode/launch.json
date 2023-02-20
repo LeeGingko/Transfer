@@ -10,7 +10,8 @@
             "interface": "swd",
             "executable": "build\\TransferPrj\\Transfer.elf",
             "runToEntryPoint": "main",
-            "device": "null"
+            "svdFile": ".pack\\Linko\\LKS08x.1.0.5\\SVD\\LKS32MC08x.svd",
+            "device": "LKS32MC08x"
         }
     ]
 }

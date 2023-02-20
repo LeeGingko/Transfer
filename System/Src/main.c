@@ -11,8 +11,7 @@
 /* Defined Variables --------------------------------------------------------------------- */
 
 /* USER DEFINED VARIABLES END */
-u8 sumCheck[6] = {0xAA, 0x12, 0x08, 0x08, 0x01, 0x00};
-u8 sumCheckParity = 0x00;
+
 /* USER DEFINED FROTOTYPES BEGIN */
 /* Defined Prototypes -------------------------------------------------------------------- */
 
@@ -23,7 +22,7 @@ extern void LKS_FREERTOS_Init(void);
 int main(void)
 {
     /* Temperatory Veriables */
-    sumCheckParity = CheckSum(sumCheck, 6);
+
     /* Debug SEGGER_RTT Initialization */
     SEGGER_RTT_Init();
     /* Hardware Initialization */

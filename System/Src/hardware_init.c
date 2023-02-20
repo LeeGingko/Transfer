@@ -45,8 +45,8 @@ u32 HW_SysTick_Config(uint32_t ticks);
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
 /*******************************************************************************
- 函数名称：    int fputc(int ch, FILE* f)
- 功能描述：    重定向printf
+ 函数名称：    int SysGPIO_Init(int ch, FILE* f)
+ 功能描述：    系统指示LED
  输入参数：    无
  输出参数：    无
  返 回 值：    无
@@ -64,7 +64,7 @@ static void SysGPIO_Init(void)
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStruct.GPIO_Pin  = SYS_LED_PIN;
     GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_Init(SYS_LED_PORT, &GPIO_InitStruct);  
+    GPIO_Init(SYS_LED_PORT, &GPIO_InitStruct);
 }
 
 /*******************************************************************************
@@ -120,15 +120,14 @@ void Hardware_Init(void)
     __disable_irq();         /* 关闭中断 中断总开关 */
     SYS_WR_PROTECT = 0x7a83; /*使能系统寄存器写操作*/
     FLASH_CFG |= 0x00080000; /* enable prefetch ，FLASH预取加速使能*/
-    HW_UART_GPIO_Init();
-    HW_UART_Init();
-    HW_485_GPIO_Init();
-    HW_485_Init();
-    HW_485_DMA_Init();
     SysGPIO_Init();
-    SoftDelay(100);
-    NVIC_EnableIRQ(DMA_IRQn);
-    NVIC_SetPriority(DMA_IRQn, 0);
+    HW_UART_Init();
+    HW_485_Init();
+    SoftDelay(500);
+    NVIC_SetPriority(UART0_IRQn, 1);
+    NVIC_EnableIRQ(UART0_IRQn);
+    NVIC_SetPriority(TIMER0_IRQn, 3); /* TIMER0中断优先级配置*/
+    NVIC_EnableIRQ(TIMER0_IRQn);      /* 使能UTimer定时器中断*/
     SYS_WR_PROTECT = 0x0; /*关闭系统寄存器写操作*/
     HW_SysTick_Config(12000);
     __enable_irq(); /* 开启中断 */

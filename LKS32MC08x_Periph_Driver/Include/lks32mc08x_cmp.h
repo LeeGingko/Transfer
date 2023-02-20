@@ -26,7 +26,7 @@
 #define __LKS32MC08x_CMP_H
 /* Includes ------------------------------------------------------------------*/
 #include "lks32mc08x_lib.h"
-#include "string.h"
+#include <string.h>
  
 // 比较器回差选择
 #define CMP_HYS_20mV            0

@@ -43,6 +43,8 @@ Heap_Size       EQU     0x00000200
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
 Heap_Mem        SPACE   Heap_Size
+  
+  
 __heap_limit
 
                 PRESERVE8

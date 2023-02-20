@@ -8,7 +8,7 @@
 
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ---------------------------------------------------------------------- */
-
+#define SEGGER_RTT_PRINTF_EN 1
 /* USER DEFINED MACROS END */
 
 /* USER DEFINED ENUMERATION BEGIN */
@@ -31,7 +31,7 @@ typedef enum {
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
 extern u8 CheckSum(const u8 *pBuf, u8 uLen);
-extern u8 CheckCrc8(u8 *pData,u32 uLen);
+extern u8 CheckCrc8(u8 *pData, u32 uLen);
 /* USER STATEMENTS END */
 
 #endif

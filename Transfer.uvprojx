@@ -17,7 +17,7 @@
         <TargetCommonOption>
           <Device>LKS32MC085C8Q9</Device>
           <Vendor>Linko</Vendor>
-          <PackID>Linko.LKS08x.1.0.5</PackID>
+          <PackID>Linko.LKS08x.1.0.7</PackID>
           <Cpu>IRAM(0x20000000,0x2000) IROM(0x00000000,0x10000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Driver\Inc;.\System\Inc;.\LKS32MC08x_Periph_Driver\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0;F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include;.\SEGGER_RTT_V764b\RTT;.\SEGGER_RTT_V764b\Config</IncludePath>
+              <IncludePath>.\Driver\Inc;.\System\Inc;.\LKS32MC08x_Periph_Driver\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0;.\SEGGER_RTT_V764b\RTT;.\SEGGER_RTT_V764b\Config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
