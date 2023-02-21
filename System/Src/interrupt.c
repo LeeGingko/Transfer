@@ -39,7 +39,7 @@
 
 /* USER DEFINED VARIABLES BEGIN */
 /* Defined Variables --------------------------------------------------------------------- */
-
+u16 timetik = 0;
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
@@ -49,6 +49,82 @@ extern void xPortSysTickHandler(void);
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
+/**
+ * @brief This function handles Non maskable interrupt.
+ */
+void NMI_Handler(void)
+{
+    /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+
+    /* USER CODE END NonMaskableInt_IRQn 0 */
+    /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+    while (1) {
+    }
+    /* USER CODE END NonMaskableInt_IRQn 1 */
+}
+
+/**
+ * @brief This function handles Hard fault interrupt.
+ */
+void HardFault_Handler(void)
+{
+    /* USER CODE BEGIN HardFault_IRQn 0 */
+
+    /* USER CODE END HardFault_IRQn 0 */
+    while (1) {
+        /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+        SoftDelay(6400000);
+        Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
+        /* USER CODE END W1_HardFault_IRQn 0 */
+    }
+}
+
+/**
+ * @brief This function handles Memory management fault.
+ */
+void MemManage_Handler(void)
+{
+    /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+
+    /* USER CODE END MemoryManagement_IRQn 0 */
+    while (1) {
+        /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+        /* USER CODE END W1_MemoryManagement_IRQn 0 */
+    }
+}
+
+/**
+ * @brief This function handles Pre-fetch fault, memory access fault.
+ */
+void BusFault_Handler(void)
+{
+    /* USER CODE BEGIN BusFault_IRQn 0 */
+
+    /* USER CODE END BusFault_IRQn 0 */
+    while (1) {
+        /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+        SoftDelay(3200000);
+        Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
+        /* USER CODE END W1_BusFault_IRQn 0 */
+    }
+}
+
+/**
+ * @brief This function handles Undefined instruction or illegal state.
+ */
+void UsageFault_Handler(void)
+{
+    /* USER CODE BEGIN UsageFault_IRQn 0 */
+
+    /* USER CODE END UsageFault_IRQn 0 */
+    while (1) {
+        /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+        SoftDelay(1600000);
+        Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
+        /* USER CODE END W1_UsageFault_IRQn 0 */
+    }
+}
+
 /*******************************************************************************
  函数名称：    void ADC0_IRQHandler(void)
  功能描述：    ADC0中断处理函数
@@ -107,11 +183,15 @@ void HALL_IRQHandler(void)
  *******************************************************************************/
 void UTIMER0_IRQHandler(void) // 定时器0捕获电压
 {
-    // if (UTIMER_IF & Timer_IRQEna_Zero) // 判断UTimer0的CH0是否发生捕下降沿中断TIM0_CH0: P0.15
-    // {
-    //     UTIMER_IF = Timer_IRQEna_Zero; // 清除UTimer中断标志位
-    //     HW_485_SMUpdateState();
-    // }
+    if (UTIMER_IF & Timer_IRQEna_Zero) // 判断UTimer0的CH0是否发生捕下降沿中断TIM0_CH0: P0.15
+    {
+        UTIMER_IF = Timer_IRQEna_Zero; // 清除UTimer中断标志位
+        timetik++;
+        if (timetik >= 500) {
+            timetik = 0;
+            // Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
+        }
+    }
 }
 
 /*******************************************************************************
@@ -313,8 +393,7 @@ void UART0_IRQHandler(void)
     if (UART0_IF & UART_IF_RcvOver) {
 
         UART0_IF = UART_IF_RcvOver;
-        printf("%02X ", UART0_BUFF);
-        // HW_485_SMTransition((const u8 *)&UART0_BUFF);
+        printf("%02X ", (u8)UART0_BUFF);
     }
 }
 

@@ -16,8 +16,9 @@
 u8 rs485_Rx[RS485_RX_LEN];
 
 u8 rs485_RxFlag = 0;
-HW_485_t hw_485_Manage;
-static DMA_InitTypeDef DMA_InitStruct;
+
+HW_485Manege_t hw_485_Manage;
+// static DMA_InitTypeDef DMA_InitStruct;
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
@@ -28,7 +29,7 @@ static DMA_InitTypeDef DMA_InitStruct;
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
 /*******************************************************************************
- 函数名称：    void UTimer_init(void)
+ 函数名称：    void HW_TimeoutTimer_Init(void)
  功能描述：    UTimer硬件初始化
  输入参数：    无
  输出参数：    无
@@ -38,16 +39,16 @@ static DMA_InitTypeDef DMA_InitStruct;
  -----------------------------------------------------------------------------
  2015/11/5      V1.0           Howlet Li          创建
  *******************************************************************************/
-void UTimer_init(void)
+void HW_TimeoutTimer_Init(void)
 {
     TIM_TimerInitTypeDef TIM_InitStruct;
 
     TIM_TimerStrutInit(&TIM_InitStruct);               /* Timer结构体初始化*/
-    TIM_InitStruct.Timer_TH       = 3840;               /* 定时器计数门限初始值1000*/
-    TIM_InitStruct.Timer_ClockDiv = TIM_Clk_Div1;      /* 设置Timer模块数据分频系数 */
+    TIM_InitStruct.Timer_TH       = 24000;             /* 定时器重载计数值为2毫秒*/
+    TIM_InitStruct.Timer_ClockDiv = TIM_Clk_Div8;      /* 设置Timer模块数据分频系数 */
     TIM_InitStruct.Timer_IRQEna   = Timer_IRQEna_Zero; /* 开启Timer模块比较中断*/
-    TIM_TimerInit(TIMER0, &TIM_InitStruct);
-    TIM_TimerCmd(TIMER0, ENABLE); /* Timer0 模块使能 */
+    TIM_TimerInit(TIMER0, &TIM_InitStruct);            /* 初始化结构体 */
+    TIM_TimerCmd(TIMER0, ENABLE);                      /* Timer0 模块使能 */
 }
 
 /*******************************************************************************
@@ -85,7 +86,7 @@ void HW_485_GPIO_Init(void)
     /* -----------485使能 IO设置----------- */
     GPIO_StructInit(&GPIO_InitStruct); // 初始化结构体
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
-    GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_3;
+    GPIO_InitStruct.GPIO_Pin  = RS485_EN_PIN;
     GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
     GPIO_Init(RS485_EN_PORT, &GPIO_InitStruct);
 }
@@ -105,9 +106,8 @@ void HW_485_UART_Init(void)
 {
     UART_InitTypeDef UART_InitStruct;
 
-    UART_StructInit(&UART_InitStruct);
-
     /* -----------485串口0 结构体设置----------- */
+    UART_StructInit(&UART_InitStruct);
     UART_InitStruct.BaudRate   = 115200;                                                             /* 设置波特率115200 */
     UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                                                 /* 发送数据长度8位 */
     UART_InitStruct.StopBits   = UART_STOPBITS_1b;                                                   /* 停止位1位 */
@@ -117,6 +117,7 @@ void HW_485_UART_Init(void)
     UART_Init(UART0, &UART_InitStruct);
 }
 
+#if(0)
 /*******************************************************************************
  函数名称：    void HW_485_DMA_Init(void)
  功能描述：    DMA初始化配置
@@ -148,6 +149,7 @@ void HW_485_DMA_Init(void)
     DMA_Init(DMA_CH2, &DMA_InitStruct);               /* 初始化DMA通道 */
     DMA_CHx_EN(DMA_CH2, ENABLE);                      /* 使能DMA通道 */
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // 函数名：  void HW_485_Init(void)
@@ -162,13 +164,12 @@ void HW_485_Init(void)
 {
     HW_485_GPIO_Init();
     HW_485_UART_Init();
-    // HW_485_DMA_Init();
-    memset(&hw_485_Manage, 0, 10);
-    hw_485_Manage.curState = fsmRecIdle;
-    hw_485_Manage.nexState = fsmRecIdle;
-    // UTimer_init();
+    HW_TimeoutTimer_Init();
+    GPIO_ResetBits(RS485_EN_PORT, RS485_EN_PIN);
+    memset(&hw_485_Manage, 0, 8);
 }
 
+#if(0)
 ////////////////////////////////////////////////////////////////////////////////////////////
 // 函数名：  TmOpState HW_485_DMA_RxCompleteCallback()
 // 编写者：  F.L
@@ -334,5 +335,6 @@ void HW_485_SMTransition(const u8 *pByte)
             break;
     }
 }
+#endif
 
 /* USER IMPLEMENTED FUNCTIONS END */

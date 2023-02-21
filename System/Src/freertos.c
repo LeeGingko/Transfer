@@ -13,12 +13,11 @@
 
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ------------------------------------------------------------------ */
-#define CAN_TASK_PRI   3
-#define CAN_STK_SIZE   64
-
-#define RS485_TASK_PRI 4
-
+#define RS485_TASK_PRI 6
 #define RS485_STK_SIZE 64
+
+#define CAN_TASK_PRI   6
+#define CAN_STK_SIZE   64
 /* USER DEFINED MACROS END */
 
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -70,6 +69,7 @@ void LKS_FREERTOS_Init(void)
                                        pdTRUE,
                                        (void *)0,
                                        (TimerCallbackFunction_t)SysLEDTimerCallback);
+
 #if (SEGGER_RTT_PRINTF_EN == 1)
     if (NULL == sysLEDTimer_Handler) {
         printf("sysLEDTimer Create Failed!\r\n");
@@ -105,6 +105,7 @@ void LKS_FREERTOS_Init(void)
 #endif
 
     taskCreateStatus = pdFAIL;
+
     /* CAN处理任务创建 */
     taskCreateStatus = xTaskCreate((TaskFunction_t)CANTaskFunc,
                                    (const char *)"CANTaskFunc",
@@ -126,9 +127,7 @@ void LKS_FREERTOS_Init(void)
 
 /* *-------------------------------------------------------------------------------------* */
 /* -------------------------------- FreeRTOS Task Functions ------------------------------ */
-///////////////////////////////////////////
-
-/////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
 // 函数名：  static void RS485TaskFunc(void *pvParameters)
 // 编写者：  F.L
 // 参考资料：
@@ -139,33 +138,15 @@ void LKS_FREERTOS_Init(void)
 ////////////////////////////////////////////////////////////////////////////////////////////
 static void RS485TaskFunc(void *pvParameters)
 {
+    TickType_t xTimerPeriod;
+    HW_NVIC_Init();
+    // printf("static void RS485TaskFunc(void *pvParameters)\r\n");
     while (1) {
-        // if (rs485_RxFlag == f_rec_ok) {
-        //     rs485_RxFlag = f_rec_er;
-        //     printf("RS485 RxData ");
-        //     for (int i = 0; i < RS485_RX_LEN; i++) {
-        //         printf("%02X ", rs485_Rx[i]);
-        //     }
-        //     printf("\r\n");
-        //     HW_485_RxDMAClearCTMS(DMA_CH2);
-        //     // HW_485_RxDMAClearCPAR_CMAR(DMA_CH2);
-        //     memset(rs485_Rx, 0, RS485_RX_LEN);
-        // }
-        if (rs485_Rx[0] != F485_HEAD) {
-            memset(rs485_Rx, 0, RS485_RX_LEN);
-        } else if (rs485_Rx[0] == F485_HEAD) {
-            printf("RS485 RxData ");
-            for (int i = 0; i < RS485_RX_LEN; i++) {
-                printf("%02X ", rs485_Rx[i]);
-            }
-            printf("\r\n");
-            memset(rs485_Rx, 0, RS485_RX_LEN);
-        }
-        else
-        {
 
-        }
-        vTaskDelay(10);
+        /* Query the period of the timer that expires. */
+        xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
+        printf("xTimerPeriod = %d\r\n", xTimerPeriod);
+        vTaskDelay(2000);
     }
 }
 
@@ -181,7 +162,7 @@ static void RS485TaskFunc(void *pvParameters)
 static void CANTaskFunc(void *pvParameters)
 {
     while (1) {
-        vTaskDelay(100);
+        vTaskDelay(10);
     }
 }
 

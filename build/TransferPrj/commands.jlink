@@ -1,0 +1,6 @@
+r
+halt
+loadfile "d:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\build\TransferPrj\Transfer.hex"
+r
+go
+exit

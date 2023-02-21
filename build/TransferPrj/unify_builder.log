@@ -1,0 +1,147 @@
+[2023-02-21 09:58:05]	[done]
+	build successfully !
+
+[2023-02-21 10:01:48]	[done]
+	build successfully !
+
+[2023-02-21 10:03:11]	[done]
+	build successfully !
+
+[2023-02-21 10:11:18]	[done]
+	build successfully !
+
+[2023-02-21 10:11:43]	[done]
+	build successfully !
+
+[2023-02-21 10:12:47]	[done]
+	build successfully !
+
+[2023-02-21 10:42:18]	compilation failed at : "d:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\System\Src\hardware_init.c", exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+".\System\Src\hardware_init.c", line 129: Error:  #65: expected a ";"
+      } else {
+      ^
+".\System\Src\hardware_init.c", line 131: Error:  #65: expected a ";"
+      }
+      ^
+.\System\Src\hardware_init.c: 0 warnings, 2 errors
+
+[2023-02-21 10:42:24]	[done]
+	build successfully !
+
+[2023-02-21 10:43:10]	[done]
+	build successfully !
+
+[2023-02-21 10:43:48]	[done]
+	build successfully !
+
+[2023-02-21 10:54:21]	[done]
+	build successfully !
+
+[2023-02-21 10:54:53]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6406E: No space in execution regions with .ANY selector matching startup_lks32mc08x.o(STACK).
+Error: L6406E: No space in execution regions with .ANY selector matching SEGGER_RTT.o(.bss).
+Error: L6406E: No space in execution regions with .ANY selector matching tasks.o(.bss).
+Error: L6406E: No space in execution regions with .ANY selector matching hw_uart .o(.bss).
+Error: L6406E: No space in execution regions with .ANY selector matching tasks.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching timers.o(.bss).
+Error: L6406E: No space in execution regions with .ANY selector matching heap_4.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching timers.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching freertos.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching hw_485.o(.bss).
+Error: L6406E: No space in execution regions with .ANY selector matching port.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stdout.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching interrupt.o(.data).
+Error: L6407E: Sections of aggregate size 0x670 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 14 error messages.
+
+
+[2023-02-21 10:55:04]	[done]
+	build successfully !
+
+[2023-02-21 10:55:22]	[done]
+	build successfully !
+
+[2023-02-21 10:56:16]	[done]
+	build successfully !
+
+[2023-02-21 10:56:48]	[done]
+	build successfully !
+
+[2023-02-21 10:57:01]	[done]
+	build successfully !
+
+[2023-02-21 10:57:38]	[done]
+	build successfully !
+
+[2023-02-21 10:58:13]	[done]
+	build successfully !
+
+[2023-02-21 10:59:11]	[done]
+	build successfully !
+
+[2023-02-21 11:00:06]	[done]
+	build successfully !
+
+[2023-02-21 11:00:39]	[done]
+	build successfully !
+
+[2023-02-21 11:01:35]	[done]
+	build successfully !
+
+[2023-02-21 11:10:58]	[done]
+	build successfully !
+
+[2023-02-21 11:11:21]	[done]
+	build successfully !
+
+[2023-02-21 11:20:23]	[done]
+	build successfully !
+
+[2023-02-21 11:21:33]	[done]
+	build successfully !
+
+[2023-02-21 11:22:54]	[done]
+	build successfully !
+
+[2023-02-21 11:23:07]	[done]
+	build successfully !
+
+[2023-02-21 11:26:37]	[done]
+	build successfully !
+
+[2023-02-21 11:27:30]	[done]
+	build successfully !
+
+[2023-02-21 11:27:59]	[done]
+	build successfully !
+
+[2023-02-21 11:28:25]	[done]
+	build successfully !
+
+[2023-02-21 11:28:37]	[done]
+	build successfully !
+
+[2023-02-21 13:16:36]	[done]
+	build successfully !
+
+[2023-02-21 13:18:36]	[done]
+	build successfully !
+
+[2023-02-21 13:19:03]	[done]
+	build successfully !
+
+[2023-02-21 13:20:15]	[done]
+	build successfully !
+
+[2023-02-21 14:09:53]	[done]
+	build successfully !
+
+[2023-02-21 14:10:35]	[done]
+	build successfully !
+

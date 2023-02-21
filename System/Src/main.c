@@ -21,8 +21,8 @@ extern void LKS_FREERTOS_Init(void);
 /* Implemented Functions ----------------------------------------------------------------- */
 int main(void)
 {
-    /* Temperatory Veriables */
-
+    /* NVIC Priority Group Initialization */
+    NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
     /* Debug SEGGER_RTT Initialization */
     SEGGER_RTT_Init();
     /* Hardware Initialization */
@@ -33,6 +33,7 @@ int main(void)
     vTaskStartScheduler();
     /* Main Loop */
     while (1) { // 任务调度开启后永远不会进入主循环
+        printf("vTaskStartScheduler();: Not enough RAM!\r\n");
     }
 }
 

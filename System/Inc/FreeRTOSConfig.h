@@ -52,30 +52,31 @@
 /* Ensure definitions are only used by the compiler, and not by the assembler. */
 #if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
 #include <stdint.h>
-extern u32 SystemCoreClock;
+extern u32 SystemCoreClock; // 2023年2月12日
 #endif
 #define configENABLE_FPU             0
 #define configENABLE_MPU             0
 
-#define configUSE_QUEUE_SETS         1
+#define configUSE_QUEUE_SETS         0
 #define configIDLE_SHOULD_YIELD      1
 #define configUSE_TASK_NOTIFICATIONS 1
 
-// #define configUSE_PORT_OPTIMISED_TASK_SELECTION  1
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION  0 // Cortex-M0不支持特定优化
 #define configUSE_PREEMPTION 1
-// #define configSUPPORT_STATIC_ALLOCATION          0
+#define configSUPPORT_STATIC_ALLOCATION          0
 #define configSUPPORT_DYNAMIC_ALLOCATION 1
 #define configUSE_IDLE_HOOK              0
 #define configUSE_TICK_HOOK              0
 #define configCPU_CLOCK_HZ               (SystemCoreClock)
 #define configTICK_RATE_HZ               ((TickType_t)1000)
-#define configMAX_PRIORITIES             (5)
-#define configMINIMAL_STACK_SIZE         ((uint16_t)64)
+// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 2023年2月21日 11点22分 此处添加会影响调度器，不使用即可
+#define configMAX_PRIORITIES             (7)
+#define configMINIMAL_STACK_SIZE         ((uint16_t)32)
 #define configTOTAL_HEAP_SIZE            ((size_t)2048)
 #define configMAX_TASK_NAME_LEN          (64)
 #define configUSE_16_BIT_TICKS           0
 #define configUSE_MUTEXES                1
-#define configQUEUE_REGISTRY_SIZE        8
+#define configQUEUE_REGISTRY_SIZE        0
 /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
 /* Defaults to size_t for backward compatibility, but can be changed
    if lengths will always be less than the number of bytes in a size_t. */
@@ -88,8 +89,8 @@ extern u32 SystemCoreClock;
 
 /* Software timer definitions. */
 #define configUSE_TIMERS             1
-#define configTIMER_TASK_PRIORITY    (configMAX_PRIORITIES - 1)
-#define configTIMER_QUEUE_LENGTH     1
+#define configTIMER_TASK_PRIORITY    0
+#define configTIMER_QUEUE_LENGTH     5
 #define configTIMER_TASK_STACK_DEPTH 64
 
 /* Set the following definitions to 1 to include the API function, or zero

@@ -9,8 +9,8 @@
 
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ---------------------------------------------------------------------- */
-#define RS485_EN_PORT  GPIO1
-#define RS485_RN_PIN   GPIO_Pin_3
+#define RS485_EN_PORT  GPIO0
+#define RS485_EN_PIN   GPIO_Pin_11
 
 #define RS485_RX_LEN   8
 #define RS485_RX_RETRY 3
@@ -31,34 +31,29 @@
 /* USER DEFINED TYPEDEFINE BEGIN */
 /* Defined Typedefine ------------------------------------------------------------------ */
 typedef enum {
-    flagErr = 0,
-    flagOk,
-    fsmRecErr,
-    fsmRecIdle,
-    fsmRecHead,
-    fsmRecSrc,
-    fsmRecDst,
-    fsmRecType,
-    fsmRecLen,
-    fsmRecDat1,
-    fsmRecDat2,
-    fsmRecPari,
-    fsmRecDone,
-} HW_Rec_t;
+    frameRecErr = 0,
+    frameRecOk,
+    frameRecHead,
+    frameRecSrc,
+    frameRecDst,
+    frameRecType,
+    frameRecLen,
+    frameRecDat1,
+    frameRecDat2,
+    frameRecPari,
+} HW_FrameEnum_t;
 
-typedef struct __HW_485_t {
-    u8 f_head;                                       /* 帧起始 */
-    u8 f_src;                                        /* 源地址 */
-    u8 f_dst;                                        /* 宿地址 */
-    u8 f_type;                                       /* 帧功能 */
-    u8 f_len;                                        /* 数据长度 */
-    u8 f_data[2];                                    /* 数据 */
-    u8 f_pari;                                       /* 和校验 */
-    u8 curState;                                     /* 当前状态 */
-    u8 nexState;                                     /* 下个状态 */
-    void (*TransmitFrame)(struct __HW_485_t *hw485); /* 帧发送函数指针 */
-    void (*DecodeFrame)(struct __HW_485_t *hw485);   /* 帧解析函数指针 */
-} HW_485_t;
+typedef struct __HW_485Manege_t {
+    u8 f_head;                                             /* 帧起始 */
+    u8 f_src;                                              /* 源地址 */
+    u8 f_dst;                                              /* 宿地址 */
+    u8 f_type;                                             /* 帧功能 */
+    u8 f_len;                                              /* 数据长度 */
+    u8 f_data[2];                                          /* 数据 */
+    u8 f_pari;                                             /* 和校验 */
+    void (*TransmitFrame)(struct __HW_485Manege_t *hw485); /* 帧发送函数指针 */
+    void (*DecodeFrame)(struct __HW_485Manege_t *hw485);   /* 帧解析函数指针 */
+} HW_485Manege_t;
 
 /* USER DEFINED TYPEDEFINE END */
 
@@ -70,6 +65,7 @@ extern u8 rs485_Rx[RS485_RX_LEN];
 
 extern void HW_485_Init(void);
 
+#if (0)
 extern void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx);
 
 extern void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx);
@@ -77,6 +73,8 @@ extern void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx);
 extern void HW_485_SMUpdateState(void);
 
 extern void HW_485_SMTransition(const u8 *pByte);
+#endif
+
 /* USER STATEMENTS END */
 
 #endif

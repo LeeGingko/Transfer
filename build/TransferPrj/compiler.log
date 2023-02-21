@@ -1,0 +1,14 @@
+>>> cc
+
+"System/Inc/hardware_config.h", line 42: Warning:  #9-D: nested comment is not allowed
+  /* ------------------------------ ϵͳָʾLED ------------------------------ */
+  ^
+.\System\Src\freertos.c: 1 warning, 0 errors
+"System/Inc/hardware_config.h", line 42: Warning:  #9-D: nested comment is not allowed
+  /* ------------------------------ ϵͳָʾLED ------------------------------ */
+  ^
+.\System\Src\hardware_init.c: 1 warning, 0 errors
+
+>>> ld
+
+Program Size: Code=12298 RO-data=242 RW-data=148 ZI-data=3556  

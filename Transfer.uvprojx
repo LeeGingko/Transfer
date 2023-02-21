@@ -17,7 +17,7 @@
         <TargetCommonOption>
           <Device>LKS32MC085C8Q9</Device>
           <Vendor>Linko</Vendor>
-          <PackID>Linko.LKS08x.1.0.7</PackID>
+          <PackID>Linko.LKS08x.1.0.5</PackID>
           <Cpu>IRAM(0x20000000,0x2000) IROM(0x00000000,0x10000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>

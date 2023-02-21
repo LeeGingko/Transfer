@@ -1,0 +1,116 @@
+{
+    "name": "Transfer",
+    "target": "TransferPrj",
+    "toolchain": "AC5",
+    "toolchainLocation": "f:\\Keil_v5\\ARM\\ARMCC",
+    "toolchainCfgFile": "..\\cfg\\arm.v5.model.json",
+    "buildMode": "fast|multhread",
+    "showRepathOnLog": true,
+    "threadNum": 16,
+    "rootDir": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+    "dumpPath": "build\\TransferPrj",
+    "outDir": "build\\TransferPrj",
+    "ram": 8192,
+    "rom": 65536,
+    "incDirs": [
+        "Driver/Inc",
+        "System/Inc",
+        "LKS32MC08x_Periph_Driver/Include",
+        "FreeRTOS-Kernel/include",
+        "FreeRTOS-Kernel/portable/RVDS/ARM_CM0",
+        "SEGGER_RTT_V764b/RTT",
+        "SEGGER_RTT_V764b/Config",
+        "RTE/_TransferPrj",
+        ".eide/deps"
+    ],
+    "libDirs": [],
+    "defines": [],
+    "sourceList": [
+        "Driver/Src/hw_485.c",
+        "Driver/Src/hw_can.c",
+        "Driver/Src/hw_uart .c",
+        "FreeRTOS-Kernel/list.c",
+        "FreeRTOS-Kernel/portable/MemMang/heap_4.c",
+        "FreeRTOS-Kernel/portable/RVDS/ARM_CM0/port.c",
+        "FreeRTOS-Kernel/queue.c",
+        "FreeRTOS-Kernel/tasks.c",
+        "FreeRTOS-Kernel/timers.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_DMA.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_can.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_exti.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_gpio.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_iwdg.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_nvr.lib",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_sys.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_tim.c",
+        "LKS32MC08x_Periph_Driver/Source/lks32mc08x_uart.c",
+        "LKS32MC08x_Periph_Driver/Source/startup_lks32mc08x.s",
+        "SEGGER_RTT_V764b/RTT/SEGGER_RTT.c",
+        "SEGGER_RTT_V764b/RTT/SEGGER_RTT_printf.c",
+        "System/Src/common.c",
+        "System/Src/freertos.c",
+        "System/Src/hardware_init.c",
+        "System/Src/interrupt.c",
+        "System/Src/main.c"
+    ],
+    "sourceParams": {},
+    "sourceParamsMtime": 1676611876000,
+    "options": {
+        "version": 4,
+        "beforeBuildTasks": [],
+        "afterBuildTasks": [
+            {
+                "name": "axf to elf",
+                "command": "axf2elf -d \"f:\\Keil_v5\\ARM\\ARMCC\" -b \"${outDir}\\Transfer.bin\" -i \"${outDir}\\Transfer.axf\" -o \"${outDir}\\Transfer.elf\" > \"${outDir}\\axf2elf.log\""
+            }
+        ],
+        "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable",
+            "microcontroller-cpu": "cortex-m0",
+            "microcontroller-fpu": "cortex-m0",
+            "microcontroller-float": "cortex-m0",
+            "target": "cortex-m0"
+        },
+        "c/cpp-compiler": {
+            "optimization": "level-0",
+            "one-elf-section-per-function": true,
+            "c99-mode": true,
+            "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "warnings": "all-warnings",
+            "gnu-extensions": true
+        },
+        "asm-compiler": {},
+        "linker": {
+            "output-format": "elf",
+            "xo-base": "",
+            "ro-base": "0x00000000",
+            "rw-base": "0x20000000",
+            "link-scatter": [
+                "\"d:/LAM/XiangMu/ZhangLiJi/Files/ZhuanJie/RuanJian/Transfer/build/TransferPrj/Transfer.sct\""
+            ]
+        }
+    },
+    "env": {
+        "workspaceFolder": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+        "workspaceFolderBasename": "Transfer",
+        "OutDir": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj",
+        "OutDirRoot": "build",
+        "OutDirBase": "build\\TransferPrj",
+        "ProjectName": "Transfer",
+        "ConfigName": "TransferPrj",
+        "ProjectRoot": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+        "ExecutableName": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj\\Transfer",
+        "ToolchainRoot": "f:\\Keil_v5\\ARM\\ARMCC"
+    },
+    "sha": {
+        "c/cpp-defines": "d751713988987e9331980363e24189ce",
+        "beforeBuildTasks": "d751713988987e9331980363e24189ce",
+        "afterBuildTasks": "8836b9ac41a0f377ce36b05583e3e5e6",
+        "global": "644184f1caacc5d60112aa5d680135e6",
+        "c/cpp-compiler": "77aed3fa2ac0777885b6084c878891de",
+        "asm-compiler": "99914b932bd37a50b983c5e7c90ae93b",
+        "linker": "cc6ca5d74ffba3b62a99209acd95fd20"
+    }
+}

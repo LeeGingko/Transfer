@@ -44,8 +44,25 @@ u32 HW_SysTick_Config(uint32_t ticks);
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
+////////////////////////////////////////////////////////////////////////////////////////////
+// 函数名：  void HW_NVIC_Init(void)
+// 编写者：  F.L
+// 参考资料：
+// 功  能：  外设NVIC初始化
+// 输入参数： void *pvParameters
+// 输出参数： 无
+// 备  注：   2023年2月21日->创建
+////////////////////////////////////////////////////////////////////////////////////////////
+void HW_NVIC_Init(void)
+{
+    NVIC_SetPriority(UART0_IRQn, 6);
+    NVIC_EnableIRQ(UART0_IRQn);
+    // NVIC_SetPriority(TIMER0_IRQn, 12); /* TIMER0中断优先级配置*/
+    // NVIC_EnableIRQ(TIMER0_IRQn);       /* 使能UTimer定时器中断*/
+}
+
 /*******************************************************************************
- 函数名称：    int SysGPIO_Init(int ch, FILE* f)
+ 函数名称：    int HW_SysLed_Init(int ch, FILE* f)
  功能描述：    系统指示LED
  输入参数：    无
  输出参数：    无
@@ -55,7 +72,7 @@ u32 HW_SysTick_Config(uint32_t ticks);
  -----------------------------------------------------------------------------
  2023/02/14    V1.0          Frank Lee          创建
  *******************************************************************************/
-static void SysGPIO_Init(void)
+static void HW_SysLed_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -86,25 +103,6 @@ int fputc(int ch, FILE *f)
 }
 
 /*******************************************************************************
- 函数名称：    void TimeTickIncrenment(void)
- 功能描述：    时间步进递增
- 输入参数：    无
- 输出参数：    无
- 返 回 值：    无
- 其它说明：
- 修改日期      版本号          修改人            修改内容
- -----------------------------------------------------------------------------
- 2023/02/12    V1.0          Frank Lee          创建
- *******************************************************************************/
-// void TimeTickIncrenment(void)
-// {
-//     if (time_tick >= SYSTICK_USER_TIME_CNT) {
-//         time_tick = 0;
-//     }
-//     time_tick++;
-// }
-
-/*******************************************************************************
  函数名称：    void Hardware_init(void)
  功能描述：    硬件部分初始化
  输入参数：    无
@@ -120,17 +118,18 @@ void Hardware_Init(void)
     __disable_irq();         /* 关闭中断 中断总开关 */
     SYS_WR_PROTECT = 0x7a83; /*使能系统寄存器写操作*/
     FLASH_CFG |= 0x00080000; /* enable prefetch ，FLASH预取加速使能*/
-    SysGPIO_Init();
+    HW_SysLed_Init();
     HW_UART_Init();
     HW_485_Init();
-    SoftDelay(500);
-    NVIC_SetPriority(UART0_IRQn, 1);
-    NVIC_EnableIRQ(UART0_IRQn);
-    NVIC_SetPriority(TIMER0_IRQn, 3); /* TIMER0中断优先级配置*/
-    NVIC_EnableIRQ(TIMER0_IRQn);      /* 使能UTimer定时器中断*/
+    SoftDelay(100);
     SYS_WR_PROTECT = 0x0; /*关闭系统寄存器写操作*/
-    HW_SysTick_Config(12000);
-    __enable_irq(); /* 开启中断 */
+    __enable_irq();       /* 开启中断 */
+    /* NVIC Initialization */
+    if (HW_SysTick_Config(12000) == 0) {
+        printf("SysTick Config Ok!\r\n");
+    } else {
+        printf("SysTick Config Err!\r\n");
+    }
 }
 
 /*******************************************************************************
@@ -149,7 +148,7 @@ void Clock_Init(void)
 {
     SYS_WR_PROTECT = 0x7a83;     /* 解除系统寄存器写保护 */
     SYS_AFE_REG5 |= BIT15;       /* BIT15:PLLPDN*/
-    SoftDelay(100);              /* 等待硬件初始化完毕*/
+    SoftDelay(500);              /* 等待硬件初始化完毕*/
     SYS_CLK_CFG    = 0x000001ff; /* BIT8:0: CLK_HS,1:PLL  | BIT[7:0]CLK_DIV  | 1ff对应96M时钟 ; 开启所有时钟 */
     SYS_WR_PROTECT = 0x0;        /*关闭系统寄存器写操作*/
 }

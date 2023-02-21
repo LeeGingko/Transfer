@@ -1,6 +1,13 @@
+.cmsis/
+.eide/
+.vscode/
 RTE/
 Listings/
 *.crf
 *.d
 *.o
-.vscode/
+*.pdf
+.clang-format
+*.bgx
+*.007
+JLinkLog.txt
