@@ -38,7 +38,7 @@
 #define NVIC_PRIORITYGROUP_3 0x00000004U /*!< 3 bits for pre-emption priority \
                                               1 bits for subpriority */
 #define NVIC_PRIORITYGROUP_4 0x00000003U /*!< 4 bits for pre-emption priority \
-                                                                              
+                                              0 bits for subpriority */
 /* ------------------------------ ϵͳָʾLED ------------------------------ */
 #define SYS_LED_PORT GPIO0
 #define SYS_LED_PIN  GPIO_Pin_0

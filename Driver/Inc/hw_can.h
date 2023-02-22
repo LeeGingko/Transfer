@@ -32,6 +32,7 @@ void HW_CAN_Init(void);
 void HW_CAN_DMA_TX(u8 ide, u8 frame_number, u8 frame_size, u8 *memaddr);
 void HW_CAN_DMA_RX(u8 ide, u8 frame_number, u8 frame_size, u8 *memaddr);
 
+extern u8 CAN_Rx[55];
 /* USER STATEMENTS END */
 
 #endif

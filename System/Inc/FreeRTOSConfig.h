@@ -52,31 +52,35 @@
 /* Ensure definitions are only used by the compiler, and not by the assembler. */
 #if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
 #include <stdint.h>
-extern u32 SystemCoreClock; // 2023年2月12日
+extern u32 SystemCoreClock; // 2023�?2�?12�?
 #endif
-#define configENABLE_FPU             0
-#define configENABLE_MPU             0
+#define configENABLE_FPU                        0
+#define configENABLE_MPU                        0
 
-#define configUSE_QUEUE_SETS         0
-#define configIDLE_SHOULD_YIELD      1
-#define configUSE_TASK_NOTIFICATIONS 1
+#define configUSE_QUEUE_SETS                    0
+#define configIDLE_SHOULD_YIELD                 1
+#define configUSE_TASK_NOTIFICATIONS            1
 
-#define configUSE_PORT_OPTIMISED_TASK_SELECTION  0 // Cortex-M0不支持特定优化
-#define configUSE_PREEMPTION 1
-#define configSUPPORT_STATIC_ALLOCATION          0
-#define configSUPPORT_DYNAMIC_ALLOCATION 1
-#define configUSE_IDLE_HOOK              0
-#define configUSE_TICK_HOOK              0
-#define configCPU_CLOCK_HZ               (SystemCoreClock)
-#define configTICK_RATE_HZ               ((TickType_t)1000)
-// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 2023年2月21日 11点22分 此处添加会影响调度器，不使用即可
-#define configMAX_PRIORITIES             (7)
-#define configMINIMAL_STACK_SIZE         ((uint16_t)32)
-#define configTOTAL_HEAP_SIZE            ((size_t)2048)
-#define configMAX_TASK_NAME_LEN          (64)
-#define configUSE_16_BIT_TICKS           0
-#define configUSE_MUTEXES                1
-#define configQUEUE_REGISTRY_SIZE        0
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0 // Cortex-M0不支持特定优�?
+#define configUSE_PREEMPTION                    1
+#define configSUPPORT_STATIC_ALLOCATION         0
+#define configSUPPORT_DYNAMIC_ALLOCATION        1
+#define configUSE_IDLE_HOOK                     0
+#define configUSE_TICK_HOOK                     0
+#define configCPU_CLOCK_HZ                      (SystemCoreClock)
+#define configTICK_RATE_HZ                      ((TickType_t)1000)
+// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 2023�?2�?21�? 11�?22�? 此�?�添加会影响调度�?，不使用即可
+#define configMAX_PRIORITIES           (7)
+#define configMINIMAL_STACK_SIZE       ((uint16_t)32)
+#define configTOTAL_HEAP_SIZE          ((size_t)3072)
+#define configMAX_TASK_NAME_LEN        (64)
+#define configUSE_16_BIT_TICKS         0
+#define configUSE_MUTEXES              1
+#define configQUEUE_REGISTRY_SIZE      0
+
+#define configCHECK_FOR_STACK_OVERFLOW 0
+#define configUSE_TRACE_FACILITY       0
+
 /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
 /* Defaults to size_t for backward compatibility, but can be changed
    if lengths will always be less than the number of bytes in a size_t. */
@@ -148,10 +152,14 @@ standard names. */
 /* IMPORTANT: This define is commented when used with STM32Cube firmware, when the timebase source is SysTick,
               to prevent overwriting SysTick_Handler defined within STM32Cube HAL */
 
-// #define xPortSysTickHandler SysTick_Handler // 2023年2月12日 interrupt.c调用xPortSysTickHandler
+// #define xPortSysTickHandler SysTick_Handler // 2023�?2�?12�? interrupt.c调用xPortSysTickHandler
 
 /* USER CODE BEGIN Defines */
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
+/* 2023�?2�?21�? 16�?03�? */
+#if ( configUSE_TRACE_FACILITY == 1 )
+   #include "trcRecorder.h"
+#endif
 /* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */

@@ -14,10 +14,10 @@
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ------------------------------------------------------------------ */
 #define RS485_TASK_PRI 6
-#define RS485_STK_SIZE 64
+#define RS485_STK_SIZE 128
 
 #define CAN_TASK_PRI   6
-#define CAN_STK_SIZE   64
+#define CAN_STK_SIZE   128
 /* USER DEFINED MACROS END */
 
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -139,7 +139,6 @@ void LKS_FREERTOS_Init(void)
 static void RS485TaskFunc(void *pvParameters)
 {
     TickType_t xTimerPeriod;
-    HW_NVIC_Init();
     // printf("static void RS485TaskFunc(void *pvParameters)\r\n");
     while (1) {
 

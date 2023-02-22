@@ -390,6 +390,17 @@ void SPI0_IRQHandler(void)
  *******************************************************************************/
 void UART0_IRQHandler(void)
 {
+    // printf("UART0_IRQHandler\r\n ");
+    if (UART0_IF & UART_IF_StopError)
+    {
+        UART0_IF = UART_IF_StopError;
+        printf("UART_IF_StopError\r\n ");
+    }
+    if (UART0_IF & UART_IRQEna_CheckError)
+    {
+        UART0_IF = UART_IRQEna_CheckError;
+        printf("UART_IRQEna_CheckError\r\n ");
+    }
     if (UART0_IF & UART_IF_RcvOver) {
 
         UART0_IF = UART_IF_RcvOver;

@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -326,7 +326,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>1</uGnu>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>3</v6LangP>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Driver\Inc;.\System\Inc;.\LKS32MC08x_Periph_Driver\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0;.\SEGGER_RTT_V764b\RTT;.\SEGGER_RTT_V764b\Config</IncludePath>
+              <IncludePath>.\Driver\Inc;.\System\Inc;.\LKS32MC08x_Periph_Driver\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0;.\SEGGER_RTT_V764b\RTT;.\SEGGER_RTT_V764b\Config;.\Tracealyzer\config;.\Tracealyzer\include;.\Tracealyzer\streamports\Jlink_RTT\include;.\Tracealyzer\streamports\Jlink_RTT\config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -551,5 +551,14 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>Transfer</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

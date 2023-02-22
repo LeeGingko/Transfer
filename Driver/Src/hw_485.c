@@ -71,7 +71,7 @@ void HW_485_GPIO_Init(void)
     // UART0_RXD  P0.15
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_15;
-    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(GPIO0, &GPIO_InitStruct);
     // UART0_TXD  P1.0
     GPIO_StructInit(&GPIO_InitStruct); // 初始化结构体
@@ -108,16 +108,16 @@ void HW_485_UART_Init(void)
 
     /* -----------485串口0 结构体设置----------- */
     UART_StructInit(&UART_InitStruct);
-    UART_InitStruct.BaudRate   = 115200;                                                             /* 设置波特率115200 */
-    UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                                                 /* 发送数据长度8位 */
-    UART_InitStruct.StopBits   = UART_STOPBITS_1b;                                                   /* 停止位1位 */
-    UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                                                 /* 先发送LSB */
-    UART_InitStruct.ParityMode = UART_Parity_NO;                                                     /* 无奇偶校验 */
-    UART_InitStruct.IRQEna     = UART_IRQEna_SendOver | UART_IRQEna_RX_DMA_RE | UART_IRQEna_RcvOver; /* 接收完成DMA请求使能*/
+    UART_InitStruct.BaudRate   = 57600;                                                                                   /* 设置波特率115200 */
+    UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                                                                      /* 发送数据长度8位 */
+    UART_InitStruct.StopBits   = UART_STOPBITS_1b;                                                                        /* 停止位1位 */
+    UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                                                                      /* 先发送LSB */
+    UART_InitStruct.ParityMode = UART_Parity_NO;                                                                          /* 无奇偶校验 */
+    UART_InitStruct.IRQEna     = UART_IRQEna_SendOver | UART_IRQEna_RcvOver | UART_IF_CheckError | UART_IRQEna_StopError; /* 接收完成中断使能*/
     UART_Init(UART0, &UART_InitStruct);
 }
 
-#if(0)
+#if (0)
 /*******************************************************************************
  函数名称：    void HW_485_DMA_Init(void)
  功能描述：    DMA初始化配置
@@ -169,7 +169,7 @@ void HW_485_Init(void)
     memset(&hw_485_Manage, 0, 8);
 }
 
-#if(0)
+#if (0)
 ////////////////////////////////////////////////////////////////////////////////////////////
 // 函数名：  TmOpState HW_485_DMA_RxCompleteCallback()
 // 编写者：  F.L

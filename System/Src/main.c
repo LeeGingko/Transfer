@@ -29,11 +29,12 @@ int main(void)
     Hardware_Init();
     /* RTOS Initialization */
     LKS_FREERTOS_Init();
-    /* Start RTOS Scheduler */
+    // /* Start RTOS Scheduler */
     vTaskStartScheduler();
     /* Main Loop */
     while (1) { // 任务调度开启后永远不会进入主循环
         printf("vTaskStartScheduler();: Not enough RAM!\r\n");
+        SoftDelay(6400000);
     }
 }
 
