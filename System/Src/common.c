@@ -21,28 +21,29 @@
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
-u8 CheckSum(const u8 *pBuf, u8 uLen)
+#pragma GCC push_options
+#pragma GCC optimize (0)
+s16 CheckSum(u8 *pBuf, u8 uLen)
 {
-    // u8 i;
+    // u8 i = 0;
     u8 sumTmp = 0x00;
-
-    if (NULL == pBuf) {
+    
+    if (NULL == pBuf)
+    {
         return tmErr;
     }
+
     if (uLen > 0) {
-        do {
-            sumTmp += *pBuf;
-            pBuf++;
-        } while (uLen--);
-        // for (i = 0; i < uLen; i++) {
-        //     sumTmp += *pBuf;
-        //     pBuf++;
-        // }
+        for (int i = 0; i < uLen; i++) {
+            sumTmp += pBuf[i];
+        }
         return sumTmp;
     } else {
-        return 0xFF;
+        return tmErr;
     }
 }
+#pragma GCC pop_options
+
 
 /*******************************************************************************
  º¯ÊýÃû³Æ£º    u8 CheckCrc8(u8 *pData,u32 uLen)

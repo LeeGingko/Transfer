@@ -20,10 +20,6 @@
         "FreeRTOS-Kernel/portable/RVDS/ARM_CM0",
         "SEGGER_RTT_V764b/RTT",
         "SEGGER_RTT_V764b/Config",
-        "Tracealyzer/config",
-        "Tracealyzer/include",
-        "Tracealyzer/streamports/Jlink_RTT/include",
-        "Tracealyzer/streamports/Jlink_RTT/config",
         "RTE/_TransferPrj"
     ],
     "libDirs": [],
@@ -76,11 +72,11 @@
             "target": "cortex-m0"
         },
         "c/cpp-compiler": {
-            "optimization": "level-3",
+            "optimization": "level-0",
             "one-elf-section-per-function": true,
             "c99-mode": true,
-            "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
-            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "C_FLAGS": "--diag_suppress=1 --diag_suppress=161",
+            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=161",
             "warnings": "all-warnings"
         },
         "asm-compiler": {},
@@ -111,7 +107,7 @@
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "8836b9ac41a0f377ce36b05583e3e5e6",
         "global": "644184f1caacc5d60112aa5d680135e6",
-        "c/cpp-compiler": "6b961c7ab25acd2372f6c507ee50ebef",
+        "c/cpp-compiler": "c77b2d6b94bf4a9a1ab94e546e07b310",
         "asm-compiler": "99914b932bd37a50b983c5e7c90ae93b",
         "linker": "cc6ca5d74ffba3b62a99209acd95fd20"
     }

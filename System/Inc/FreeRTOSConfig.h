@@ -71,7 +71,7 @@ extern u32 SystemCoreClock; // 2023Âπ?2Êú?12Êó?
 #define configTICK_RATE_HZ                      ((TickType_t)1000)
 // #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 2023Âπ?2Êú?21Êó? 11ÁÇ?22Âà? Ê≠§Â?ÑÊ∑ªÂä†‰ºöÂΩ±ÂìçË∞ÉÂ∫¶Âô?Ôºå‰∏ç‰ΩøÁî®Âç≥ÂèØ
 #define configMAX_PRIORITIES           (7)
-#define configMINIMAL_STACK_SIZE       ((uint16_t)32)
+#define configMINIMAL_STACK_SIZE       ((uint16_t)64)
 #define configTOTAL_HEAP_SIZE          ((size_t)3072)
 #define configMAX_TASK_NAME_LEN        (64)
 #define configUSE_16_BIT_TICKS         0

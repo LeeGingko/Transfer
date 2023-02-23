@@ -30,30 +30,63 @@
 
 /* USER DEFINED TYPEDEFINE BEGIN */
 /* Defined Typedefine ------------------------------------------------------------------ */
-typedef enum {
-    frameRecErr = 0,
-    frameRecOk,
-    frameRecHead,
-    frameRecSrc,
-    frameRecDst,
-    frameRecType,
-    frameRecLen,
-    frameRecDat1,
-    frameRecDat2,
-    frameRecPari,
-} HW_FrameEnum_t;
+// typedef enum {
+//     frameRecErr = 0,
+//     frameRecOk,
+//     frameRecHead,
+//     frameRecSrc,
+//     frameRecDst,
+//     frameRecType,
+//     frameRecLen,
+//     frameRecDat1,
+//     frameRecDat2,
+//     frameRecPari,
+// } HW_FrameEnum_t;
 
-typedef struct __HW_485Manege_t {
-    u8 f_head;                                             /* 帧起始 */
-    u8 f_src;                                              /* 源地址 */
-    u8 f_dst;                                              /* 宿地址 */
-    u8 f_type;                                             /* 帧功能 */
-    u8 f_len;                                              /* 数据长度 */
-    u8 f_data[2];                                          /* 数据 */
-    u8 f_pari;                                             /* 和校验 */
-    void (*TransmitFrame)(struct __HW_485Manege_t *hw485); /* 帧发送函数指针 */
-    void (*DecodeFrame)(struct __HW_485Manege_t *hw485);   /* 帧解析函数指针 */
-} HW_485Manege_t;
+typedef enum {
+    fsmStaIdle = 0,
+    fsmStaHead,
+    fsmStaSrc,
+    fsmStaDst,
+    fsmStaType,
+    fsmStaLen,
+    fsmStaDat1,
+    fsmStaDat2,
+    fsmStaPari,
+    fsmStaErr
+} HW_485FsmState_t;
+
+typedef enum {
+    fsmEveIdle = 0,
+    fsmEveHead,
+    fsmEveSrc,
+    fsmEveDst,
+    fsmEveType,
+    fsmEveLen,
+    fsmEveDat1,
+    fsmEveDat2,
+    fsmEvePari,
+    fsmEveErr,
+} HW_485FsmEvent_t;
+
+typedef struct {
+    HW_485FsmState_t (*fpAction)(HW_485FsmEvent_t *pEvent, u8 *pData); /* 时间动作函数指针 */
+    HW_485FsmState_t fsmNexState;
+    HW_485FsmState_t fsmStateCheck;
+} HW_FsmStateNode_t;
+
+typedef struct __HW_485Manage_t {
+    u8 f_head;                    /* 帧起始 */
+    u8 f_src;                     /* 源地址 */
+    u8 f_dst;                     /* 宿地址 */
+    u8 f_type;                    /* 帧功能 */
+    u8 f_len;                     /* 数据长度 */
+    u8 f_data[2];                 /* 数据 */
+    u8 f_pari;                    /* 和校验 */
+    HW_485FsmState_t curState;    /* 当前状态 */
+    HW_485FsmEvent_t eventType;   /* 事件类型 */
+    HW_FsmStateNode_t fsmCurNode; /* 当前节点 */
+} HW_485Manage_t;
 
 /* USER DEFINED TYPEDEFINE END */
 
@@ -65,15 +98,17 @@ extern u8 rs485_Rx[RS485_RX_LEN];
 
 extern void HW_485_Init(void);
 
-#if (0)
-extern void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx);
+#if (1)
+// extern void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx);
 
-extern void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx);
+// extern void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx);
 
 extern void HW_485_SMUpdateState(void);
 
-extern void HW_485_SMTransition(const u8 *pByte);
+extern void HW_485_SMTransition(u8 byte);
 #endif
+
+extern void HW_FsmRunningFunc(u8 data);
 
 /* USER STATEMENTS END */
 

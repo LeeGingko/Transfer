@@ -14,7 +14,7 @@
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ------------------------------------------------------------------ */
 #define RS485_TASK_PRI 6
-#define RS485_STK_SIZE 128
+#define RS485_STK_SIZE 256
 
 #define CAN_TASK_PRI   6
 #define CAN_STK_SIZE   128
@@ -43,7 +43,7 @@ static void RS485TaskFunc(void *pvParameters);
 static void CANTaskFunc(void *pvParameters);
 
 static void SysLEDTimerCallback(void const *argument);
-
+extern HW_485Manage_t hw_485_Manage;
 /* USER DEFINED FROTOTYPES END */
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
@@ -140,12 +140,19 @@ static void RS485TaskFunc(void *pvParameters)
 {
     TickType_t xTimerPeriod;
     // printf("static void RS485TaskFunc(void *pvParameters)\r\n");
-    while (1) {
+    while (1) { 
 
         /* Query the period of the timer that expires. */
         xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
-        printf("xTimerPeriod = %d\r\n", xTimerPeriod);
-        vTaskDelay(2000);
+        // printf("xTimerPeriod = %d\r\n", xTimerPeriod);
+        // printf("hw_485_Manage.curState                : %d\r\n", hw_485_Manage.curState);
+        // SoftDelay(100);
+        // printf("hw_485_Manage.fsmCurNode.fsmStateCheck: %d\r\n", hw_485_Manage.fsmCurNode.fsmStateCheck);
+        // SoftDelay(100);
+        // printf("hw_485_Manage.fsmCurNode.fsmNexState  : %d\r\n", hw_485_Manage.fsmCurNode.fsmNexState);
+        // SoftDelay(100);
+
+        vTaskDelay(1000);
     }
 }
 

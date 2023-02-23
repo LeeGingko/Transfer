@@ -19,7 +19,7 @@
 /* USER DEFINED TYPEDEFINE BEGIN */
 /* Defined Typedefine ------------------------------------------------------------------ */
 typedef enum {
-    tmErr = 0,
+    tmErr = -1,
     tmOk,
     tmRspErr,
     tmRspOK,
@@ -30,7 +30,7 @@ typedef enum {
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-extern u8 CheckSum(const u8 *pBuf, u8 uLen);
+extern s16 CheckSum(u8 *pBuf, u8 uLen);
 extern u8 CheckCrc8(u8 *pData, u32 uLen);
 /* USER STATEMENTS END */
 

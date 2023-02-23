@@ -390,21 +390,26 @@ void SPI0_IRQHandler(void)
  *******************************************************************************/
 void UART0_IRQHandler(void)
 {
+    // volatile register u8 val;
+    volatile u8 val;
     // printf("UART0_IRQHandler\r\n ");
-    if (UART0_IF & UART_IF_StopError)
-    {
+
+    if (UART0_IF & UART_IF_StopError) {
         UART0_IF = UART_IF_StopError;
         printf("UART_IF_StopError\r\n ");
     }
-    if (UART0_IF & UART_IRQEna_CheckError)
-    {
+    if (UART0_IF & UART_IRQEna_CheckError) {
         UART0_IF = UART_IRQEna_CheckError;
         printf("UART_IRQEna_CheckError\r\n ");
     }
     if (UART0_IF & UART_IF_RcvOver) {
 
         UART0_IF = UART_IF_RcvOver;
-        printf("%02X ", (u8)UART0_BUFF);
+        val      = UART0_BUFF & 0xFF;
+        // HW_485_SMTransition((u8)val);
+        // HW_485_SMUpdateState();
+        HW_FsmRunningFunc(val);
+        printf("%02X ", val);
     }
 }
 

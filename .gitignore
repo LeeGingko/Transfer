@@ -3,6 +3,7 @@
 .vscode/
 RTE/
 Listings/
+build/
 *.crf
 *.d
 *.o

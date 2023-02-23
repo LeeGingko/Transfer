@@ -1,14 +1,14 @@
 Dependencies for Project 'Transfer', Target 'TransferPrj': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\System\Src\main.c)(0x63F48148)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\System\Src\main.c)(0x63F61A0A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT.h)(0x63EB7D6C)
 I (.\SEGGER_RTT_V764b\Config\SEGGER_RTT_Conf.h)(0x63EB6ED8)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -25,8 +25,8 @@ I (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\portmacro.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
-I (.\System\Inc\common.h)(0x63EF2554)
-I (.\System\Inc\hardware_config.h)(0x63F46224)
+I (.\System\Inc\common.h)(0x63F628AE)
+I (.\System\Inc\hardware_config.h)(0x63F46226)
 I (.\System\Inc\hardware_init.h)(0x63E1FB5E)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_adc.h)(0x62EC965A)
@@ -50,12 +50,12 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\System\Src\freertos.c)(0x63F49AD2)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\freertos.o --omf_browse .\objects\freertos.crf --depend .\objects\freertos.d)
+F (.\System\Src\freertos.c)(0x63F60E40)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\freertos.o --omf_browse .\objects\freertos.crf --depend .\objects\freertos.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
@@ -73,9 +73,9 @@ I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\timers.h)(0x6376D0F8)
-I (.\System\Inc\common.h)(0x63EF2554)
+I (.\System\Inc\common.h)(0x63F628AE)
 I (.\Driver\Inc\hw_uart.h)(0x63EF1BDC)
-I (.\Driver\Inc\hw_485.h)(0x63F35BB7)
+I (.\Driver\Inc\hw_485.h)(0x63F5D08C)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_dma.h)(0x63EF4F1A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_adc.h)(0x62EC965A)
@@ -98,10 +98,10 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-I (.\System\Inc\hardware_config.h)(0x63F46224)
+I (.\System\Inc\hardware_config.h)(0x63F46226)
 I (.\System\Inc\hardware_init.h)(0x63E1FB5E)
-F (.\System\Src\interrupt.c)(0x63F46757)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\interrupt.o --omf_browse .\objects\interrupt.crf --depend .\objects\interrupt.d)
-I (.\System\Inc\hardware_config.h)(0x63F46224)
+F (.\System\Src\interrupt.c)(0x63F5C7E0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\interrupt.o --omf_browse .\objects\interrupt.crf --depend .\objects\interrupt.d)
+I (.\System\Inc\hardware_config.h)(0x63F46226)
 I (.\System\Inc\hardware_init.h)(0x63E1FB5E)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -136,9 +136,9 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\FreeRTOS-Kernel\include\projdefs.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\portable.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\deprecated_definitions.h)(0x6376D0F8)
@@ -147,14 +147,14 @@ I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
 I (.\Driver\Inc\hw_uart.h)(0x63EF1BDC)
-I (.\Driver\Inc\hw_485.h)(0x63F35BB7)
-I (.\Driver\Inc\hw_can.h)(0x63F46B91)
-F (.\System\Src\hardware_init.c)(0x63F47058)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hardware_init.o --omf_browse .\objects\hardware_init.crf --depend .\objects\hardware_init.d)
+I (.\Driver\Inc\hw_485.h)(0x63F5D08C)
+I (.\Driver\Inc\hw_can.h)(0x63F46B92)
+F (.\System\Src\hardware_init.c)(0x63F61832)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hardware_init.o --omf_browse .\objects\hardware_init.crf --depend .\objects\hardware_init.d)
 I (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT.h)(0x63EB7D6C)
 I (.\SEGGER_RTT_V764b\Config\SEGGER_RTT_Conf.h)(0x63EB6ED8)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
-I (.\System\Inc\hardware_config.h)(0x63F46224)
+I (.\System\Inc\hardware_config.h)(0x63F46226)
 I (.\System\Inc\hardware_init.h)(0x63E1FB5E)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -189,10 +189,10 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
 I (.\Driver\Inc\hw_uart.h)(0x63EF1BDC)
-I (.\Driver\Inc\hw_485.h)(0x63F35BB7)
-I (.\Driver\Inc\hw_can.h)(0x63F46B91)
-F (.\LKS32MC08x_Periph_Driver\Source\startup_lks32mc08x.s)(0x63F47F9C)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include--pd "__UVISION_VERSION SETA 536"--list .\listings\startup_lks32mc08x.lst --xref -o .\objects\startup_lks32mc08x.o --depend .\objects\startup_lks32mc08x.d)
-F (.\System\Src\common.c)(0x63ED8BA2)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\common.o --omf_browse .\objects\common.crf --depend .\objects\common.d)
+I (.\Driver\Inc\hw_485.h)(0x63F5D08C)
+I (.\Driver\Inc\hw_can.h)(0x63F46B92)
+F (.\LKS32MC08x_Periph_Driver\Source\startup_lks32mc08x.s)(0x63F47F9E)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include--pd "__UVISION_VERSION SETA 536"--list .\listings\startup_lks32mc08x.lst --xref -o .\objects\startup_lks32mc08x.o --depend .\objects\startup_lks32mc08x.d)
+F (.\System\Src\common.c)(0x63F62BFA)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\common.o --omf_browse .\objects\common.crf --depend .\objects\common.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
@@ -204,8 +204,8 @@ I (.\System\Inc\core_cm0.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_version.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_compiler.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_armcc.h)(0x626F4ADE)
-I (.\System\Inc\common.h)(0x63EF2554)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_can.c)(0x63EC4FDA)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_can.o --omf_browse .\objects\lks32mc08x_can.crf --depend .\objects\lks32mc08x_can.d)
+I (.\System\Inc\common.h)(0x63F628AE)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_can.c)(0x63EC4FDA)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_can.o --omf_browse .\objects\lks32mc08x_can.crf --depend .\objects\lks32mc08x_can.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_can.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -239,7 +239,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_DMA.c)(0x63EF16C4)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_dma.o --omf_browse .\objects\lks32mc08x_dma.crf --depend .\objects\lks32mc08x_dma.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_DMA.c)(0x63EF16C4)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_dma.o --omf_browse .\objects\lks32mc08x_dma.crf --depend .\objects\lks32mc08x_dma.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_DMA.h)(0x63EF4F1A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -273,7 +273,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_exti.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_exti.o --omf_browse .\objects\lks32mc08x_exti.crf --depend .\objects\lks32mc08x_exti.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_exti.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_exti.o --omf_browse .\objects\lks32mc08x_exti.crf --depend .\objects\lks32mc08x_exti.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_exti.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
@@ -287,7 +287,7 @@ I (.\System\Inc\cmsis_version.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_compiler.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_armcc.h)(0x626F4ADE)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h)(0x63E4E298)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_gpio.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_gpio.o --omf_browse .\objects\lks32mc08x_gpio.crf --depend .\objects\lks32mc08x_gpio.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_gpio.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_gpio.o --omf_browse .\objects\lks32mc08x_gpio.crf --depend .\objects\lks32mc08x_gpio.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h)(0x63E4E298)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
@@ -300,7 +300,7 @@ I (.\System\Inc\core_cm0.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_version.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_compiler.h)(0x626F4ADE)
 I (.\System\Inc\cmsis_armcc.h)(0x626F4ADE)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_iwdg.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_iwdg.o --omf_browse .\objects\lks32mc08x_iwdg.crf --depend .\objects\lks32mc08x_iwdg.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_iwdg.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_iwdg.o --omf_browse .\objects\lks32mc08x_iwdg.crf --depend .\objects\lks32mc08x_iwdg.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -334,7 +334,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_sys.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_sys.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_sys.o --omf_browse .\objects\lks32mc08x_sys.crf --depend .\objects\lks32mc08x_sys.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_sys.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_sys.o --omf_browse .\objects\lks32mc08x_sys.crf --depend .\objects\lks32mc08x_sys.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_sys.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -368,7 +368,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_tim.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_tim.o --omf_browse .\objects\lks32mc08x_tim.crf --depend .\objects\lks32mc08x_tim.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_tim.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_tim.o --omf_browse .\objects\lks32mc08x_tim.crf --depend .\objects\lks32mc08x_tim.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -402,7 +402,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_sys.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_uart.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_uart.o --omf_browse .\objects\lks32mc08x_uart.crf --depend .\objects\lks32mc08x_uart.d)
+F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_uart.c)(0x62EC965A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\lks32mc08x_uart.o --omf_browse .\objects\lks32mc08x_uart.crf --depend .\objects\lks32mc08x_uart.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_lib.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
@@ -437,7 +437,7 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
 F (.\LKS32MC08x_Periph_Driver\Source\lks32mc08x_nvr.lib)(0x62EC965A)()
-F (.\Driver\Src\hw_can.c)(0x63F46BE5)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hw_can.o --omf_browse .\objects\hw_can.crf --depend .\objects\hw_can.d)
+F (.\Driver\Src\hw_can.c)(0x63F46BE6)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hw_can.o --omf_browse .\objects\hw_can.crf --depend .\objects\hw_can.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h)(0x63E4E298)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
@@ -471,8 +471,8 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_uart.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-I (.\Driver\Inc\hw_can.h)(0x63F46B91)
-F (.\Driver\Src\hw_uart .c)(0x63EF1BC2)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o ".\objects\hw_uart .o" --omf_browse ".\objects\hw_uart .crf" --depend ".\objects\hw_uart .d")
+I (.\Driver\Inc\hw_can.h)(0x63F46B92)
+F (.\Driver\Src\hw_uart .c)(0x63EF1BC2)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o ".\objects\hw_uart .o" --omf_browse ".\objects\hw_uart .crf" --depend ".\objects\hw_uart .d")
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h)(0x63E4E298)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
@@ -506,9 +506,9 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_sys.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-I (.\System\Inc\common.h)(0x63EF2554)
+I (.\System\Inc\common.h)(0x63F628AE)
 I (.\Driver\Inc\hw_uart.h)(0x63EF1BDC)
-F (.\Driver\Src\hw_485.c)(0x63F4665F)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hw_485.o --omf_browse .\objects\hw_485.crf --depend .\objects\hw_485.d)
+F (.\Driver\Src\hw_485.c)(0x63F6B9C9)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\hw_485.o --omf_browse .\objects\hw_485.crf --depend .\objects\hw_485.d)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_gpio.h)(0x63E4E298)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x.h)(0x63E8DF8A)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
@@ -542,15 +542,15 @@ I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_sys.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tim.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_iwdg.h)(0x62EC965A)
 I (.\LKS32MC08x_Periph_Driver\Include\lks32mc08x_tmp.h)(0x62EC965A)
-I (.\System\Inc\common.h)(0x63EF2554)
-I (.\Driver\Inc\hw_485.h)(0x63F35BB7)
-F (.\FreeRTOS-Kernel\portable\MemMang\heap_4.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\heap_4.o --omf_browse .\objects\heap_4.crf --depend .\objects\heap_4.d)
+I (.\System\Inc\common.h)(0x63F628AE)
+I (.\Driver\Inc\hw_485.h)(0x63F5D08C)
+F (.\FreeRTOS-Kernel\portable\MemMang\heap_4.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\heap_4.o --omf_browse .\objects\heap_4.crf --depend .\objects\heap_4.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -567,11 +567,11 @@ I (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\portmacro.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
-F (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\port.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+F (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\port.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
@@ -589,12 +589,12 @@ I (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\portmacro.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
-F (.\FreeRTOS-Kernel\list.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
+F (.\FreeRTOS-Kernel\list.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -610,13 +610,13 @@ I (.\FreeRTOS-Kernel\include\deprecated_definitions.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\portmacro.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
-F (.\FreeRTOS-Kernel\queue.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
+F (.\FreeRTOS-Kernel\queue.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -634,13 +634,13 @@ I (.\FreeRTOS-Kernel\include\mpu_wrappers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\queue.h)(0x6376D0F8)
-F (.\FreeRTOS-Kernel\tasks.c)(0x63F46C76)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
+F (.\FreeRTOS-Kernel\tasks.c)(0x63F46C78)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -659,12 +659,12 @@ I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\timers.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\stack_macros.h)(0x6376D0F8)
-F (.\FreeRTOS-Kernel\timers.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
+F (.\FreeRTOS-Kernel\timers.c)(0x6376D0F8)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
-I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBA)
+I (.\FreeRTOS-Kernel\include\FreeRTOS.h)(0x63F49BBC)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (.\System\Inc\FreeRTOSConfig.h)(0x63F49F12)
+I (.\System\Inc\FreeRTOSConfig.h)(0x63F5CAE2)
 I (.\LKS32MC08x_Periph_Driver\Include\basic.h)(0x62A70A96)
 I (F:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -683,13 +683,13 @@ I (.\FreeRTOS-Kernel\include\task.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\list.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\queue.h)(0x6376D0F8)
 I (.\FreeRTOS-Kernel\include\timers.h)(0x6376D0F8)
-F (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT.c)(0x63EB6878)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\segger_rtt.o --omf_browse .\objects\segger_rtt.crf --depend .\objects\segger_rtt.d)
+F (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT.c)(0x63EB6878)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\segger_rtt.o --omf_browse .\objects\segger_rtt.crf --depend .\objects\segger_rtt.d)
 I (SEGGER_RTT_V764b\RTT\SEGGER_RTT.h)(0x63EB7D6C)
 I (.\SEGGER_RTT_V764b\Config\SEGGER_RTT_Conf.h)(0x63EB6ED8)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
-F (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT_printf.c)(0x63EB4132)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\segger_rtt_printf.o --omf_browse .\objects\segger_rtt_printf.crf --depend .\objects\segger_rtt_printf.d)
+F (.\SEGGER_RTT_V764b\RTT\SEGGER_RTT_printf.c)(0x63EB4132)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Driver\Inc -I .\System\Inc -I .\LKS32MC08x_Periph_Driver\Include -I .\FreeRTOS-Kernel\include -I .\FreeRTOS-Kernel\portable\RVDS\ARM_CM0 -I .\SEGGER_RTT_V764b\RTT -I .\SEGGER_RTT_V764b\Config -I .\Tracealyzer\config -I .\Tracealyzer\include -I .\Tracealyzer\streamports\Jlink_RTT\include -I .\Tracealyzer\streamports\Jlink_RTT\config-IF:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include-D__UVISION_VERSION="536"-o .\objects\segger_rtt_printf.o --omf_browse .\objects\segger_rtt_printf.crf --depend .\objects\segger_rtt_printf.d)
 I (SEGGER_RTT_V764b\RTT\SEGGER_RTT.h)(0x63EB7D6C)
 I (.\SEGGER_RTT_V764b\Config\SEGGER_RTT_Conf.h)(0x63EB6ED8)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)

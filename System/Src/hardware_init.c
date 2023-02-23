@@ -126,7 +126,7 @@ void Hardware_Init(void)
     HW_CAN_Init();
     HW_485_Init();
     SoftDelay(1000);
-    // HW_NVIC_Init();                /* NVIC设置 */
+    HW_NVIC_Init();                /* NVIC设置 */
     NVIC_EnableIRQ(DMA_IRQn);      /* 使能DMA中断 */
     NVIC_SetPriority(DMA_IRQn, 1); /* 配置DMA中断优先级*/
     SYS_WR_PROTECT = 0x0;          /*关闭系统寄存器写操作*/
@@ -138,7 +138,6 @@ void Hardware_Init(void)
         printf("SysTick Config Err!\r\n");
     }
     SoftDelay(100);
-    HW_NVIC_Init();
 }
 
 /*******************************************************************************
