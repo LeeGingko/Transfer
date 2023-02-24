@@ -1,4 +1,4 @@
---cpu Cortex-M0 --library_type=microlib --scatter "d:/LAM/XiangMu/ZhangLiJi/Files/ZhuanJie/RuanJian/Transfer/build/TransferPrj/Transfer.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
+--cpu Cortex-M0 --library_type=microlib --scatter "e:/Archive/719/2023/ZhangLiJi/Files/ZhuanJie/RuanJian/Transfer/build/TransferPrj/Transfer.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
 --list .\build\TransferPrj\Transfer.map
 .\build\TransferPrj\Driver\Src\hw_485.o
 .\build\TransferPrj\Driver\Src\hw_can.o
@@ -17,12 +17,15 @@
 .\build\TransferPrj\LKS32MC08x_Periph_Driver\Source\lks32mc08x_sys.o
 .\build\TransferPrj\LKS32MC08x_Periph_Driver\Source\lks32mc08x_tim.o
 .\build\TransferPrj\LKS32MC08x_Periph_Driver\Source\lks32mc08x_uart.o
-.\build\TransferPrj\SEGGER_RTT_V764b\RTT\SEGGER_RTT.o
-.\build\TransferPrj\SEGGER_RTT_V764b\RTT\SEGGER_RTT_printf.o
 .\build\TransferPrj\System\Src\common.o
 .\build\TransferPrj\System\Src\freertos.o
 .\build\TransferPrj\System\Src\hardware_init.o
 .\build\TransferPrj\System\Src\interrupt.o
 .\build\TransferPrj\System\Src\main.o
+.\build\TransferPrj\SystemView\FreeRTOSV10\Config\Cortex-M\SEGGER_SYSVIEW_Config_FreeRTOS.o
+.\build\TransferPrj\SystemView\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.o
+.\build\TransferPrj\SystemView\RTT\SEGGER_RTT.o
+.\build\TransferPrj\SystemView\RTT\SEGGER_RTT_printf.o
+.\build\TransferPrj\SystemView\RTT\SEGGER_SYSVIEW.o
 .\build\TransferPrj\LKS32MC08x_Periph_Driver\Source\startup_lks32mc08x.o
 .\LKS32MC08x_Periph_Driver\Source\lks32mc08x_nvr.lib -o .\build\TransferPrj\Transfer.axf

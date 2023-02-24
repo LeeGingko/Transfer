@@ -138,8 +138,8 @@ void LKS_FREERTOS_Init(void)
 static void RS485TaskFunc(void *pvParameters)
 {
     TickType_t xTimerPeriod;
+    
     HW_485TransmitFrame();
-    // printf("static void RS485TaskFunc(void *pvParameters)\r\n");
     while (1) {
         /* Query the period of the timer that expires. */
         xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);

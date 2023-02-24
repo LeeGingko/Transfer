@@ -28,8 +28,8 @@
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-extern u8 rs485_RxFlag;
-
+extern u8 rs485_TxFlag;
+extern u8 duart_TxFlag;
 extern void HW_UART_Init(void);
 // void HW_UART_DMA_Init(void);
 extern TmOpState HW_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen);

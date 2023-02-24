@@ -55,12 +55,13 @@ u32 HW_SysTick_Config(uint32_t ticks);
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 void HW_NVIC_Init(void)
 {
-    // UART0_IF = UART_IF_RcvOver;
     UART_ClearIRQFlag(UART0, UART_IF_RcvOver);
+    NVIC_SetPriority(UART0_IRQn, 0);
     NVIC_EnableIRQ(UART0_IRQn);
-    NVIC_SetPriority(UART0_IRQn, 14);
-    // NVIC_SetPriority(TIMER0_IRQn, 12); /* TIMER0中断优先级配置*/
-    // NVIC_EnableIRQ(TIMER0_IRQn);       /* 使能UTimer定时器中断*/
+
+    UART_ClearIRQFlag(UART1, UART_IF_SendOver);
+    NVIC_SetPriority(UART1_IRQn, 13); // UART0中断优先级配置
+    NVIC_EnableIRQ(UART1_IRQn);       // 使能UART0定时器中断
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -84,21 +85,7 @@ static void HW_SysLed_Init(void)
     GPIO_Init(SYS_LED_PORT, &GPIO_InitStruct);
 }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 函数名：  int fputc(int ch, FILE *f)
- * 编写者：  F.L
- * 参考资料：无
- * 功  能：  重定向printf
- * 输入参数：无
- * 输出参数：无
- * 备  注：  2023年2月14日->创建
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-int fputc(int ch, FILE *f)
-{
-    SEGGER_RTT_PutChar(0, ch);
 
-    return ch;
-}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 函数名称：    void Hardware_init(void)
@@ -116,24 +103,23 @@ void Hardware_Init(void)
     __disable_irq();         /* 关闭中断 中断总开关 */
     SYS_WR_PROTECT = 0x7a83; /*使能系统寄存器写操作*/
     FLASH_CFG |= 0x00080000; /* enable prefetch ，FLASH预取加速使能*/
-
     HW_SysLed_Init();
-    HW_UART_Init();
     HW_CAN_Init();
     HW_485_Init();
+    HW_UART_Init();
+    HW_NVIC_Init(); /* NVIC设置 */
     SoftDelay(1000);
-    HW_NVIC_Init();                /* NVIC设置 */
-    NVIC_EnableIRQ(DMA_IRQn);      /* 使能DMA中断 */
-    NVIC_SetPriority(DMA_IRQn, 1); /* 配置DMA中断优先级*/
-    SYS_WR_PROTECT = 0x0;          /*关闭系统寄存器写操作*/
-    __enable_irq();                /* 开启中断 */
+    //    NVIC_EnableIRQ(DMA_IRQn);      /* 使能DMA中断 */
+    //    NVIC_SetPriority(DMA_IRQn, 1); /* 配置DMA中断优先级*/
+    SYS_WR_PROTECT = 0x0; /*关闭系统寄存器写操作*/
+    __enable_irq();       /* 开启中断 */
     /* 系统嘀嗒定时器初始化 */
     if (HW_SysTick_Config(12000) == 0) {
         printf("SysTick Config Ok!\r\n");
     } else {
         printf("SysTick Config Err!\r\n");
     }
-    SoftDelay(100);
+    SoftDelay(1000);
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

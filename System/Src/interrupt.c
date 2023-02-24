@@ -30,6 +30,7 @@
 #include "hw_uart.h"
 #include "hw_485.h"
 #include "hw_can.h"
+#include "SEGGER_SYSVIEW.h"
 /* USER INCLUDE FILES END */
 
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -39,7 +40,8 @@
 
 /* USER DEFINED VARIABLES BEGIN */
 /* Defined Variables --------------------------------------------------------------------- */
-u16 timetik = 0;
+u8 UART_Value = 0;
+// u16 timetik   = 0;
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
@@ -183,15 +185,15 @@ void HALL_IRQHandler(void)
  *-------------------------------------------------------------------------------------------*/
 void UTIMER0_IRQHandler(void) // 定时器0捕获电压
 {
-    if (UTIMER_IF & Timer_IRQEna_Zero) // 判断UTimer0的CH0是否发生捕下降沿中断TIM0_CH0: P0.15
-    {
-        UTIMER_IF = Timer_IRQEna_Zero; // 清除UTimer中断标志位
-        timetik++;
-        if (timetik >= 500) {
-            timetik = 0;
-            // Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
-        }
-    }
+    // if (UTIMER_IF & Timer_IRQEna_Zero) // 判断UTimer0的CH0是否发生捕下降沿中断TIM0_CH0: P0.15
+    // {
+    //     UTIMER_IF = Timer_IRQEna_Zero; // 清除UTimer中断标志位
+    //     timetik++;
+    //     if (timetik >= 500) {
+    //         timetik = 0;
+    //         // Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
+    //     }
+    // }
 }
 
 /*-------------------------------------------------------------------------------------------*
@@ -296,6 +298,16 @@ void CMP_IRQHandler(void)
  *-------------------------------------------------------------------------------------------*/
 void UART1_IRQHandler(void)
 {
+    if (UART_GetIRQFlag(UART1, UART_IF_SendOver)) // 发送完成中断
+    {
+        UART_ClearIRQFlag(UART1, UART_IF_SendOver);
+        // duart_TxFlag = 1;
+    }
+
+    if (UART1_IF & UART_IF_RcvOver) // 接收完成中断
+    {
+        UART1_IF   = UART_IF_RcvOver;
+    }
 }
 
 /*-------------------------------------------------------------------------------------------*
@@ -311,6 +323,7 @@ void UART1_IRQHandler(void)
  *-------------------------------------------------------------------------------------------*/
 void SysTick_Handler(void)
 {
+    SEGGER_SYSVIEW_TickCnt++;
     if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED) // 系统已经运行
     {
         xPortSysTickHandler();
@@ -396,25 +409,22 @@ void UART0_IRQHandler(void)
 
     if (UART0_IF & UART_IF_StopError) {
         UART0_IF = UART_IF_StopError;
-        printf("UART_IF_StopError\r\n ");
+        //        printf("UART_IF_StopError\r\n ");
     }
     if (UART0_IF & UART_IRQEna_CheckError) {
         UART0_IF = UART_IRQEna_CheckError;
-        printf("UART_IRQEna_CheckError\r\n ");
+        //        printf("UART_IRQEna_CheckError\r\n ");
     }
     if (UART0_IF & UART_IF_RcvOver) {
 
         UART0_IF = UART_IF_RcvOver;
         val      = UART0_BUFF & 0xFF;
-        // HW_485_SMTransition((u8)val);
-        // HW_485_SMUpdateState();
         HW_FsmRunningFunc(val);
-        printf("%02X ", val);
+        // printf("%02X ", val);
     }
     if (UART0_IF & UART_IF_SendOver) {
-
-        UART0_IF = UART_IF_SendOver;
-        rs485_RxFlag = 1;
+        UART0_IF     = UART_IF_SendOver;
+        rs485_TxFlag = 1;
     }
 }
 

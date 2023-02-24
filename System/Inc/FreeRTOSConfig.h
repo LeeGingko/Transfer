@@ -79,7 +79,10 @@ extern u32 SystemCoreClock; // 2023å¹?2æœ?12æ—?
 #define configQUEUE_REGISTRY_SIZE      0
 
 #define configCHECK_FOR_STACK_OVERFLOW 0
-#define configUSE_TRACE_FACILITY       0
+#define configUSE_TRACE_FACILITY       1
+
+#define INCLUDE_xTaskGetIdleTaskHandle  1
+#define INCLUDE_pxTaskGetStackStart     1
 
 /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
 /* Defaults to size_t for backward compatibility, but can be changed
@@ -157,9 +160,9 @@ standard names. */
 /* USER CODE BEGIN Defines */
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
 /* 2023å¹?2æœ?21æ—? 16ç‚?03åˆ? */
-#if ( configUSE_TRACE_FACILITY == 1 )
-   #include "trcRecorder.h"
-#endif
+//#if ( configUSE_TRACE_FACILITY == 1 )
+//   #include "trcRecorder.h"
+//#endif
 /* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */

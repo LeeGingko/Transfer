@@ -22,25 +22,24 @@ Dialog DLL:      TARMCM1.DLL V1.14.4.0
  
 <h2>Project:</h2>
 D:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\Transfer.uvprojx
-Project File Date:  02/23/2023
+Project File Date:  02/24/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'F:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'TransferPrj'
-compiling hw_uart .c...
-compiling hardware_init.c...
-compiling hw_485.c...
-compiling interrupt.c...
-compiling freertos.c...
-System\Src\freertos.c(141): warning:  #550-D: variable "xTimerPeriod"  was set but never used
-      TickType_t xTimerPeriod;
-System\Src\freertos.c: 1 warning, 0 errors
+compiling common.c...
 linking...
-Program Size: Code=14458 RO-data=242 RW-data=168 ZI-data=4464  
+Program Size: Code=19208 RO-data=356 RW-data=192 ZI-data=6680  
 FromELF: creating hex file...
-".\Objects\Transfer.axf" - 0 Error(s), 1 Warning(s).
+".\Objects\Transfer.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.8.0.pack
+                ARM.CMSIS.5.8.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.5.0
 
 Package Vendor: Linko
                 
@@ -48,10 +47,14 @@ Package Vendor: Linko
                 LKS08 Device Family Pack
 
 <h2>Collection of Component include folders:</h2>
+  .\RTE\_TransferPrj
+  F:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include
   F:\Keil_v5\Packs\Linko\LKS08x\1.0.5\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:00
+
+   * Component: ARM::CMSIS:CORE:5.5.0
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

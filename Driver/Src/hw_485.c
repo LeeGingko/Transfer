@@ -18,27 +18,25 @@
 /* Defined Variables --------------------------------------------------------------------- */
 u8 rs485_Rx[RS485_RX_LEN];
 
-HW_FsmStateNode_t hw_FsmNodeTable[10]; /* 状态节点表 */
-
-HW_485Manage_t hw_485_Manage;
-HW_485Transmit_t hw_485_Transmit = {0};
-// static DMA_InitTypeDef DMA_InitStruct;
+HW_FsmStateNode_t hw_FsmNodeTable[10];  /* 状态机状态节点表 */
+HW_485Manage_t hw_485_Manage;           /* 485接收管理函数 */
+HW_485Transmit_t hw_485_Transmit = {0}; /* 485发送帧结构体 */
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
 /* Defined Prototypes -------------------------------------------------------------------- */
 
 /* USER DEFINED FROTOTYPES END */
-static HW_485FsmState_t fsmActionIdle(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionHead(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionSrc(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionDst(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionType(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionLen(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionData1(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionData2(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionParity(HW_485FsmEvent_t *pEvent, u8 *pData);
-static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData);
+static HW_485FsmState_t fsmActionIdle(HW_485FsmEvent_t *pEvent, u8 *pData);   /* Idle状态动作函数 */
+static HW_485FsmState_t fsmActionHead(HW_485FsmEvent_t *pEvent, u8 *pData);   /* Head状态动作函数 */
+static HW_485FsmState_t fsmActionSrc(HW_485FsmEvent_t *pEvent, u8 *pData);    /* Src状态动作函数 */
+static HW_485FsmState_t fsmActionDst(HW_485FsmEvent_t *pEvent, u8 *pData);    /* Dst状态动作函数 */
+static HW_485FsmState_t fsmActionType(HW_485FsmEvent_t *pEvent, u8 *pData);   /* Type状态动作函数 */
+static HW_485FsmState_t fsmActionLen(HW_485FsmEvent_t *pEvent, u8 *pData);    /* Len状态动作函数 */
+static HW_485FsmState_t fsmActionData1(HW_485FsmEvent_t *pEvent, u8 *pData);  /* Data1状态动作函数 */
+static HW_485FsmState_t fsmActionData2(HW_485FsmEvent_t *pEvent, u8 *pData);  /* Data2状态动作函数 */
+static HW_485FsmState_t fsmActionParity(HW_485FsmEvent_t *pEvent, u8 *pData); /* Pari状态动作函数 */
+static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData);  /* Err状态动作函数 */
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
@@ -732,7 +730,7 @@ static HW_485FsmState_t HW_GetCurState(void)
  *          （1） Idle状态只能转移到Idle状态和Head状态，无法转移到Err状态和其他状态；
  *          （2） 除Idle状态外，剩余状态中，Len、Data1、Pari三个状态也无法转换到Err状态；
  *          （3） Idle、Pari、Err在Head事件发生后转移到Head状态，Head状态本身也可在Head事件发生
- *                后保持在自身Head状态，因此状态机具备数据帧连续接收能力；
+ *                后保持在自身Head状态，因此状态机具备数据帧连续.接收能力；
  *          （4） 校验比对在Pari事件发生时完成，若校验异常，状态机应置于Idle状态；若校验对比不通
  *                过，则状态机进入Err状态。
  *--------------------------------------------------------------------------------------------*/
@@ -791,7 +789,6 @@ static HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
                 return fsmEveIdle;
             }
             if (data == (chkSum & 0xFF)) {
-
                 eveTmp = fsmEvePari;
             } else {
                 eveTmp = fsmEveErr;
@@ -859,8 +856,8 @@ void HW_FsmRunningFunc(u8 data)
     static HW_485FsmState_t tmpState;
     static HW_485FsmEvent_t tmpEvent;
 
-    tmpState = HW_GetCurState();
-    tmpEvent = HW_GetCurEvent(data);
+    tmpState                 = HW_GetCurState();
+    tmpEvent                 = HW_GetCurEvent(data);
     hw_485_Manage.fsmCurNode = hw_FsmNodeTable[tmpState];
     if (hw_485_Manage.fsmCurNode.fsmStateCheck == tmpState) {
         tmpState = hw_485_Manage.fsmCurNode.fpAction(&tmpEvent, &data);

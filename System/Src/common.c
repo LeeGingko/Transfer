@@ -11,7 +11,7 @@
 
 /* USER DEFINED VARIABLES BEGIN */
 /* Defined Variables --------------------------------------------------------------------- */
-
+extern unsigned int SEGGER_SYSVIEW_TickCnt;
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
@@ -111,5 +111,38 @@ u8 CheckCrc8(u8 *pData, u32 uLen)
     } else {
         return (REG8(&CRC_DR)) ^ out_XOR;
     }
+}
+
+
+u32 SEGGER_SYSVIEW_X_GetTimestamp(void) {
+   
+    u32 Cycles = 0;   
+    u32 TickCount;
+    u32 CyclesPerTick;
+   
+    //
+    // Get the cycles of the current system tick.
+    // SysTick is down-counting, subtract the current value from the number of cycles per tick.
+    //   
+    CyclesPerTick = SysTick->LOAD + 1;
+    Cycles = (CyclesPerTick - SysTick->VAL);
+   
+    //
+    // Get the system tick count.
+    //   
+    TickCount = SEGGER_SYSVIEW_TickCnt;
+   
+    //
+    // If a SysTick interrupt is pending, re-read timer and adjust result
+    //   
+    if ( NVIC_GetPendingIRQ(SysTick_IRQn) != 0)
+    {   
+        TickCount++;  
+    }
+        
+    Cycles += TickCount * CyclesPerTick;
+        
+    return Cycles;
+
 }
 /* USER IMPLEMENTED FUNCTIONS END */

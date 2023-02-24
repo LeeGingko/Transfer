@@ -4,23 +4,6 @@
             "path": "."
         }
     ],
-    "settings": {
-        "files.associations": {
-            "*.v": "verilog",
-            "task.h": "c",
-            "freertos.h": "c",
-            "freertosconfig.h": "c",
-            "hw_485.h": "c",
-            "hardware_config.h": "c",
-            "projdefs.h": "c",
-            "common.h": "c",
-            "basic.h": "c",
-            "lks32mc08x_dma.h": "c",
-            "lks32mc08x_gpio.h": "c",
-            "assert.h": "c",
-            "hw_uart.h": "c"
-        },
-        "cortex-debug.variableUseNaturalFormat": false
-    },
+    "settings": {},
     "extensions": {}
 }

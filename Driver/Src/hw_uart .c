@@ -6,11 +6,23 @@
 
 /* USER INCLUDE FILES END */
 
+/* USER DEFINED TYPEDEFINE BEGIN */
+/* Defined Typedefine ------------------------------------------------------------------ */
+struct __FILE {
+    int handle;
+};
+
+/* USER DEFINED TYPEDEFINE END */
+
 /* USER DEFINED VARIABLES BEGIN */
 /* Defined Variables --------------------------------------------------------------------- */
+FILE __stdout;
+
 u8 DUART_DMA_RX[DUART_RX_LEN];
-u8 rs485_RxFlag = 0;
+
+u8 rs485_TxFlag = 0;
 /* USER DEFINED VARIABLES END */
+
 /* USER DEFINED FROTOTYPES BEGIN */
 /* Defined Prototypes -------------------------------------------------------------------- */
 
@@ -18,6 +30,40 @@ u8 rs485_RxFlag = 0;
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 函数名：  void _sys_exit(int x)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  标准库支持函数
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月24日->创建
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void _sys_exit(int x)
+{
+    x = x;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 函数名：  int fputc(int ch, FILE *f)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  重定向printf
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月24日->创建
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+int fputc(int ch, FILE *f)
+{
+    // SEGGER_RTT_PutChar(0, ch);
+    // while (UART1->IF & UART_IF_SendOver)
+    //     ;
+    UART_SendData(UART1, ch);
+    while ((UART1->STT & BIT0) == FALSE)
+        ;
+    return ch;
+}
+
 /*-------------------------------------------------------------------------------------------*
  函数名称：    void GPIO_init(void)
  功能描述：    GPIO硬件初始化
@@ -33,12 +79,15 @@ void HW_UART_GPIO_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
     /* -----------调试串口1 IO设置----------- */
+
     // UART1_RXD  P0.7
+    GPIO_StructInit(&GPIO_InitStruct); // 初始化结构体    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_7;
     GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
     GPIO_Init(GPIO0, &GPIO_InitStruct);
     // UART1_TXD  P0.6
+    GPIO_StructInit(&GPIO_InitStruct); // 初始化结构体
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_6;
     GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
@@ -46,6 +95,35 @@ void HW_UART_GPIO_Init(void)
 
     GPIO_PinAFConfig(GPIO0, GPIO_PinSource_7, AF4_UART);
     GPIO_PinAFConfig(GPIO0, GPIO_PinSource_6, AF4_UART);
+}
+
+/*-------------------------------------------------------------------------------------------*
+ 函数名称：    void HW_UART_Init(void)
+ 功能描述：    UART0寄存器配置
+ 输入参数：    无
+ 输出参数：    无
+ 返 回 值：    无
+ 其它说明：
+ 修改日期      版本号          修改人            修改内容
+ -----------------------------------------------------------------------------
+ 2015/11/5      V1.0           Howlet Li          创建
+ *-------------------------------------------------------------------------------------------*/
+void HW_UART_Init(void)
+{
+    UART_InitTypeDef UART_InitStruct;
+
+    /* -----------调试串口1 IO设置----------- */
+    HW_UART_GPIO_Init();
+    /* -----------调试串口1 结构体设置----------- */
+    UART_StructInit(&UART_InitStruct);
+    UART_InitStruct.BaudRate   = 9600;                                       /* 设置波特率9600 */
+    UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                         /* 发送数据长度8位 */
+    UART_InitStruct.StopBits   = UART_STOPBITS_1b;                           /* 停止位1位 */
+    UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                         /* 先发送LSB */
+    UART_InitStruct.ParityMode = UART_Parity_NO;                             /* 无奇偶校验 */
+    UART_InitStruct.IRQEna     = UART_IRQEna_SendOver | UART_IRQEna_RcvOver; /* 串口中断使能 */
+    UART_Init(UART1, &UART_InitStruct);
+    UART1_IF = 0xFF;
 }
 
 /*-------------------------------------------------------------------------------------------*
@@ -83,35 +161,6 @@ void HW_UART_DMA_Init(void)
 }
 
 /*-------------------------------------------------------------------------------------------*
- 函数名称：    void HW_UART_Init(void)
- 功能描述：    UART0寄存器配置
- 输入参数：    无
- 输出参数：    无
- 返 回 值：    无
- 其它说明：
- 修改日期      版本号          修改人            修改内容
- -----------------------------------------------------------------------------
- 2015/11/5      V1.0           Howlet Li          创建
- *-------------------------------------------------------------------------------------------*/
-void HW_UART_Init(void)
-{
-    UART_InitTypeDef UART_InitStruct;
-
-    /* -----------调试串口1 IO设置----------- */
-    HW_UART_GPIO_Init();
-    /* -----------调试串口1 结构体设置----------- */
-    UART_StructInit(&UART_InitStruct);
-    UART_InitStruct.BaudRate   = 115200;                                       /* 设置波特率115200 */
-    UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                           /* 发送数据长度8位 */
-    UART_InitStruct.StopBits   = UART_STOPBITS_1b;                             /* 停止位1位 */
-    UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                           /* 先发送LSB */
-    UART_InitStruct.ParityMode = UART_Parity_NO;                               /* 无奇偶校验 */
-    UART_InitStruct.IRQEna     = UART_IRQEna_SendOver | UART_IRQEna_RX_DMA_RE; /* 接收完成DMA请求使能*/
-    UART_Init(UART1, &UART_InitStruct);
-    HW_UART_DMA_Init();
-}
-
-/*-------------------------------------------------------------------------------------------*
  * 函数名称：    TmOpState HW_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen)
  * 功能描述：    串口多字节发送函数
  * 输入参数：    UART_TypeDef *UARTx    串口类型
@@ -126,16 +175,17 @@ void HW_UART_Init(void)
  *-------------------------------------------------------------------------------------------*/
 TmOpState HW_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen)
 {
-    if(NULL == pData)
-    {
+    if (NULL == pData) {
         return tmErr;
     }
 
-    while(UARTx->IF & UART_IF_SendOver);
+    while (UARTx->IF & UART_IF_SendOver)
+        ;
     for (int i = 0; i < uLen; i++) { /* C99 */
         UART_SendData(UARTx, pData[i]);
-        while(rs485_RxFlag == 0);
-        rs485_RxFlag = 0;
+        while (rs485_TxFlag == 0)
+            ;
+        rs485_TxFlag = 0;
         printf("%02X ", pData[i]);
     }
 

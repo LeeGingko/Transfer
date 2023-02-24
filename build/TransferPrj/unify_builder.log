@@ -1,3 +1,28 @@
-[2023-02-24 10:54:42]	[done]
+[2023-02-24 23:47:34]	compilation failed at : "e:\Archive\719\2023\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\FreeRTOS-Kernel\tasks.c", exit code: 1
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"FreeRTOS-Kernel/include/FreeRTOS.h", line 60: Error:  #5: cannot open source input file "SEGGER_SYSVIEW_FreeRTOS.h": No such file or directory
+  #include "SEGGER_SYSVIEW_FreeRTOS.h"
+                                      ^
+.\FreeRTOS-Kernel\portable\MemMang\heap_4.c: 0 warnings, 1 error
+"FreeRTOS-Kernel/include/FreeRTOS.h", line 60: Error:  #5: cannot open source input file "SEGGER_SYSVIEW_FreeRTOS.h": No such file or directory
+  #include "SEGGER_SYSVIEW_FreeRTOS.h"
+                                      ^
+.\FreeRTOS-Kernel\list.c: 0 warnings, 1 error
+"FreeRTOS-Kernel/include/FreeRTOS.h", line 60: Error:  #5: cannot open source input file "SEGGER_SYSVIEW_FreeRTOS.h": No such file or directory
+  #include "SEGGER_SYSVIEW_FreeRTOS.h"
+                                      ^
+.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0\port.c: 0 warnings, 1 error
+"FreeRTOS-Kernel/include/FreeRTOS.h", line 60: Error:  #5: cannot open source input file "SEGGER_SYSVIEW_FreeRTOS.h": No such file or directory
+  #include "SEGGER_SYSVIEW_FreeRTOS.h"
+                                      ^
+.\FreeRTOS-Kernel\queue.c: 0 warnings, 1 error
+"FreeRTOS-Kernel/include/FreeRTOS.h", line 60: Error:  #5: cannot open source input file "SEGGER_SYSVIEW_FreeRTOS.h": No such file or directory
+  #include "SEGGER_SYSVIEW_FreeRTOS.h"
+                                      ^
+.\FreeRTOS-Kernel\tasks.c: 0 warnings, 1 error
+
+[2023-02-24 23:49:23]	[done]
 	build successfully !
 

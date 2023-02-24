@@ -1,9 +1,12 @@
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ------------------------------------------------------------------------ */
-#include "SEGGER_RTT.h"
+//#include "SEGGER_RTT.h"
+#include "SEGGER_SYSVIEW.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "common.h"
+#include "task.h"
+#include "hw_uart.h"
 #include "hardware_config.h"
 /* USER INCLUDE FILES END */
 
@@ -24,7 +27,8 @@ int main(void)
     /* NVIC Priority Group Initialization */
     NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
     /* Debug SEGGER_RTT Initialization */
-    SEGGER_RTT_Init();
+//    SEGGER_RTT_Init();
+  SEGGER_SYSVIEW_Conf();
     /* Hardware Initialization */
     Hardware_Init();
     /* RTOS Initialization */
@@ -34,6 +38,7 @@ int main(void)
     /* Main Loop */
     while (1) { // 任务调度开启后永远不会进入主循环
         printf("vTaskStartScheduler();: Not enough RAM!\r\n");
+        Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
         SoftDelay(6400000);
     }
 }
