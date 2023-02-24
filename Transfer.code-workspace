@@ -17,7 +17,8 @@
             "basic.h": "c",
             "lks32mc08x_dma.h": "c",
             "lks32mc08x_gpio.h": "c",
-            "assert.h": "c"
+            "assert.h": "c",
+            "hw_uart.h": "c"
         },
         "cortex-debug.variableUseNaturalFormat": false
     },

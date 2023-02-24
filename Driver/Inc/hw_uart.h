@@ -3,7 +3,8 @@
 /* USER INCLUDE FILES BEGIN */ 
 /* Included Files ---------------------------------------------------------------------- */
 #include "basic.h"
-
+#include "common.h"
+#include "lks32mc08x_uart.h"
 /* USER INCLUDE FILES END */ 
 
 /* USER DEFINED MACROS BEGIN */
@@ -27,9 +28,10 @@
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-// void HW_UART_GPIO_Init(void);
+extern u8 rs485_RxFlag;
+
 extern void HW_UART_Init(void);
 // void HW_UART_DMA_Init(void);
-
+extern TmOpState HW_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen);
 /* USER STATEMENTS END */
 #endif

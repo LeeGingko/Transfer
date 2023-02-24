@@ -336,7 +336,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--diag_suppress=161</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
               <IncludePath>.\Driver\Inc;.\System\Inc;.\LKS32MC08x_Periph_Driver\Include;.\FreeRTOS-Kernel\include;.\FreeRTOS-Kernel\portable\RVDS\ARM_CM0;.\SEGGER_RTT_V764b\RTT;.\SEGGER_RTT_V764b\Config;.\Tracealyzer\config;.\Tracealyzer\include;.\Tracealyzer\streamports\Jlink_RTT\include;.\Tracealyzer\streamports\Jlink_RTT\config</IncludePath>

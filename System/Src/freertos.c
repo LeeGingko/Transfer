@@ -49,20 +49,19 @@ extern HW_485Manage_t hw_485_Manage;
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
 /* *-------------------------------------------------------------------------------------* */
-/* --------------------------------- FreeRTOS Task Creation ------------------------------ */
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  void LKS_FREERTOS_Init(void)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  FreeRTOS 初始化，创建任务、定时器、信号量、队列等
-// 输入参数： 无
-// 输出参数： 无
-// 备  注：   2023年2月14日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  void LKS_FREERTOS_Init(void)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  FreeRTOS 初始化，创建任务、定时器、信号量、队列等
+ * 输入参数： 无
+ * 输出参数： 无
+ * 备  注：   2023年2月14日->创建
+ *------------------------------------------------------------------------------------------*/
 void LKS_FREERTOS_Init(void)
 {
 
-    /* -------------------------------- FreeRTOS Softtimer Initilization ------------------------------ */
+/* -------------------------------- FreeRTOS Softtimer Initilization ------------------------------ */
 #if ((configUSE_TIMERS == 1) && (configSUPPORT_DYNAMIC_ALLOCATION == 1))
     sysLEDTimer_Handler = xTimerCreate("SysLEDTimer",
                                        pdMS_TO_TICKS(1000),
@@ -86,7 +85,7 @@ void LKS_FREERTOS_Init(void)
 
 #endif
 
-    /* -------------------------------- FreeRTOS Tasks Initilization ------------------------------ */
+/* -------------------------------- FreeRTOS Tasks Initilization ------------------------------ */
     taskENTER_CRITICAL(); // 进入临界区
     /* 485处理任务创建 */
     taskCreateStatus = xTaskCreate((TaskFunction_t)RS485TaskFunc,
@@ -127,44 +126,36 @@ void LKS_FREERTOS_Init(void)
 
 /* *-------------------------------------------------------------------------------------* */
 /* -------------------------------- FreeRTOS Task Functions ------------------------------ */
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  static void RS485TaskFunc(void *pvParameters)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  LED0任务函数，静态类型
-// 输入参数： void *pvParameters
-// 输出参数： 无
-// 备  注：   2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  static void RS485TaskFunc(void *pvParameters)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  LED0任务函数，静态类型
+ * 输入参数： void *pvParameters
+ * 输出参数： 无
+ * 备  注：   2023年2月16日->创建
+ *------------------------------------------------------------------------------------------*/
 static void RS485TaskFunc(void *pvParameters)
 {
     TickType_t xTimerPeriod;
+    HW_485TransmitFrame();
     // printf("static void RS485TaskFunc(void *pvParameters)\r\n");
-    while (1) { 
-
+    while (1) {
         /* Query the period of the timer that expires. */
         xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
-        // printf("xTimerPeriod = %d\r\n", xTimerPeriod);
-        // printf("hw_485_Manage.curState                : %d\r\n", hw_485_Manage.curState);
-        // SoftDelay(100);
-        // printf("hw_485_Manage.fsmCurNode.fsmStateCheck: %d\r\n", hw_485_Manage.fsmCurNode.fsmStateCheck);
-        // SoftDelay(100);
-        // printf("hw_485_Manage.fsmCurNode.fsmNexState  : %d\r\n", hw_485_Manage.fsmCurNode.fsmNexState);
-        // SoftDelay(100);
-
         vTaskDelay(1000);
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  static void CANTaskFunc(void *pvParameters)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  LED0任务函数，静态类型
-// 输入参数： void *pvParameters
-// 输出参数： 无
-// 备  注：   2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  static void CANTaskFunc(void *pvParameters)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  LED0任务函数，静态类型
+ * 输入参数： void *pvParameters
+ * 输出参数： 无
+ * 备  注：   2023年2月16日->创建
+ *------------------------------------------------------------------------------------------*/
 static void CANTaskFunc(void *pvParameters)
 {
     while (1) {
@@ -172,15 +163,15 @@ static void CANTaskFunc(void *pvParameters)
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  void SysLEDTimerCallback(void const *argument)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  软件定时器，闪烁周期两秒
-// 输入参数： void const *argument 常量指针
-// 输出参数： 无
-// 备  注：   2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  void SysLEDTimerCallback(void const *argument)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  软件定时器，闪烁周期两秒
+ * 输入参数： void const *argument 常量指针
+ * 输出参数： 无
+ * 备  注：   2023年2月16日->创建
+ *-------------------------------------------------------------------------------------------*/
 void SysLEDTimerCallback(void const *argument)
 {
     Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);

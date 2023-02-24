@@ -1,12 +1,14 @@
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ------------------------------------------------------------------------ */
-// #include <assert.h>
-#include "lks32mc08x_gpio.h"
-#include "lks32mc08x_uart.h"
-#include "common.h"
+#include "hw_uart.h"
 #include "hw_485.h"
 /* USER INCLUDE FILES END */
+/* USER DEFINED MACROS BEGIN */
+/* Defined Macros ---------------------------------------------------------------------- */
+#define RS485_EN_PORT GPIO0
+#define RS485_EN_PIN  GPIO_Pin_11
 
+/* USER DEFINED MACROS END */
 /* USER DEFINED TYPEDEFINE BEGIN */
 /* Defined Typedefine ------------------------------------------------------------------ */
 
@@ -16,12 +18,10 @@
 /* Defined Variables --------------------------------------------------------------------- */
 u8 rs485_Rx[RS485_RX_LEN];
 
-u8 rs485_RxFlag = 0;
-
 HW_FsmStateNode_t hw_FsmNodeTable[10]; /* 状态节点表 */
 
 HW_485Manage_t hw_485_Manage;
-
+HW_485Transmit_t hw_485_Transmit = {0};
 // static DMA_InitTypeDef DMA_InitStruct;
 /* USER DEFINED VARIABLES END */
 
@@ -42,17 +42,15 @@ static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData);
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
-/*******************************************************************************
- 函数名称：    void HW_TimeoutTimer_Init(void)
- 功能描述：    UTimer硬件初始化
- 输入参数：    无
- 输出参数：    无
- 返 回 值：    无
- 其它说明：
- 修改日期      版本号          修改人            修改内容
- -----------------------------------------------------------------------------
- 2015/11/5      V1.0           Howlet Li          创建
- *******************************************************************************/
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_TimeoutTimer_Init(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  接收超时定时器初始化
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月12日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_TimeoutTimer_Init(void)
 {
     TIM_TimerInitTypeDef TIM_InitStruct;
@@ -65,17 +63,15 @@ void HW_TimeoutTimer_Init(void)
     TIM_TimerCmd(TIMER0, ENABLE);                      /* Timer0 模块使能 */
 }
 
-/*******************************************************************************
- 函数名称：    void HW_485_GPIO_Init(void)
- 功能描述：    GPIO硬件初始化
- 输入参数：    无
- 输出参数：    无
- 返 回 值：    无
- 其它说明：
- 修改日期      版本号          修改人            修改内容
- -----------------------------------------------------------------------------
- 2015/11/5      V1.0           Howlet Li          创建
- *******************************************************************************/
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_485_GPIO_Init(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  485GPIO硬件初始化
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月12日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_GPIO_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
@@ -105,17 +101,15 @@ void HW_485_GPIO_Init(void)
     GPIO_Init(RS485_EN_PORT, &GPIO_InitStruct);
 }
 
-/*******************************************************************************
- 函数名称：    void HW_485_Init(void)
- 功能描述：    UART0寄存器配置
- 输入参数：    无
- 输出参数：    无
- 返 回 值：    无
- 其它说明：
- 修改日期      版本号          修改人            修改内容
- -----------------------------------------------------------------------------
- 2015/11/5      V1.0           Howlet Li          创建
- *******************************************************************************/
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_485_UART_Init(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  485串口初始化
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月12日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_UART_Init(void)
 {
     UART_InitTypeDef UART_InitStruct;
@@ -128,12 +122,52 @@ void HW_485_UART_Init(void)
     UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                                                                      /* 先发送LSB */
     UART_InitStruct.ParityMode = UART_Parity_NO;                                                                          /* 无奇偶校验 */
     UART_InitStruct.IRQEna     = UART_IRQEna_SendOver | UART_IRQEna_RcvOver | UART_IF_CheckError | UART_IRQEna_StopError; /* 接收完成中断使能*/
-    UART_Init(UART0, &UART_InitStruct);
-    UART0_IF = 0x00;
+    UART_Init(UART0, &UART_InitStruct);                                                                                   /* 初始化结构体 */
+    UART0_IF = 0xFF;                                                                                                      /* 此处全部写1清零 */
+}
+
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  TmOpState HW_485TransmitFrame(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  485发送数据帧
+ * 输入参数：无
+ * 输出参数：TmOpState 发送成功与否标志
+ * 备  注：  2023年2月23日->创建
+ *          空指针或零长度返回校验异常tmChErr，
+ *          数据帧发送成功返回tmOk，发送失败返回tmErr。
+ *--------------------------------------------------------------------------------------------*/
+TmOpState HW_485TransmitFrame(void)
+{
+    volatile s16 chk = 0xFFFF;
+
+    RS485_SWITCHTO(RS485_TX_EN);
+
+    hw_485_Transmit.f_head = F485_HEAD;
+    hw_485_Transmit.f_src  = F485_TENS;
+    hw_485_Transmit.f_dst  = F485_MAIN;
+    hw_485_Transmit.f_type = F485_DATA;
+    hw_485_Transmit.f_len  = 0x01;
+    hw_485_Transmit.f_data = 0x00;
+
+    chk = CheckSum((u8 *)&hw_485_Transmit, 6);
+    if (chk == -1) {
+        RS485_SWITCHTO(RS485_RX_EN);
+        return tmChErr;
+    }
+    hw_485_Transmit.f_pari = (chk & 0xFF);
+
+    if (HW_UARTSendBytes(UART0, (u8 *)&hw_485_Transmit, 7) == tmErr) {
+        RS485_SWITCHTO(RS485_RX_EN);
+        return tmErr;
+    }
+    RS485_SWITCHTO(RS485_RX_EN);
+
+    return tmOk;
 }
 
 #if (0)
-/*******************************************************************************
+/*--------------------------------------------------------------------------------------------*
  函数名称：    void HW_485_DMA_Init(void)
  功能描述：    DMA初始化配置
  输入参数：    无
@@ -144,7 +178,7 @@ void HW_485_UART_Init(void)
  修改日期      版本号          修改人            修改内容
  -----------------------------------------------------------------------------
  2020/8/5      V1.0           Howlet Li          创建
- *******************************************************************************/
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_DMA_Init(void)
 {
     DMA_StructInit(&DMA_InitStruct);
@@ -166,7 +200,18 @@ void HW_485_DMA_Init(void)
 }
 #endif
 
-void HW_SM_StateTable_Init(void)
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_FsmStateTable_Init(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  状态机状态表初始化
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月22日->创建
+ *          对10个状态节点进行初始化，每个状态机节点中，只初始化其动作函数指针以及状态校验值，下一个状态
+ *          对于当前节点来说是不确定的，需在动作结束后指定下一个状态。
+ *--------------------------------------------------------------------------------------------*/
+void HW_FsmStateTable_Init(void)
 {
     hw_FsmNodeTable[0].fpAction      = fsmActionIdle;
     hw_FsmNodeTable[0].fsmStateCheck = fsmStaIdle;
@@ -190,23 +235,24 @@ void HW_SM_StateTable_Init(void)
     hw_FsmNodeTable[9].fsmStateCheck = fsmStaErr;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  void HW_485_Init(void)
-// 编写者：  F.L
-// 参考资料：无
-// 功  能：  485初始化
-// 输入参数：无
-// 输出参数：无
-// 备  注：  2023年2月17日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_485_Init(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  485初始化
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月17日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_Init(void)
 {
+    RS485_SWITCHTO(RS485_TX_EN);
     HW_485_GPIO_Init();
     HW_485_UART_Init();
     HW_TimeoutTimer_Init();
-    GPIO_ResetBits(RS485_EN_PORT, RS485_EN_PIN);
+    RS485_SWITCHTO(RS485_RX_EN);
     memset(&hw_485_Manage, 0, 10);
-    HW_SM_StateTable_Init();
+    HW_FsmStateTable_Init();
     hw_485_Manage.curState                 = fsmStaIdle;
     hw_485_Manage.eventType                = fsmEveIdle;
     hw_485_Manage.fsmCurNode.fpAction      = fsmActionIdle;
@@ -215,30 +261,30 @@ void HW_485_Init(void)
 }
 
 #if (0)
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  TmOpState HW_485_DMA_RxCompleteCallback()
-// 编写者：  F.L
-// 参考资料：无
-// 功  能：  485串口DMA接收中断回调
-// 输入参数：
-// 输出参数：
-// 备  注：  2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  TmOpState HW_485_DMA_RxCompleteCallback()
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  485串口DMA接收中断回调
+ * 输入参数：
+ * 输出参数：
+ * 备  注：  2023年2月16日->创建
+ *--------------------------------------------------------------------------------------------*/
 TmOpState HW_485_DMA_RxCompleteCallback(UART_TypeDef *UARTx)
 {
     return tmOk;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  接收字节不满足指定长度后继续接收大于等指定长度会出现首字节不是帧头的现象，因此需在此时
-//           清除DMA寄存器[8:0]，即重写 DMA_CTMS以重置DMA内部的轮次计数
-// 输入参数： DMA_RegTypeDef *DMAx DMA类型寄存器
-// 输出参数： 无
-// 备  注：   2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  接收字节不满足指定长度后继续接收大于等指定长度会出现首字节不是帧头的现象，因此需在此时
+ *           清除DMA寄存器[8:0]，即重写 DMA_CTMS以重置DMA内部的轮次计数
+ * 输入参数： DMA_RegTypeDef *DMAx DMA类型寄存器
+ * 输出参数： 无
+ * 备  注：   2023年2月16日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx)
 {
     DMA_CHx_EN(DMAx, DISABLE);
@@ -248,15 +294,15 @@ void HW_485_RxDMAClearCTMS(DMA_RegTypeDef *DMAx)
     DMA_CHx_EN(DMAx, ENABLE); /* 使能DMA通道 */
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  DMA_CPAR [16:0] DMA_CMAR [12:0]
-// 输入参数： DMA_RegTypeDef *DMAx DMA类型寄存器
-// 输出参数： 无
-// 备  注：   2023年2月16日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  DMA_CPAR [16:0] DMA_CMAR [12:0]
+ * 输入参数： DMA_RegTypeDef *DMAx DMA类型寄存器
+ * 输出参数： 无
+ * 备  注：   2023年2月16日->创建
+ *--------------------------------------------------------------------------------------------*/
 void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx)
 {
     DMA_CHx_EN(DMAx, DISABLE);
@@ -268,14 +314,14 @@ void HW_485_RxDMAClearCPAR_CMAR(DMA_RegTypeDef *DMAx)
     DMA_CHx_EN(DMAx, ENABLE); /* 使能DMA通道 */
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  TmOpState HW_485_TransmitFrameCallback(HW_485_t *hw485)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  485帧发送回调函数
-// 输出参数： 无
-// 备  注：   2023年2月17日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  TmOpState HW_485_TransmitFrameCallback(HW_485_t *hw485)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  485帧发送回调函数
+ * 输出参数： 无
+ * 备  注：   2023年2月17日->创建
+ *--------------------------------------------------------------------------------------------*/
 TmOpState HW_485_TransmitFrameCallback(HW_485_t *hw485)
 {
     // if (NULL == hw485)
@@ -284,15 +330,15 @@ TmOpState HW_485_TransmitFrameCallback(HW_485_t *hw485)
     // }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// 函数名：  TmOpState HW_485_DeocdeFrameCallback(HW_485_t *hw485)
-// 编写者：  F.L
-// 参考资料：
-// 功  能：  485帧解析回调函数
-// 输入参数：
-// 输出参数： 操作状态
-// 备  注：   2023年2月17日->创建
-////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  TmOpState HW_485_DeocdeFrameCallback(HW_485_t *hw485)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  485帧解析回调函数
+ * 输入参数：
+ * 输出参数： 操作状态
+ * 备  注：   2023年2月17日->创建
+ *--------------------------------------------------------------------------------------------*/
 TmOpState HW_485_DeocdeFrameCallback(HW_485_t *hw485)
 {
     // if (NULL == hw485)
@@ -382,6 +428,15 @@ void HW_485_SMTransition(const u8 byte)
 }
 #endif
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionIdle(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Idle状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionIdle(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -399,9 +454,22 @@ static HW_485FsmState_t fsmActionIdle(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionHead(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Head状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionHead(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
+        case fsmEveHead:
+            hw_485_Manage.f_head                 = F485_HEAD;
+            hw_485_Manage.fsmCurNode.fsmNexState = fsmStaHead;
+            break;
         case fsmEveSrc:
             hw_485_Manage.f_src                  = F485_MAIN;
             hw_485_Manage.fsmCurNode.fsmNexState = fsmStaSrc;
@@ -416,6 +484,15 @@ static HW_485FsmState_t fsmActionHead(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionSrc(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Src状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionSrc(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -433,6 +510,15 @@ static HW_485FsmState_t fsmActionSrc(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionDst(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Dst状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionDst(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -450,6 +536,15 @@ static HW_485FsmState_t fsmActionDst(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionType(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Type状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionType(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -467,6 +562,15 @@ static HW_485FsmState_t fsmActionType(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionLen(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Len状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionLen(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -481,6 +585,15 @@ static HW_485FsmState_t fsmActionLen(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionData1(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Data1状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionData1(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -495,6 +608,15 @@ static HW_485FsmState_t fsmActionData1(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionData2(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Data2状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionData2(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -513,6 +635,15 @@ static HW_485FsmState_t fsmActionData2(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionParity(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Pari状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionParity(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
     switch (*pEvent) {
@@ -530,17 +661,17 @@ static HW_485FsmState_t fsmActionParity(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  Err状态动作函数
+ * 输入参数：事件及串口中断接收数据
+ * 输出参数：当前状态下，事件动作后的状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
 static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData)
 {
-    // switch ( hw_485_Manage.curState)
-    // {
-    // case /* constant-expression */:
-    //     /* code */
-    //     break;
-
-    // default:
-    //     break;
-    // }
     switch (*pEvent) {
         case fsmEveHead:
             hw_485_Manage.f_head                 = F485_HEAD;
@@ -556,18 +687,56 @@ static HW_485FsmState_t fsmActionError(HW_485FsmEvent_t *pEvent, u8 *pData)
     return hw_485_Manage.fsmCurNode.fsmNexState;
 }
 
-void HW_SetCurState(HW_485FsmState_t sta)
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static void HW_SetCurState(HW_485FsmState_t sta)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  设置当前状态函数
+ * 输入参数：要设置的状态
+ * 输出参数：无
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
+static void HW_SetCurState(HW_485FsmState_t sta)
 {
     hw_485_Manage.curState                 = sta;
     hw_485_Manage.fsmCurNode.fsmStateCheck = sta;
 }
 
-HW_485FsmState_t HW_GetCurState(void)
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmState_t HW_GetCurState(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  获取当前状态函数
+ * 输入参数：无
+ * 输出参数：状态机当前状态
+ * 备  注：  2023年2月22日->创建
+ *--------------------------------------------------------------------------------------------*/
+static HW_485FsmState_t HW_GetCurState(void)
 {
     return hw_485_Manage.curState;
 }
 
-HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  获取事件类型并返回
+ * 输入参数：串口中断接收字节数据
+ * 输出参数：事件类型
+ * 备  注：  2023年2月22日->创建
+ *          状态分类：Idle Head Src Dst Type Len Data1 Data2 Pari，与HW_485Manage_t中数据帧对应，
+ *                   Err状态为接收错误状态；
+ *          事件分类：Idle Head Src Dst Type Len Data1 Data2 Pari，与HW_485Manage_t中数据帧对应，
+ *                   Err状态为接收错误事件；
+ *          根据当前状态和接收到的字节判断事件类型，以下几点需注意：
+ *          （1） Idle状态只能转移到Idle状态和Head状态，无法转移到Err状态和其他状态；
+ *          （2） 除Idle状态外，剩余状态中，Len、Data1、Pari三个状态也无法转换到Err状态；
+ *          （3） Idle、Pari、Err在Head事件发生后转移到Head状态，Head状态本身也可在Head事件发生
+ *                后保持在自身Head状态，因此状态机具备数据帧连续接收能力；
+ *          （4） 校验比对在Pari事件发生时完成，若校验异常，状态机应置于Idle状态；若校验对比不通
+ *                过，则状态机进入Err状态。
+ *--------------------------------------------------------------------------------------------*/
+static HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
 {
     HW_485FsmEvent_t eveTmp;
     s16 chkSum;
@@ -581,7 +750,9 @@ HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
             }
             break;
         case fsmStaHead:
-            if (data == F485_MAIN) {
+            if (data == F485_HEAD) {
+                eveTmp = fsmEveHead;
+            } else if (data == F485_MAIN) {
                 eveTmp = fsmEveSrc;
             } else {
                 eveTmp = fsmEveErr;
@@ -619,7 +790,8 @@ HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
             if (chkSum == -1) {
                 return fsmEveIdle;
             }
-            if (data == chkSum) {
+            if (data == (chkSum & 0xFF)) {
+
                 eveTmp = fsmEvePari;
             } else {
                 eveTmp = fsmEveErr;
@@ -640,29 +812,61 @@ HW_485FsmEvent_t HW_GetCurEvent(const u8 data)
             }
             break;
         default:
-            eveTmp = fsmEveIdle;
+            if (data == F485_HEAD) {
+                eveTmp = fsmEveHead;
+            } else {
+                eveTmp = fsmEveIdle;
+            }
             break;
     }
 
     return eveTmp;
 }
 
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  static void HW_FsmCrash(void)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  状态机崩溃处理
+ * 输入参数：无
+ * 输出参数：无
+ * 备  注：  2023年2月23日->创建
+ *--------------------------------------------------------------------------------------------*/
+static void HW_FsmCrash(void)
+{
+    printf("HW_FsmCrash\r\n");
+    memset(&hw_485_Manage, 0, 10);
+    hw_485_Manage.curState                 = fsmStaIdle;
+    hw_485_Manage.eventType                = fsmEveIdle;
+    hw_485_Manage.fsmCurNode.fpAction      = fsmActionIdle;
+    hw_485_Manage.fsmCurNode.fsmNexState   = fsmStaHead;
+    hw_485_Manage.fsmCurNode.fsmStateCheck = fsmStaIdle;
+}
+
+/*--------------------------------------------------------------------------------------------*
+ * 函数名：  void HW_FsmRunningFunc(u8 data)
+ * 编写者：  F.L
+ * 参考资料：无
+ * 功  能：  状态机运行操作函数
+ * 输入参数：串口中断接收字节数据
+ * 输出参数：无
+ * 备  注：  2023年2月22日->创建
+ *          获取当前状态及事件类型，根据类型确定状态在系节点表中位置，获取对应动作函数；
+ *          当前状态校验通过后执行该事件动作函数，动作执行后更新当前状态，即更新前的下个状态。
+ *--------------------------------------------------------------------------------------------*/
 void HW_FsmRunningFunc(u8 data)
 {
     static HW_485FsmState_t tmpState;
     static HW_485FsmEvent_t tmpEvent;
 
     tmpState = HW_GetCurState();
-
     tmpEvent = HW_GetCurEvent(data);
-    if (tmpEvent == 0xFF) {
-        HW_SetCurState(tmpState);
-        return;
-    }
     hw_485_Manage.fsmCurNode = hw_FsmNodeTable[tmpState];
     if (hw_485_Manage.fsmCurNode.fsmStateCheck == tmpState) {
         tmpState = hw_485_Manage.fsmCurNode.fpAction(&tmpEvent, &data);
         HW_SetCurState(tmpState);
+    } else {
+        HW_FsmCrash();
     }
 }
 
