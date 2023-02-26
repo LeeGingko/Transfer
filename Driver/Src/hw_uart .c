@@ -56,8 +56,6 @@ void _sys_exit(int x)
 int fputc(int ch, FILE *f)
 {
     // SEGGER_RTT_PutChar(0, ch);
-    // while (UART1->IF & UART_IF_SendOver)
-    //     ;
     UART_SendData(UART1, ch);
     while ((UART1->STT & BIT0) == FALSE)
         ;
@@ -116,7 +114,7 @@ void HW_UART_Init(void)
     HW_UART_GPIO_Init();
     /* -----------调试串口1 结构体设置----------- */
     UART_StructInit(&UART_InitStruct);
-    UART_InitStruct.BaudRate   = 9600;                                       /* 设置波特率9600 */
+    UART_InitStruct.BaudRate   = 57600;                                      /* 设置波特率9600 */
     UART_InitStruct.WordLength = UART_WORDLENGTH_8b;                         /* 发送数据长度8位 */
     UART_InitStruct.StopBits   = UART_STOPBITS_1b;                           /* 停止位1位 */
     UART_InitStruct.FirstSend  = UART_FIRSTSEND_LSB;                         /* 先发送LSB */

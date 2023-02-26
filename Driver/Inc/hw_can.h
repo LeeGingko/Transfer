@@ -21,7 +21,17 @@
 
 /* USER DEFINED TYPEDEFINE BEGIN */
 /* Defined Typedefine ------------------------------------------------------------------ */
+typedef struct
+{
+	u32 id;
+	u8 ide;
+	u8 rtr;
+	u8 TX[8];
+	u8 RX[8];
+	u8 rx_sta;
+}can_parameter;
 
+extern can_parameter can_par ;
 /* USER DEFINED TYPEDEFINE END */
 
 /* USER STATEMENTS BEGIN */

@@ -1,6 +1,6 @@
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ------------------------------------------------------------------------ */
-//#include "SEGGER_RTT.h"
+// #include "SEGGER_RTT.h"
 #include "SEGGER_SYSVIEW.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -26,14 +26,13 @@ int main(void)
 {
     /* NVIC Priority Group Initialization */
     NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
-    /* Debug SEGGER_RTT Initialization */
-//    SEGGER_RTT_Init();
-  SEGGER_SYSVIEW_Conf();
+    /* SystemView Initialization */
+    SEGGER_SYSVIEW_Conf();
     /* Hardware Initialization */
     Hardware_Init();
     /* RTOS Initialization */
     LKS_FREERTOS_Init();
-    // /* Start RTOS Scheduler */
+    /* Start RTOS Scheduler */
     vTaskStartScheduler();
     /* Main Loop */
     while (1) { // 任务调度开启后永远不会进入主循环

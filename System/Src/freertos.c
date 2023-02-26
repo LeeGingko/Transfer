@@ -7,6 +7,7 @@
 #include "common.h"
 #include "hw_uart.h"
 #include "hw_485.h"
+
 #include "hardware_config.h"
 
 /* USER INCLUDE FILES END */
@@ -34,6 +35,8 @@ TimerHandle_t sysLEDTimer_Handler;
 
 BaseType_t sysLEDTimerStart;
 BaseType_t taskCreateStatus;
+
+u8 Can_TX[8] = {0x81, 0x13, 0x33, 0x44, 0x15, 0x26, 0x37, 0x48};
 
 /* USER DEFINED VARIABLES END */
 
@@ -85,7 +88,7 @@ void LKS_FREERTOS_Init(void)
 
 #endif
 
-/* -------------------------------- FreeRTOS Tasks Initilization ------------------------------ */
+    /* -------------------------------- FreeRTOS Tasks Initilization ------------------------------ */
     taskENTER_CRITICAL(); // 进入临界区
     /* 485处理任务创建 */
     taskCreateStatus = xTaskCreate((TaskFunction_t)RS485TaskFunc,
@@ -137,12 +140,12 @@ void LKS_FREERTOS_Init(void)
  *------------------------------------------------------------------------------------------*/
 static void RS485TaskFunc(void *pvParameters)
 {
-    TickType_t xTimerPeriod;
-    
+    // TickType_t xTimerPeriod;
+
     HW_485TransmitFrame();
     while (1) {
         /* Query the period of the timer that expires. */
-        xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
+        // xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
         vTaskDelay(1000);
     }
 }
@@ -159,7 +162,9 @@ static void RS485TaskFunc(void *pvParameters)
 static void CANTaskFunc(void *pvParameters)
 {
     while (1) {
-        vTaskDelay(10);
+        // ID:0x03,标准帧,数据帧，数据，数据长度
+        My_CAN_Send_Msg(0xA5, 0, 0, Can_TX, 8);
+        vTaskDelay(1000);
     }
 }
 

@@ -128,6 +128,60 @@ void UsageFault_Handler(void)
 }
 
 /*-------------------------------------------------------------------------------------------*
+ 函数名称：    void CAN_IRQHandler(void)
+ 功能描述：    CAN中断处理函数
+ 输入参数：    无
+ 输出参数：    无
+ 返 回 值：    无
+ 其它说明：
+ 修改日期      版本号          修改人            修改内容
+ -----------------------------------------------------------------------------
+ 2022/5/1      V1.0           HuangMG            创建
+ *-------------------------------------------------------------------------------------------*/
+void CAN_IRQHandler(void)
+{
+    u8 reg_sr = 0;
+    u8 test   = 0;
+
+    reg_sr    = CAN_GetIRQFlag(); /*读取中断状态寄存器*/
+    if (reg_sr & CAN_IF_TXDONE)   /*发送完毕当前帧*/
+    {
+        test = 1;
+    }
+    if (reg_sr & CAN_IF_WERR) /*错误报警中断标志*/
+    {
+        if (CAN_ReadState(CAN, CAN_ERROV)) { /*CAN传输产生的错误总数达到或超过CAN_EWL规定值*/
+            can_par.rx_sta |= 0X01;
+        } else { /*CAN 传输产生的错误总数低于 CAN_EWL 规定值*/
+            can_par.rx_sta &= ~0X01;
+        }
+    }
+    if (reg_sr & CAN_IF_RFIFONOEMPTY) /*RFIFO 有新的数据被接收到*/
+    {                                 /*接收数据*/
+        CAN_Receive_Msg(&(can_par.id), &(can_par.ide), &(can_par.rtr), can_par.RX);
+    }
+
+    if (reg_sr & CAN_IF_BUSERR) /*总线错误中断*/
+    {
+    }
+
+    if (reg_sr & CAN_IF_LOSTARB) /*丢失仲裁*/
+    {
+    }
+
+    if (reg_sr & CAN_IF_PASSIVEERR) /*被动错误中断*/
+    {
+    }
+    if (reg_sr & CAN_IF_RFIFOOV) /*RFIFO数据发送溢出中断标志*/
+    {
+    }
+
+    if (reg_sr & CAN_IF_WAKE) /*CAN模块从休眠中唤醒中断标志*/
+    {
+    }
+}
+
+/*-------------------------------------------------------------------------------------------*
  函数名称：    void ADC0_IRQHandler(void)
  功能描述：    ADC0中断处理函数
  输入参数：    无
@@ -301,12 +355,11 @@ void UART1_IRQHandler(void)
     if (UART_GetIRQFlag(UART1, UART_IF_SendOver)) // 发送完成中断
     {
         UART_ClearIRQFlag(UART1, UART_IF_SendOver);
-        // duart_TxFlag = 1;
     }
 
     if (UART1_IF & UART_IF_RcvOver) // 接收完成中断
     {
-        UART1_IF   = UART_IF_RcvOver;
+        UART1_IF = UART_IF_RcvOver;
     }
 }
 
@@ -403,24 +456,19 @@ void SPI0_IRQHandler(void)
  *-------------------------------------------------------------------------------------------*/
 void UART0_IRQHandler(void)
 {
-    // volatile register u8 val;
     volatile u8 val;
-    // printf("UART0_IRQHandler\r\n ");
 
     if (UART0_IF & UART_IF_StopError) {
         UART0_IF = UART_IF_StopError;
-        //        printf("UART_IF_StopError\r\n ");
     }
     if (UART0_IF & UART_IRQEna_CheckError) {
         UART0_IF = UART_IRQEna_CheckError;
-        //        printf("UART_IRQEna_CheckError\r\n ");
     }
     if (UART0_IF & UART_IF_RcvOver) {
 
         UART0_IF = UART_IF_RcvOver;
         val      = UART0_BUFF & 0xFF;
         HW_FsmRunningFunc(val);
-        // printf("%02X ", val);
     }
     if (UART0_IF & UART_IF_SendOver) {
         UART0_IF     = UART_IF_SendOver;

@@ -23,11 +23,11 @@
 ".\objects\queue.o"
 ".\objects\tasks.o"
 ".\objects\timers.o"
-".\objects\segger_sysview_freertos.o"
-".\objects\segger_sysview_config_freertos.o"
-".\objects\segger_sysview.o"
 ".\objects\segger_rtt.o"
 ".\objects\segger_rtt_printf.o"
+".\objects\segger_sysview.o"
+".\objects\segger_sysview_freertos.o"
+".\objects\segger_sysview_config_freertos.o"
 --library_type=microlib --strict --scatter ".\Objects\Transfer.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
