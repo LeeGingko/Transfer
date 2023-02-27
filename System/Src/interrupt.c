@@ -27,9 +27,9 @@
 #include "hardware_config.h"
 #include "FreeRTOS.h" //FreeRTOS使用
 #include "task.h"
-#include "hw_uart.h"
-#include "hw_485.h"
-#include "hw_can.h"
+#include "tc_uart.h"
+#include "tc_485.h"
+#include "tc_can.h"
 #include "SEGGER_SYSVIEW.h"
 /* USER INCLUDE FILES END */
 
@@ -143,22 +143,22 @@ void CAN_IRQHandler(void)
     u8 reg_sr = 0;
     u8 test   = 0;
 
-    reg_sr    = CAN_GetIRQFlag(); /*读取中断状态寄存器*/
-    if (reg_sr & CAN_IF_TXDONE)   /*发送完毕当前帧*/
+    reg_sr = CAN_GetIRQFlag();  /*读取中断状态寄存器*/
+    if (reg_sr & CAN_IF_TXDONE) /*发送完毕当前帧*/
     {
         test = 1;
     }
     if (reg_sr & CAN_IF_WERR) /*错误报警中断标志*/
     {
         if (CAN_ReadState(CAN, CAN_ERROV)) { /*CAN传输产生的错误总数达到或超过CAN_EWL规定值*/
-            can_par.rx_sta |= 0X01;
+            tc_CAN_Manage_t.f_error_alarm |= 0X01;
         } else { /*CAN 传输产生的错误总数低于 CAN_EWL 规定值*/
-            can_par.rx_sta &= ~0X01;
+            tc_CAN_Manage_t.f_error_alarm &= ~0X01;
         }
     }
     if (reg_sr & CAN_IF_RFIFONOEMPTY) /*RFIFO 有新的数据被接收到*/
-    {                                 /*接收数据*/
-        CAN_Receive_Msg(&(can_par.id), &(can_par.ide), &(can_par.rtr), can_par.RX);
+    {
+        CAN_Receive_Msg(&(tc_CAN_Manage_t.f_id), &(tc_CAN_Manage_t.f_ide), &(tc_CAN_Manage_t.f_rtr), tc_CAN_Manage_t.f_rxdata); /*接收数据*/
     }
 
     if (reg_sr & CAN_IF_BUSERR) /*总线错误中断*/
@@ -468,7 +468,7 @@ void UART0_IRQHandler(void)
 
         UART0_IF = UART_IF_RcvOver;
         val      = UART0_BUFF & 0xFF;
-        HW_FsmRunningFunc(val);
+        TC_FsmRunningFunc(val);
     }
     if (UART0_IF & UART_IF_SendOver) {
         UART0_IF     = UART_IF_SendOver;

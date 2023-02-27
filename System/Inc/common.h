@@ -4,6 +4,7 @@
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ---------------------------------------------------------------------- */
 #include "basic.h"
+#include <stdio.h>
 /* USER INCLUDE FILES END */
 
 /* USER DEFINED MACROS BEGIN */
@@ -31,7 +32,9 @@ typedef enum {
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
 extern s16 CheckSum(u8 *pBuf, u8 uLen);
+
 extern u8 CheckCrc8(u8 *pData, u32 uLen);
+
 /* USER STATEMENTS END */
 
 #endif

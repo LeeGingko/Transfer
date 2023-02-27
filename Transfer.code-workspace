@@ -7,7 +7,13 @@
     "settings": {
         "files.associations": {
             "*.v": "verilog",
-            "hw_can.h": "c"
+            "tc_can.h": "c",
+            "timers.h": "c",
+            "hardware_config.h": "c",
+            "tc_uart.h": "c",
+            "freertos.h": "c",
+            "segger_sysview_freertos.h": "c",
+            "freertosconfig.h": "c"
         }
     },
     "extensions": {}

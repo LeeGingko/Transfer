@@ -1,6 +1,29 @@
-[2023-02-26 09:56:57]	[done]
+[2023-02-27 11:22:57]	[done]
 	build successfully !
 
-[2023-02-26 10:08:33]	[done]
+[2023-02-27 11:26:11]	compilation failed at : "d:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\System\Src\freertos.c", exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+".\System\Src\freertos.c", line 54: Error:  #114: function "TC_485TxTaskFunc"  was referenced but not defined
+  static void TC_485TxTaskFunc(void *pvParameters);
+              ^
+".\System\Src\freertos.c", line 56: Error:  #114: function "TC_CANTxTaskFunc"  was referenced but not defined
+  static void TC_CANTxTaskFunc(void *pvParameters);
+              ^
+.\System\Src\freertos.c: 0 warnings, 2 errors
+
+[2023-02-27 11:28:11]	[done]
+	build successfully !
+
+[2023-02-27 11:29:14]	[done]
+	build successfully !
+
+[2023-02-27 12:05:19]	[done]
+	build successfully !
+
+[2023-02-27 12:05:25]	[done]
+	build successfully !
+
+[2023-02-27 12:08:12]	[done]
 	build successfully !
 

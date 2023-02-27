@@ -52,7 +52,7 @@
 /* Ensure definitions are only used by the compiler, and not by the assembler. */
 #if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
 #include <stdint.h>
-extern u32 SystemCoreClock; // 2023骞?2鏈?12鏃?
+extern u32 SystemCoreClock; // 2023年2月12日
 #endif
 #define configENABLE_FPU                        0
 #define configENABLE_MPU                        0
@@ -61,7 +61,7 @@ extern u32 SystemCoreClock; // 2023骞?2鏈?12鏃?
 #define configIDLE_SHOULD_YIELD                 1
 #define configUSE_TASK_NOTIFICATIONS            1
 
-#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0 // Cortex-M0涓嶆敮鎸佺壒瀹氫紭鍖?
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0 // Cortex-M0不支持特定优化
 #define configUSE_PREEMPTION                    1
 #define configSUPPORT_STATIC_ALLOCATION         0
 #define configSUPPORT_DYNAMIC_ALLOCATION        1
@@ -69,10 +69,11 @@ extern u32 SystemCoreClock; // 2023骞?2鏈?12鏃?
 #define configUSE_TICK_HOOK                     0
 #define configCPU_CLOCK_HZ                      (SystemCoreClock)
 #define configTICK_RATE_HZ                      ((TickType_t)1000)
-// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 2023骞?2鏈?21鏃? 11鐐?22鍒? 姝ゅ?勬坊鍔犱細褰卞搷璋冨害鍣?锛屼笉浣跨敤鍗冲彲
+// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 
 #define configMAX_PRIORITIES           (7)
 #define configMINIMAL_STACK_SIZE       ((uint16_t)64)
-#define configTOTAL_HEAP_SIZE          ((size_t)3072)
+#define configTOTAL_HEAP_SIZE          ((size_t)4096)
+
 #define configMAX_TASK_NAME_LEN        (64)
 #define configUSE_16_BIT_TICKS         0
 #define configUSE_MUTEXES              1
@@ -81,8 +82,8 @@ extern u32 SystemCoreClock; // 2023骞?2鏈?12鏃?
 #define configCHECK_FOR_STACK_OVERFLOW 0
 #define configUSE_TRACE_FACILITY       1
 
-#define INCLUDE_xTaskGetIdleTaskHandle  1
-#define INCLUDE_pxTaskGetStackStart     1
+#define INCLUDE_xTaskGetIdleTaskHandle 1
+#define INCLUDE_pxTaskGetStackStart    1
 
 /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
 /* Defaults to size_t for backward compatibility, but can be changed
@@ -160,9 +161,9 @@ standard names. */
 /* USER CODE BEGIN Defines */
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
 /* 2023骞?2鏈?21鏃? 16鐐?03鍒? */
-//#if ( configUSE_TRACE_FACILITY == 1 )
-//   #include "trcRecorder.h"
-//#endif
+// #if ( configUSE_TRACE_FACILITY == 1 )
+//    #include "trcRecorder.h"
+// #endif
 /* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */

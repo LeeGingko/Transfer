@@ -323,8 +323,7 @@ u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
         frame_inf |= rtr << 6;  // 0,数据帧;1,遥控帧
         frame_inf |= len << 0;  // 发送数据长度
         CAN->TXRX0 = frame_inf; // 发送TX帧信息
-        if (0 == ide)           // 标准帧
-        {
+        if (0 == ide) {         // 标准帧
             id &= 0x7ff;
             // 发送接收寄存器1
             CAN->TXRX1 = id >> 3;          // TX ID0
@@ -337,8 +336,7 @@ u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
             CAN->TXRX8 = msg[5];           // TX DATA5
             CAN->TXRX9 = msg[6];           // TX DATA6
             CAN->TXRXA = msg[7];           // TX DATA7
-        } else                             // 扩展帧
-        {
+        } else {                           // 扩展帧
             id &= 0X1FFFFFFF;
             CAN->TXRX1 = (u8)(id >> 21);          // TX ID0
             CAN->TXRX2 = (u8)((id >> 13) & 0xFF); // TX ID1

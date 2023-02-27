@@ -469,19 +469,19 @@
           <GroupName>Drivers</GroupName>
           <Files>
             <File>
-              <FileName>hw_can.c</FileName>
+              <FileName>tc_485.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Driver\Src\hw_can.c</FilePath>
+              <FilePath>.\Driver\Src\tc_485.c</FilePath>
             </File>
             <File>
-              <FileName>hw_uart .c</FileName>
+              <FileName>tc_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Driver\Src\hw_uart .c</FilePath>
+              <FilePath>.\Driver\Src\tc_can.c</FilePath>
             </File>
             <File>
-              <FileName>hw_485.c</FileName>
+              <FileName>tc_uart .c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Driver\Src\hw_485.c</FilePath>
+              <FilePath>.\Driver\Src\tc_uart .c</FilePath>
             </File>
           </Files>
         </Group>

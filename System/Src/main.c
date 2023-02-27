@@ -6,7 +6,7 @@
 #include "task.h"
 #include "common.h"
 #include "task.h"
-#include "hw_uart.h"
+#include "tc_uart.h"
 #include "hardware_config.h"
 /* USER INCLUDE FILES END */
 

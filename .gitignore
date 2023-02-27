@@ -1,8 +1,11 @@
 .cmsis/
 .eide/
+.pack/
 .vscode/
+build/
 RTE/
 Listings/
+Objects/
 *.crf
 *.d
 *.o

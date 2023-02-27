@@ -1,17 +1,10 @@
 >>> cc
 
-
-".\System\Src\freertos.c", line 143: Warning:  #550-D: variable "xTimerPeriod"  was set but never used
-      TickType_t xTimerPeriod;
-                 ^
-.\System\Src\freertos.c: 1 warning, 0 errors
-
 ".\System\Src\interrupt.c", line 144: Warning:  #550-D: variable "test"  was set but never used
       u8 test   = 0;
          ^
 .\System\Src\interrupt.c: 1 warning, 0 errors
 
-
 >>> ld
 
-Program Size: Code=19728 RO-data=356 RW-data=204 ZI-data=6708  
+Program Size: Code=20044 RO-data=356 RW-data=212 ZI-data=6708  

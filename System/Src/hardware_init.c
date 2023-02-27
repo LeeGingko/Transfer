@@ -20,9 +20,9 @@
 /* Included Files ------------------------------------------------------------------------- */
 #include "SEGGER_RTT.h"
 #include "hardware_config.h"
-#include "hw_uart.h"
-#include "hw_485.h"
-#include "hw_can.h"
+#include "tc_uart.h"
+#include "tc_485.h"
+#include "tc_can.h"
 /* USER INCLUDE FILES END */
 
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -38,14 +38,14 @@ u32 SystemCoreClock = 96000000LL;
 
 /* USER DEFINED FROTOTYPES BEGIN */
 /* Defined Prototypes -------------------------------------------------------------------- */
-u32 HW_SysTick_Config(uint32_t ticks);
+u32 TC_SysTick_Config(uint32_t ticks);
 
 /* USER DEFINED FROTOTYPES END */
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
 /* Implemented Functions ----------------------------------------------------------------- */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 函数名：  void HW_NVIC_Init(void)
+ * 函数名：  void TC_NVIC_Init(void)
  * 编写者：  F.L
  * 参考资料：无
  * 功  能：  外设NVIC初始化
@@ -53,7 +53,7 @@ u32 HW_SysTick_Config(uint32_t ticks);
  * 输出参数：无
  * 备  注：  2023年2月21日->创建
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-void HW_NVIC_Init(void)
+void TC_NVIC_Init(void)
 {
     UART_ClearIRQFlag(UART0, UART_IF_RcvOver);
     NVIC_SetPriority(UART0_IRQn, 0);
@@ -65,7 +65,7 @@ void HW_NVIC_Init(void)
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 函数名：  static void HW_SysLed_Init(void)
+ * 函数名：  static void TC_SysLed_Init(void)
  * 编写者：  F.L
  * 参考资料：无
  * 功  能：  系统指示LED
@@ -73,7 +73,7 @@ void HW_NVIC_Init(void)
  * 输出参数：无
  * 备  注：  2023年2月21日->创建
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-static void HW_SysLed_Init(void)
+static void TC_SysLed_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -103,18 +103,18 @@ void Hardware_Init(void)
     __disable_irq();         /* 关闭中断 中断总开关 */
     SYS_WR_PROTECT = 0x7a83; /*使能系统寄存器写操作*/
     FLASH_CFG |= 0x00080000; /* enable prefetch ，FLASH预取加速使能*/
-    HW_SysLed_Init();
-    HW_CAN_Init();
-    HW_485_Init();
-    HW_UART_Init();
-    HW_NVIC_Init(); /* NVIC设置 */
+    TC_SysLed_Init();
+    TC_CAN_Init();
+    TC_485_Init();
+    TC_UART_Init();
+    TC_NVIC_Init(); /* NVIC设置 */
     SoftDelay(1000);
     //    NVIC_EnableIRQ(DMA_IRQn);      /* 使能DMA中断 */
     //    NVIC_SetPriority(DMA_IRQn, 1); /* 配置DMA中断优先级*/
     SYS_WR_PROTECT = 0x0; /*关闭系统寄存器写操作*/
     __enable_irq();       /* 开启中断 */
     /* 系统嘀嗒定时器初始化 */
-    if (HW_SysTick_Config(12000) == 0) {
+    if (TC_SysTick_Config(12000) == 0) {
         printf("SysTick Config Ok!\r\n");
     } else {
         printf("SysTick Config Err!\r\n");
@@ -204,7 +204,7 @@ u8 Invers_GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 函数名称：    vu32 HW_SysTick_Config(uint32_t ticks)
+ * 函数名称：    vu32 TC_SysTick_Config(uint32_t ticks)
  * 功能描述：    嘀嗒定时器初始化
  * 输入参数：    计数节拍
  * 输出参数：    1：失败，设置节拍大于最大节拍 0：初始化成功
@@ -214,7 +214,7 @@ u8 Invers_GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
  -----------------------------------------------------------------------------
  2023/02/12    V1.0          Frank Lee          创建
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-u32 HW_SysTick_Config(uint32_t ticks)
+u32 TC_SysTick_Config(uint32_t ticks)
 {
     if ((ticks - 1UL) > SysTick_LOAD_RELOAD_Msk) {
         return (1UL); /* Reload value impossible */

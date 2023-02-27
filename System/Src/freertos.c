@@ -1,24 +1,29 @@
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ------------------------------------------------------------------------ */
-#include <stdio.h>
+#include "common.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "timers.h"
-#include "common.h"
-#include "hw_uart.h"
-#include "hw_485.h"
-
+#include "tc_uart.h"
+#include "tc_485.h"
+#include "tc_can.h"
 #include "hardware_config.h"
 
 /* USER INCLUDE FILES END */
 
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ------------------------------------------------------------------ */
-#define RS485_TASK_PRI 6
-#define RS485_STK_SIZE 256
+#define RS485_RX_TASK_PRI 5
+#define RS485_RX_STK_SIZE 128
 
-#define CAN_TASK_PRI   6
-#define CAN_STK_SIZE   128
+#define RS485_TX_TASK_PRI 4
+#define RS485_TX_STK_SIZE 64
+
+#define CAN_RX_TASK_PRI   6
+#define CAN_RX_STK_SIZE   128
+
+#define CAN_TX_TASK_PRI   4
+#define CAN_TX_STK_SIZE   64
 /* USER DEFINED MACROS END */
 
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -29,11 +34,14 @@
 /* USER DEFINED VARIABLES BEGIN */
 
 /* Defined Variables --------------------------------------------------------------------- */
-TaskHandle_t rs485Task_Handler;
-TaskHandle_t canTask_Handler;
-TimerHandle_t sysLEDTimer_Handler;
+TimerHandle_t sysLedTimer_Handler;
 
-BaseType_t sysLEDTimerStart;
+TaskHandle_t tc485RxTask_Handler;
+TaskHandle_t tc485TxTask_Handler;
+TaskHandle_t tcCanRxTask_Handler;
+TaskHandle_t tcCanTxTask_Handler;
+
+BaseType_t sysLedTimerStart;
 BaseType_t taskCreateStatus;
 
 u8 Can_TX[8] = {0x81, 0x13, 0x33, 0x44, 0x15, 0x26, 0x37, 0x48};
@@ -42,11 +50,13 @@ u8 Can_TX[8] = {0x81, 0x13, 0x33, 0x44, 0x15, 0x26, 0x37, 0x48};
 
 /* USER DEFINED FROTOTYPES BEGIN */
 /* Defined Prototypes -------------------------------------------------------------------- */
-static void RS485TaskFunc(void *pvParameters);
-static void CANTaskFunc(void *pvParameters);
+static void TC_485RxTaskFunc(void *pvParameters);
+static void TC_485TxTaskFunc(void *pvParameters);
+static void TC_CANRxTaskFunc(void *pvParameters);
+static void TC_CANTxTaskFunc(void *pvParameters);
+static void SysLedTimerCallback(void const *argument);
 
-static void SysLEDTimerCallback(void const *argument);
-extern HW_485Manage_t hw_485_Manage;
+extern TC_485Manage_t tc_485_Manage;
 /* USER DEFINED FROTOTYPES END */
 
 /* USER IMPLEMENTED FUNCTIONS BEGIN */
@@ -66,22 +76,22 @@ void LKS_FREERTOS_Init(void)
 
 /* -------------------------------- FreeRTOS Softtimer Initilization ------------------------------ */
 #if ((configUSE_TIMERS == 1) && (configSUPPORT_DYNAMIC_ALLOCATION == 1))
-    sysLEDTimer_Handler = xTimerCreate("SysLEDTimer",
+    sysLedTimer_Handler = xTimerCreate("SysLedTimer",
                                        pdMS_TO_TICKS(1000),
                                        pdTRUE,
                                        (void *)0,
-                                       (TimerCallbackFunction_t)SysLEDTimerCallback);
+                                       (TimerCallbackFunction_t)SysLedTimerCallback);
 
 #if (SEGGER_RTT_PRINTF_EN == 1)
-    if (NULL == sysLEDTimer_Handler) {
-        printf("sysLEDTimer Create Failed!\r\n");
+    if (NULL == sysLedTimer_Handler) {
+        printf("sysLedTimer Create Failed!\r\n");
     } else {
-        printf("sysLEDTimer Create Succeed!\r\n");
-        sysLEDTimerStart = xTimerStart(sysLEDTimer_Handler, 500);
-        if (sysLEDTimerStart == pdFAIL) {
-            printf("sysLEDTimer Start Failed!\r\n");
+        printf("sysLedTimer Create Succeed!\r\n");
+        sysLedTimerStart = xTimerStart(sysLedTimer_Handler, 500);
+        if (sysLedTimerStart == pdFAIL) {
+            printf("sysLedTimer Start Failed!\r\n");
         } else {
-            printf("sysLEDTimer Start Succeed!\r\n");
+            printf("sysLedTimer Start Succeed!\r\n");
         }
     }
 #endif
@@ -90,39 +100,72 @@ void LKS_FREERTOS_Init(void)
 
     /* -------------------------------- FreeRTOS Tasks Initilization ------------------------------ */
     taskENTER_CRITICAL(); // 进入临界区
-    /* 485处理任务创建 */
-    taskCreateStatus = xTaskCreate((TaskFunction_t)RS485TaskFunc,
-                                   (const char *)"RS485TaskFunc",
-                                   (uint16_t)RS485_STK_SIZE,
+    /* 485接收任务创建 */
+    taskCreateStatus = xTaskCreate((TaskFunction_t)TC_485RxTaskFunc,
+                                   (const char *)"TC_485RxTaskFunc",
+                                   (uint16_t)RS485_RX_STK_SIZE,
                                    (void *)NULL,
-                                   (UBaseType_t)RS485_TASK_PRI,
-                                   (TaskHandle_t *)&rs485Task_Handler);
+                                   (UBaseType_t)RS485_RX_TASK_PRI,
+                                   (TaskHandle_t *)&tc485RxTask_Handler);
 
 #if (SEGGER_RTT_PRINTF_EN == 1)
     if (taskCreateStatus == pdPASS) {
-        printf("RS485Task Create Succeed!\r\n");
+        printf("tc485RxTask Create Succeed!\r\n");
     } else {
-        printf("RS485Task Create Failed!\r\n");
+        printf("tc485RxTask Create Failed!\r\n");
     }
 #endif
+    taskCreateStatus = pdFAIL;
+    /* 485发送任务创建 */
+    taskCreateStatus = xTaskCreate((TaskFunction_t)TC_485TxTaskFunc,
+                                   (const char *)"TC_485TxTaskFunc",
+                                   (uint16_t)RS485_TX_STK_SIZE,
+                                   (void *)NULL,
+                                   (UBaseType_t)RS485_TX_TASK_PRI,
+                                   (TaskHandle_t *)&tc485TxTask_Handler);
 
+#if (SEGGER_RTT_PRINTF_EN == 1)
+    if (taskCreateStatus == pdPASS) {
+        printf("tc485TxTask Create Succeed!\r\n");
+    } else {
+        printf("tc485TxTask Create Failed!\r\n");
+    }
+#endif
     taskCreateStatus = pdFAIL;
 
-    /* CAN处理任务创建 */
-    taskCreateStatus = xTaskCreate((TaskFunction_t)CANTaskFunc,
-                                   (const char *)"CANTaskFunc",
-                                   (uint16_t)CAN_STK_SIZE,
+    /* CAN接收任务创建 */
+    taskCreateStatus = xTaskCreate((TaskFunction_t)TC_CANRxTaskFunc,
+                                   (const char *)"TC_CANRxTaskFunc",
+                                   (uint16_t)CAN_RX_STK_SIZE,
                                    (void *)NULL,
-                                   (UBaseType_t)CAN_TASK_PRI,
-                                   (TaskHandle_t *)&canTask_Handler);
+                                   (UBaseType_t)CAN_RX_TASK_PRI,
+                                   (TaskHandle_t *)&tcCanRxTask_Handler);
 
 #if (SEGGER_RTT_PRINTF_EN == 1)
     if (taskCreateStatus == pdPASS) {
-        printf("CANTask Create Succeed!\r\n");
+        printf("tcCanRxTask Create Succeed!\r\n");
     } else {
-        printf("CANTask Create Failed!\r\n");
+        printf("tcCanRxTask Create Failed!\r\n");
     }
 #endif
+    taskCreateStatus = pdFAIL;
+
+    /* CAN发送任务创建 */
+    taskCreateStatus = xTaskCreate((TaskFunction_t)TC_CANTxTaskFunc,
+                                   (const char *)"TC_CANTxTaskFunc",
+                                   (uint16_t)CAN_TX_STK_SIZE,
+                                   (void *)NULL,
+                                   (UBaseType_t)CAN_TX_TASK_PRI,
+                                   (TaskHandle_t *)&tcCanTxTask_Handler);
+
+#if (SEGGER_RTT_PRINTF_EN == 1)
+    if (taskCreateStatus == pdPASS) {
+        printf("tcCanTxTask Create Succeed!\r\n");
+    } else {
+        printf("tcCanTxTask Create Failed!\r\n");
+    }
+#endif
+    taskCreateStatus = pdFAIL;
 
     taskEXIT_CRITICAL(); // 退出临界区
 }
@@ -133,43 +176,75 @@ void LKS_FREERTOS_Init(void)
  * 函数名：  static void RS485TaskFunc(void *pvParameters)
  * 编写者：  F.L
  * 参考资料：
- * 功  能：  LED0任务函数，静态类型
+ * 功  能：  Led0任务函数，静态类型
  * 输入参数： void *pvParameters
  * 输出参数： 无
  * 备  注：   2023年2月16日->创建
  *------------------------------------------------------------------------------------------*/
-static void RS485TaskFunc(void *pvParameters)
+static void TC_485RxTaskFunc(void *pvParameters)
 {
     // TickType_t xTimerPeriod;
 
-    HW_485TransmitFrame();
+    TC_485TransmitFrame();
     while (1) {
         /* Query the period of the timer that expires. */
-        // xTimerPeriod = xTimerGetPeriod(sysLEDTimer_Handler);
+        // xTimerPeriod = xTimerGetPeriod(sysLedTimer_Handler);
         vTaskDelay(1000);
     }
 }
 
 /*-------------------------------------------------------------------------------------------*
- * 函数名：  static void CANTaskFunc(void *pvParameters)
+ * 函数名：  static void TC_485TxTaskFunc(void *pvParameters)
  * 编写者：  F.L
  * 参考资料：
- * 功  能：  LED0任务函数，静态类型
+ * 功  能：  Led0任务函数，静态类型
+ * 输入参数： void *pvParameters
+ * 输出参数： 无
+ * 备  注：   2023年2月27日->创建
+ *------------------------------------------------------------------------------------------*/
+static void TC_485TxTaskFunc(void *pvParameters)
+{
+    TC_485TransmitFrame();
+    while (1) {
+        vTaskDelay(1000);
+    }
+}
+
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  static void TC_CANRxTaskFunc(void *pvParameters)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  Led0任务函数，静态类型
  * 输入参数： void *pvParameters
  * 输出参数： 无
  * 备  注：   2023年2月16日->创建
  *------------------------------------------------------------------------------------------*/
-static void CANTaskFunc(void *pvParameters)
+static void TC_CANRxTaskFunc(void *pvParameters)
 {
     while (1) {
-        // ID:0x03,标准帧,数据帧，数据，数据长度
-        My_CAN_Send_Msg(0xA5, 0, 0, Can_TX, 8);
         vTaskDelay(1000);
     }
 }
 
 /*-------------------------------------------------------------------------------------------*
- * 函数名：  void SysLEDTimerCallback(void const *argument)
+ * 函数名：  static void TC_CANTxTaskFunc(void *pvParameters)
+ * 编写者：  F.L
+ * 参考资料：
+ * 功  能：  Led0任务函数，静态类型
+ * 输入参数： void *pvParameters
+ * 输出参数： 无
+ * 备  注：   2023年2月27日->创建
+ *------------------------------------------------------------------------------------------*/
+static void TC_CANTxTaskFunc(void *pvParameters)
+{
+    while (1) {
+        My_CAN_Send_Msg(CAN_TRANSFER_ADDR, CAN_FRAME_STAND, CAN_FUNC_DATA, Can_TX, 8);
+        vTaskDelay(1000);
+    }
+}
+
+/*-------------------------------------------------------------------------------------------*
+ * 函数名：  void SysLedTimerCallback(void const *argument)
  * 编写者：  F.L
  * 参考资料：
  * 功  能：  软件定时器，闪烁周期两秒
@@ -177,7 +252,7 @@ static void CANTaskFunc(void *pvParameters)
  * 输出参数： 无
  * 备  注：   2023年2月16日->创建
  *-------------------------------------------------------------------------------------------*/
-void SysLEDTimerCallback(void const *argument)
+void SysLedTimerCallback(void const *argument)
 {
     Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
 }

@@ -2,12 +2,12 @@
     "name": "Transfer",
     "target": "TransferPrj",
     "toolchain": "AC5",
-    "toolchainLocation": "d:\\Keil_v5\\ARM\\ARMCC",
+    "toolchainLocation": "f:\\Keil_v5\\ARM\\ARMCC",
     "toolchainCfgFile": "..\\cfg\\arm.v5.model.json",
     "buildMode": "fast|multhread",
     "showRepathOnLog": true,
     "threadNum": 16,
-    "rootDir": "e:\\Archive\\719\\2023\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+    "rootDir": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
     "dumpPath": "build\\TransferPrj",
     "outDir": "build\\TransferPrj",
     "ram": 8192,
@@ -33,9 +33,9 @@
     "libDirs": [],
     "defines": [],
     "sourceList": [
-        "Driver/Src/hw_485.c",
-        "Driver/Src/hw_can.c",
-        "Driver/Src/hw_uart .c",
+        "Driver/Src/tc_485.c",
+        "Driver/Src/tc_can.c",
+        "Driver/Src/tc_uart .c",
         "FreeRTOS-Kernel/list.c",
         "FreeRTOS-Kernel/portable/MemMang/heap_4.c",
         "FreeRTOS-Kernel/portable/RVDS/ARM_CM0/port.c",
@@ -64,14 +64,14 @@
         "SystemView/RTT/SEGGER_SYSVIEW.c"
     ],
     "sourceParams": {},
-    "sourceParamsMtime": 1676611875144.5415,
+    "sourceParamsMtime": 1676611876000,
     "options": {
         "version": 4,
         "beforeBuildTasks": [],
         "afterBuildTasks": [
             {
                 "name": "axf to elf",
-                "command": "axf2elf -d \"d:\\Keil_v5\\ARM\\ARMCC\" -b \"${outDir}\\Transfer.bin\" -i \"${outDir}\\Transfer.axf\" -o \"${outDir}\\Transfer.elf\" > \"${outDir}\\axf2elf.log\""
+                "command": "axf2elf -d \"f:\\Keil_v5\\ARM\\ARMCC\" -b \"${outDir}\\Transfer.bin\" -i \"${outDir}\\Transfer.axf\" -o \"${outDir}\\Transfer.elf\" > \"${outDir}\\axf2elf.log\""
             }
         ],
         "global": {
@@ -97,29 +97,29 @@
             "ro-base": "0x00000000",
             "rw-base": "0x20000000",
             "link-scatter": [
-                "\"e:/Archive/719/2023/ZhangLiJi/Files/ZhuanJie/RuanJian/Transfer/build/TransferPrj/Transfer.sct\""
+                "\"d:/LAM/XiangMu/ZhangLiJi/Files/ZhuanJie/RuanJian/Transfer/build/TransferPrj/Transfer.sct\""
             ]
         }
     },
     "env": {
-        "workspaceFolder": "e:\\Archive\\719\\2023\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+        "workspaceFolder": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
         "workspaceFolderBasename": "Transfer",
-        "OutDir": "e:\\Archive\\719\\2023\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj",
+        "OutDir": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj",
         "OutDirRoot": "build",
         "OutDirBase": "build\\TransferPrj",
         "ProjectName": "Transfer",
         "ConfigName": "TransferPrj",
-        "ProjectRoot": "e:\\Archive\\719\\2023\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
-        "ExecutableName": "e:\\Archive\\719\\2023\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj\\Transfer",
-        "ToolchainRoot": "d:\\Keil_v5\\ARM\\ARMCC"
+        "ProjectRoot": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer",
+        "ExecutableName": "d:\\LAM\\XiangMu\\ZhangLiJi\\Files\\ZhuanJie\\RuanJian\\Transfer\\build\\TransferPrj\\Transfer",
+        "ToolchainRoot": "f:\\Keil_v5\\ARM\\ARMCC"
     },
     "sha": {
         "c/cpp-defines": "d751713988987e9331980363e24189ce",
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
-        "afterBuildTasks": "8e5c8b8c4feb02923c38836f7d41dfc2",
+        "afterBuildTasks": "8836b9ac41a0f377ce36b05583e3e5e6",
         "global": "644184f1caacc5d60112aa5d680135e6",
         "c/cpp-compiler": "1f53282b40ebc8ec0978fa76af663a8f",
         "asm-compiler": "99914b932bd37a50b983c5e7c90ae93b",
-        "linker": "63a20f4629f93d9562f775646c3d4a9e"
+        "linker": "cc6ca5d74ffba3b62a99209acd95fd20"
     }
 }
