@@ -1,6 +1,9 @@
 >>> cc
 
-
+".\System\Src\interrupt.c", line 144: Warning:  #550-D: variable "test"  was set but never used
+      u8 test   = 0;
+         ^
+.\System\Src\interrupt.c: 1 warning, 0 errors
 
 >>> ld
 
