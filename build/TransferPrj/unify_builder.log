@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2023-02-27 16:27:44]	[done]
 	build successfully !
 
@@ -163,5 +164,17 @@
 .\SystemView\RTT\SEGGER_RTT.c: 17 warnings, 30 errors
 
 [2023-02-27 17:23:04]	[done]
+=======
+[2023-02-27 19:32:41]	[done]
+	build successfully !
+
+[2023-02-27 19:33:27]	[done]
+	build successfully !
+
+[2023-02-27 19:33:34]	[done]
+	build successfully !
+
+[2023-02-27 19:34:11]	[done]
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 	build successfully !
 

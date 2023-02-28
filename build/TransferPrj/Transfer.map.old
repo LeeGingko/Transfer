@@ -1447,6 +1447,10 @@ Removing Unused input sections from the image.
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStopExec), (36 bytes).
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStopReady), (88 bytes).
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskTerminate), (68 bytes).
+<<<<<<< HEAD
+=======
+    Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Print), (52 bytes).
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_PrintfHost), (26 bytes).
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_PrintfHostEx), (24 bytes).
     Removing SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_PrintfTarget), (26 bytes).
@@ -1484,7 +1488,11 @@ Removing Unused input sections from the image.
     Removing depilogue.o(.text), (190 bytes).
     Removing depilogue.o(i.__ARM_clz), (46 bytes).
 
+<<<<<<< HEAD
 288 unused section(s) (total 18989 bytes) removed from the image.
+=======
+289 unused section(s) (total 19041 bytes) removed from the image.
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
 ==============================================================================
 
@@ -1495,10 +1503,15 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      192  startup_lks32mc08x.o(RESET)
+<<<<<<< HEAD
     ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+=======
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     ../clib/microlib/division.c              0x00000000   Number         0  ldiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+<<<<<<< HEAD
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
@@ -1514,10 +1527,29 @@ Image Symbol Table
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+=======
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     ../clib/microlib/longlong.c              0x00000000   Number         0  llmul.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+<<<<<<< HEAD
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
@@ -1525,7 +1557,18 @@ Image Symbol Table
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+=======
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
@@ -1662,6 +1705,7 @@ Image Symbol Table
     i.SEGGER_SYSVIEW_OnTaskCreate            0x00000ea4   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskCreate)
     i.SEGGER_SYSVIEW_OnTaskStartExec         0x00000ee8   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStartExec)
     i.SEGGER_SYSVIEW_OnTaskStartReady        0x00000f2c   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStartReady)
+<<<<<<< HEAD
     i.SEGGER_SYSVIEW_Print                   0x00000f70   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Print)
     i.SEGGER_SYSVIEW_RecordSystime           0x00000fa4   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordSystime)
     i.SEGGER_SYSVIEW_RecordU32               0x00000fd4   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32)
@@ -1872,6 +1916,217 @@ Image Symbol Table
     _abSync                                  0x00003d59   Data          10  SEGGER_SYSVIEW.o(.constdata)
     _aV2C                                    0x00003d63   Data          16  SEGGER_SYSVIEW.o(.constdata)
     .conststring                             0x00003d74   Section       80  SEGGER_SYSVIEW_FreeRTOS.o(.conststring)
+=======
+    i.SEGGER_SYSVIEW_RecordSystime           0x00000f70   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordSystime)
+    i.SEGGER_SYSVIEW_RecordU32               0x00000fa0   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32)
+    i.SEGGER_SYSVIEW_RecordU32x2             0x00000fdc   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x2)
+    i.SEGGER_SYSVIEW_RecordU32x3             0x0000102c   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x3)
+    i.SEGGER_SYSVIEW_RecordU32x4             0x0000108c   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x4)
+    i.SEGGER_SYSVIEW_RecordVoid              0x00001100   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordVoid)
+    i.SEGGER_SYSVIEW_SendModule              0x00001124   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendModule)
+    i.SEGGER_SYSVIEW_SendModuleDescription   0x0000119c   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendModuleDescription)
+    i.SEGGER_SYSVIEW_SendNumModules          0x000011b8   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendNumModules)
+    i.SEGGER_SYSVIEW_SendSysDesc             0x000011f8   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendSysDesc)
+    i.SEGGER_SYSVIEW_SendTaskInfo            0x00001228   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendTaskInfo)
+    i.SEGGER_SYSVIEW_SendTaskList            0x000012e4   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendTaskList)
+    i.SEGGER_SYSVIEW_SetRAMBase              0x000012fc   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SetRAMBase)
+    i.SEGGER_SYSVIEW_ShrinkId                0x00001308   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_ShrinkId)
+    i.SEGGER_SYSVIEW_Start                   0x00001314   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Start)
+    i.SEGGER_SYSVIEW_Stop                    0x000013b8   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Stop)
+    i.SEGGER_SYSVIEW_Warn                    0x000013e8   Section        0  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Warn)
+    i.SEGGER_SYSVIEW_X_GetTimestamp          0x00001420   Section        0  common.o(i.SEGGER_SYSVIEW_X_GetTimestamp)
+    i.SFF_ID_Filter                          0x0000143c   Section        0  lks32mc08x_can.o(i.SFF_ID_Filter)
+    i.SPI0_IRQHandler                        0x0000149c   Section        0  interrupt.o(i.SPI0_IRQHandler)
+    i.SVC_Handler                            0x0000149e   Section        0  port.o(i.SVC_Handler)
+    i.SYSVIEW_AddTask                        0x000014a0   Section        0  SEGGER_SYSVIEW_FreeRTOS.o(i.SYSVIEW_AddTask)
+    i.SYSVIEW_SendTaskInfo                   0x00001508   Section        0  SEGGER_SYSVIEW_FreeRTOS.o(i.SYSVIEW_SendTaskInfo)
+    i.SYS_ModuleClockCmd                     0x00001530   Section        0  lks32mc08x_sys.o(i.SYS_ModuleClockCmd)
+    i.SoftDelay                              0x00001554   Section        0  hardware_init.o(i.SoftDelay)
+    i.SysLedTimerCallback                    0x00001568   Section        0  freertos.o(i.SysLedTimerCallback)
+    SysLedTimerCallback                      0x00001569   Thumb Code    12  freertos.o(i.SysLedTimerCallback)
+    i.SysTick_Handler                        0x00001578   Section        0  interrupt.o(i.SysTick_Handler)
+    i.SystemInit                             0x00001594   Section        0  hardware_init.o(i.SystemInit)
+    i.TC_485RxTaskFunc                       0x0000159c   Section        0  freertos.o(i.TC_485RxTaskFunc)
+    TC_485RxTaskFunc                         0x0000159d   Thumb Code    16  freertos.o(i.TC_485RxTaskFunc)
+    i.TC_485TransmitFrame                    0x000015ac   Section        0  tc_485.o(i.TC_485TransmitFrame)
+    i.TC_485TxTaskFunc                       0x00001628   Section        0  freertos.o(i.TC_485TxTaskFunc)
+    TC_485TxTaskFunc                         0x00001629   Thumb Code    16  freertos.o(i.TC_485TxTaskFunc)
+    i.TC_485_GPIO_Init                       0x00001638   Section        0  tc_485.o(i.TC_485_GPIO_Init)
+    i.TC_485_Init                            0x000016ac   Section        0  tc_485.o(i.TC_485_Init)
+    i.TC_485_UART_Init                       0x000016f8   Section        0  tc_485.o(i.TC_485_UART_Init)
+    i.TC_CANRxTaskFunc                       0x00001724   Section        0  freertos.o(i.TC_CANRxTaskFunc)
+    TC_CANRxTaskFunc                         0x00001725   Thumb Code    12  freertos.o(i.TC_CANRxTaskFunc)
+    i.TC_CANTxTaskFunc                       0x00001730   Section        0  freertos.o(i.TC_CANTxTaskFunc)
+    TC_CANTxTaskFunc                         0x00001731   Thumb Code    30  freertos.o(i.TC_CANTxTaskFunc)
+    i.TC_CAN_GPIO_Init                       0x00001754   Section        0  tc_can.o(i.TC_CAN_GPIO_Init)
+    i.TC_CAN_Init                            0x000017a8   Section        0  tc_can.o(i.TC_CAN_Init)
+    i.TC_FsmRunningFunc                      0x000017fc   Section        0  tc_485.o(i.TC_FsmRunningFunc)
+    i.TC_FsmStateTable_Init                  0x00001870   Section        0  tc_485.o(i.TC_FsmStateTable_Init)
+    i.TC_GetCurEvent                         0x000018f8   Section        0  tc_485.o(i.TC_GetCurEvent)
+    TC_GetCurEvent                           0x000018f9   Thumb Code   108  tc_485.o(i.TC_GetCurEvent)
+    i.TC_NVIC_Init                           0x00001968   Section        0  hardware_init.o(i.TC_NVIC_Init)
+    i.TC_SysTick_Config                      0x000019a0   Section        0  hardware_init.o(i.TC_SysTick_Config)
+    i.TC_TimeoutTimer_Init                   0x000019e4   Section        0  tc_485.o(i.TC_TimeoutTimer_Init)
+    i.TC_UARTSendBytes                       0x00001a18   Section        0  tc_uart .o(i.TC_UARTSendBytes)
+    i.TC_UART_GPIO_Init                      0x00001a64   Section        0  tc_uart .o(i.TC_UART_GPIO_Init)
+    i.TC_UART_Init                           0x00001abc   Section        0  tc_uart .o(i.TC_UART_Init)
+    i.TIM_TimerCmd                           0x00001aec   Section        0  lks32mc08x_tim.o(i.TIM_TimerCmd)
+    i.TIM_TimerInit                          0x00001b6c   Section        0  lks32mc08x_tim.o(i.TIM_TimerInit)
+    i.TIM_TimerStrutInit                     0x00001c70   Section        0  lks32mc08x_tim.o(i.TIM_TimerStrutInit)
+    i.UART0_IRQHandler                       0x00001c94   Section        0  interrupt.o(i.UART0_IRQHandler)
+    i.UART1_IRQHandler                       0x00001cdc   Section        0  interrupt.o(i.UART1_IRQHandler)
+    i.UART_ClearIRQFlag                      0x00001d04   Section        0  lks32mc08x_uart.o(i.UART_ClearIRQFlag)
+    i.UART_GetIRQFlag                        0x00001d08   Section        0  lks32mc08x_uart.o(i.UART_GetIRQFlag)
+    i.UART_Init                              0x00001d1c   Section        0  lks32mc08x_uart.o(i.UART_Init)
+    i.UART_SendData                          0x00001ddc   Section        0  lks32mc08x_uart.o(i.UART_SendData)
+    i.UART_StructInit                        0x00001de0   Section        0  lks32mc08x_uart.o(i.UART_StructInit)
+    i.UTIMER0_IRQHandler                     0x00001dfe   Section        0  interrupt.o(i.UTIMER0_IRQHandler)
+    i.UTIMER1_IRQHandler                     0x00001e00   Section        0  interrupt.o(i.UTIMER1_IRQHandler)
+    i.UTIMER2_IRQHandler                     0x00001e02   Section        0  interrupt.o(i.UTIMER2_IRQHandler)
+    i.UTIMER3_IRQHandler                     0x00001e04   Section        0  interrupt.o(i.UTIMER3_IRQHandler)
+    i._DoInit                                0x00001e08   Section        0  SEGGER_RTT.o(i._DoInit)
+    _DoInit                                  0x00001e09   Thumb Code    78  SEGGER_RTT.o(i._DoInit)
+    i._EncodeStr                             0x00001e70   Section        0  SEGGER_SYSVIEW.o(i._EncodeStr)
+    _EncodeStr                               0x00001e71   Thumb Code    66  SEGGER_SYSVIEW.o(i._EncodeStr)
+    i._HandleIncomingPacket                  0x00001eb4   Section        0  SEGGER_SYSVIEW.o(i._HandleIncomingPacket)
+    _HandleIncomingPacket                    0x00001eb5   Thumb Code   144  SEGGER_SYSVIEW.o(i._HandleIncomingPacket)
+    i._SendPacket                            0x00001f48   Section        0  SEGGER_SYSVIEW.o(i._SendPacket)
+    _SendPacket                              0x00001f49   Thumb Code   304  SEGGER_SYSVIEW.o(i._SendPacket)
+    i._TrySendOverflowPacket                 0x00002080   Section        0  SEGGER_SYSVIEW.o(i._TrySendOverflowPacket)
+    _TrySendOverflowPacket                   0x00002081   Thumb Code   100  SEGGER_SYSVIEW.o(i._TrySendOverflowPacket)
+    i.__0printf$8                            0x000020e8   Section        0  printf8.o(i.__0printf$8)
+    i.__ARM_common_switch8                   0x00002108   Section        0  tc_485.o(i.__ARM_common_switch8)
+    i.__NVIC_EnableIRQ                       0x00002124   Section        0  hardware_init.o(i.__NVIC_EnableIRQ)
+    __NVIC_EnableIRQ                         0x00002125   Thumb Code    18  hardware_init.o(i.__NVIC_EnableIRQ)
+    i.__NVIC_SetPriority                     0x0000213c   Section        0  hardware_init.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x0000213d   Thumb Code    60  hardware_init.o(i.__NVIC_SetPriority)
+    i.__scatterload_copy                     0x00002180   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0000218e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00002190   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._cbGetTime                             0x0000219e   Section        0  SEGGER_SYSVIEW_FreeRTOS.o(i._cbGetTime)
+    _cbGetTime                               0x0000219f   Thumb Code    20  SEGGER_SYSVIEW_FreeRTOS.o(i._cbGetTime)
+    i._cbSendSystemDesc                      0x000021b4   Section        0  SEGGER_SYSVIEW_Config_FreeRTOS.o(i._cbSendSystemDesc)
+    _cbSendSystemDesc                        0x000021b5   Thumb Code    16  SEGGER_SYSVIEW_Config_FreeRTOS.o(i._cbSendSystemDesc)
+    i._cbSendTaskList                        0x0000220c   Section        0  SEGGER_SYSVIEW_FreeRTOS.o(i._cbSendTaskList)
+    _cbSendTaskList                          0x0000220d   Thumb Code    42  SEGGER_SYSVIEW_FreeRTOS.o(i._cbSendTaskList)
+    i._printf_core                           0x00002240   Section        0  printf8.o(i._printf_core)
+    _printf_core                             0x00002241   Thumb Code  1020  printf8.o(i._printf_core)
+    i._printf_post_padding                   0x00002668   Section        0  printf8.o(i._printf_post_padding)
+    _printf_post_padding                     0x00002669   Thumb Code    32  printf8.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x00002688   Section        0  printf8.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x00002689   Thumb Code    44  printf8.o(i._printf_pre_padding)
+    i.fputc                                  0x000026b4   Section        0  tc_uart .o(i.fputc)
+    i.fsmActionData1                         0x000026d0   Section        0  tc_485.o(i.fsmActionData1)
+    fsmActionData1                           0x000026d1   Thumb Code    20  tc_485.o(i.fsmActionData1)
+    i.fsmActionData2                         0x000026e8   Section        0  tc_485.o(i.fsmActionData2)
+    fsmActionData2                           0x000026e9   Thumb Code    40  tc_485.o(i.fsmActionData2)
+    i.fsmActionDst                           0x00002720   Section        0  tc_485.o(i.fsmActionDst)
+    fsmActionDst                             0x00002721   Thumb Code    26  tc_485.o(i.fsmActionDst)
+    i.fsmActionError                         0x00002740   Section        0  tc_485.o(i.fsmActionError)
+    fsmActionError                           0x00002741   Thumb Code    24  tc_485.o(i.fsmActionError)
+    i.fsmActionHead                          0x0000275c   Section        0  tc_485.o(i.fsmActionHead)
+    fsmActionHead                            0x0000275d   Thumb Code    38  tc_485.o(i.fsmActionHead)
+    i.fsmActionIdle                          0x00002788   Section        0  tc_485.o(i.fsmActionIdle)
+    fsmActionIdle                            0x00002789   Thumb Code    24  tc_485.o(i.fsmActionIdle)
+    i.fsmActionLen                           0x000027a4   Section        0  tc_485.o(i.fsmActionLen)
+    fsmActionLen                             0x000027a5   Thumb Code    20  tc_485.o(i.fsmActionLen)
+    i.fsmActionParity                        0x000027bc   Section        0  tc_485.o(i.fsmActionParity)
+    fsmActionParity                          0x000027bd   Thumb Code    24  tc_485.o(i.fsmActionParity)
+    i.fsmActionSrc                           0x000027d8   Section        0  tc_485.o(i.fsmActionSrc)
+    fsmActionSrc                             0x000027d9   Thumb Code    26  tc_485.o(i.fsmActionSrc)
+    i.fsmActionType                          0x000027f8   Section        0  tc_485.o(i.fsmActionType)
+    fsmActionType                            0x000027f9   Thumb Code    26  tc_485.o(i.fsmActionType)
+    i.main                                   0x00002818   Section        0  main.o(i.main)
+    i.prvAddCurrentTaskToDelayedList         0x00002878   Section        0  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    prvAddCurrentTaskToDelayedList           0x00002879   Thumb Code   106  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    i.prvAddNewTaskToReadyList               0x000028ec   Section        0  tasks.o(i.prvAddNewTaskToReadyList)
+    prvAddNewTaskToReadyList                 0x000028ed   Thumb Code   240  tasks.o(i.prvAddNewTaskToReadyList)
+    i.prvCheckForValidListAndQueue           0x000029e4   Section        0  timers.o(i.prvCheckForValidListAndQueue)
+    prvCheckForValidListAndQueue             0x000029e5   Thumb Code    54  timers.o(i.prvCheckForValidListAndQueue)
+    i.prvCopyDataFromQueue                   0x00002a24   Section        0  queue.o(i.prvCopyDataFromQueue)
+    prvCopyDataFromQueue                     0x00002a25   Thumb Code    38  queue.o(i.prvCopyDataFromQueue)
+    i.prvCopyDataToQueue                     0x00002a4a   Section        0  queue.o(i.prvCopyDataToQueue)
+    prvCopyDataToQueue                       0x00002a4b   Thumb Code   112  queue.o(i.prvCopyDataToQueue)
+    i.prvDeleteTCB                           0x00002aba   Section        0  tasks.o(i.prvDeleteTCB)
+    prvDeleteTCB                             0x00002abb   Thumb Code    18  tasks.o(i.prvDeleteTCB)
+    i.prvHeapInit                            0x00002acc   Section        0  heap_4.o(i.prvHeapInit)
+    prvHeapInit                              0x00002acd   Thumb Code    54  heap_4.o(i.prvHeapInit)
+    i.prvIdleTask                            0x00002b0c   Section        0  tasks.o(i.prvIdleTask)
+    prvIdleTask                              0x00002b0d   Thumb Code    64  tasks.o(i.prvIdleTask)
+    i.prvInitialiseNewTask                   0x00002b54   Section        0  tasks.o(i.prvInitialiseNewTask)
+    prvInitialiseNewTask                     0x00002b55   Thumb Code   132  tasks.o(i.prvInitialiseNewTask)
+    i.prvInsertBlockIntoFreeList             0x00002bd8   Section        0  heap_4.o(i.prvInsertBlockIntoFreeList)
+    prvInsertBlockIntoFreeList               0x00002bd9   Thumb Code    72  heap_4.o(i.prvInsertBlockIntoFreeList)
+    i.prvInsertTimerInActiveList             0x00002c24   Section        0  timers.o(i.prvInsertTimerInActiveList)
+    prvInsertTimerInActiveList               0x00002c25   Thumb Code    52  timers.o(i.prvInsertTimerInActiveList)
+    i.prvIsQueueEmpty                        0x00002c5c   Section        0  queue.o(i.prvIsQueueEmpty)
+    prvIsQueueEmpty                          0x00002c5d   Thumb Code    28  queue.o(i.prvIsQueueEmpty)
+    i.prvProcessExpiredTimer                 0x00002c78   Section        0  timers.o(i.prvProcessExpiredTimer)
+    prvProcessExpiredTimer                   0x00002c79   Thumb Code    56  timers.o(i.prvProcessExpiredTimer)
+    i.prvProcessReceivedCommands             0x00002cb4   Section        0  timers.o(i.prvProcessReceivedCommands)
+    prvProcessReceivedCommands               0x00002cb5   Thumb Code   216  timers.o(i.prvProcessReceivedCommands)
+    i.prvProcessTimerOrBlockTask             0x00002d90   Section        0  timers.o(i.prvProcessTimerOrBlockTask)
+    prvProcessTimerOrBlockTask               0x00002d91   Thumb Code    92  timers.o(i.prvProcessTimerOrBlockTask)
+    i.prvReloadTimer                         0x00002df0   Section        0  timers.o(i.prvReloadTimer)
+    prvReloadTimer                           0x00002df1   Thumb Code    40  timers.o(i.prvReloadTimer)
+    i.prvResetNextTaskUnblockTime            0x00002e18   Section        0  tasks.o(i.prvResetNextTaskUnblockTime)
+    prvResetNextTaskUnblockTime              0x00002e19   Thumb Code    26  tasks.o(i.prvResetNextTaskUnblockTime)
+    i.prvSampleTimeNow                       0x00002e38   Section        0  timers.o(i.prvSampleTimeNow)
+    prvSampleTimeNow                         0x00002e39   Thumb Code    62  timers.o(i.prvSampleTimeNow)
+    i.prvTaskExitError                       0x00002e7c   Section        0  port.o(i.prvTaskExitError)
+    prvTaskExitError                         0x00002e7d   Thumb Code    14  port.o(i.prvTaskExitError)
+    i.prvTimerTask                           0x00002e90   Section        0  timers.o(i.prvTimerTask)
+    prvTimerTask                             0x00002e91   Thumb Code    38  timers.o(i.prvTimerTask)
+    i.prvUnlockQueue                         0x00002ebc   Section        0  queue.o(i.prvUnlockQueue)
+    prvUnlockQueue                           0x00002ebd   Thumb Code   112  queue.o(i.prvUnlockQueue)
+    i.pvPortMalloc                           0x00002f2c   Section        0  heap_4.o(i.pvPortMalloc)
+    i.pxPortInitialiseStack                  0x00002fd8   Section        0  port.o(i.pxPortInitialiseStack)
+    i.uxListRemove                           0x00002ff8   Section        0  list.o(i.uxListRemove)
+    i.uxTaskGetNumberOfTasks                 0x00003020   Section        0  tasks.o(i.uxTaskGetNumberOfTasks)
+    i.vListInitialise                        0x0000302c   Section        0  list.o(i.vListInitialise)
+    i.vListInitialiseItem                    0x00003042   Section        0  list.o(i.vListInitialiseItem)
+    i.vListInsert                            0x00003048   Section        0  list.o(i.vListInsert)
+    i.vPortEnterCritical                     0x00003078   Section        0  port.o(i.vPortEnterCritical)
+    i.vPortExitCritical                      0x00003090   Section        0  port.o(i.vPortExitCritical)
+    i.vPortFree                              0x000030ac   Section        0  heap_4.o(i.vPortFree)
+    i.vPortSetupTimerInterrupt               0x000030f4   Section        0  port.o(i.vPortSetupTimerInterrupt)
+    i.vPortYield                             0x0000311c   Section        0  port.o(i.vPortYield)
+    i.vQueueWaitForMessageRestricted         0x00003134   Section        0  queue.o(i.vQueueWaitForMessageRestricted)
+    i.vTaskDelay                             0x00003178   Section        0  tasks.o(i.vTaskDelay)
+    i.vTaskInternalSetTimeOutState           0x000031b0   Section        0  tasks.o(i.vTaskInternalSetTimeOutState)
+    i.vTaskMissedYield                       0x000031c0   Section        0  tasks.o(i.vTaskMissedYield)
+    i.vTaskPlaceOnEventList                  0x000031cc   Section        0  tasks.o(i.vTaskPlaceOnEventList)
+    i.vTaskPlaceOnEventListRestricted        0x000031f0   Section        0  tasks.o(i.vTaskPlaceOnEventListRestricted)
+    i.vTaskStartScheduler                    0x00003240   Section        0  tasks.o(i.vTaskStartScheduler)
+    i.vTaskSuspendAll                        0x000032ac   Section        0  tasks.o(i.vTaskSuspendAll)
+    i.vTaskSwitchContext                     0x000032bc   Section        0  tasks.o(i.vTaskSwitchContext)
+    i.xPortStartScheduler                    0x00003328   Section        0  port.o(i.xPortStartScheduler)
+    i.xPortSysTickHandler                    0x00003358   Section        0  port.o(i.xPortSysTickHandler)
+    i.xQueueGenericCreate                    0x0000337c   Section        0  queue.o(i.xQueueGenericCreate)
+    i.xQueueGenericReset                     0x000033da   Section        0  queue.o(i.xQueueGenericReset)
+    i.xQueueGenericSend                      0x00003460   Section        0  queue.o(i.xQueueGenericSend)
+    i.xQueueGenericSendFromISR               0x000035a6   Section        0  queue.o(i.xQueueGenericSendFromISR)
+    i.xQueueReceive                          0x00003664   Section        0  queue.o(i.xQueueReceive)
+    i.xTaskCheckForTimeOut                   0x000037a4   Section        0  tasks.o(i.xTaskCheckForTimeOut)
+    i.xTaskCreate                            0x00003804   Section        0  tasks.o(i.xTaskCreate)
+    i.xTaskGetSchedulerState                 0x00003858   Section        0  tasks.o(i.xTaskGetSchedulerState)
+    i.xTaskGetTickCount                      0x00003878   Section        0  tasks.o(i.xTaskGetTickCount)
+    i.xTaskGetTickCountFromISR               0x00003884   Section        0  tasks.o(i.xTaskGetTickCountFromISR)
+    i.xTaskIncrementTick                     0x00003890   Section        0  tasks.o(i.xTaskIncrementTick)
+    i.xTaskPriorityDisinherit                0x000039b0   Section        0  tasks.o(i.xTaskPriorityDisinherit)
+    i.xTaskRemoveFromEventList               0x00003a44   Section        0  tasks.o(i.xTaskRemoveFromEventList)
+    i.xTaskResumeAll                         0x00003b10   Section        0  tasks.o(i.xTaskResumeAll)
+    i.xTimerCreate                           0x00003c14   Section        0  timers.o(i.xTimerCreate)
+    i.xTimerCreateTimerTask                  0x00003c6c   Section        0  timers.o(i.xTimerCreateTimerTask)
+    i.xTimerGenericCommand                   0x00003cac   Section        0  timers.o(i.xTimerGenericCommand)
+    .constdata                               0x00003cfc   Section        8  SEGGER_SYSVIEW_FreeRTOS.o(.constdata)
+    .constdata                               0x00003d04   Section       17  SEGGER_RTT.o(.constdata)
+    _aInitStr                                0x00003d04   Data          17  SEGGER_RTT.o(.constdata)
+    .constdata                               0x00003d15   Section       26  SEGGER_SYSVIEW.o(.constdata)
+    _abSync                                  0x00003d15   Data          10  SEGGER_SYSVIEW.o(.constdata)
+    _aV2C                                    0x00003d1f   Data          16  SEGGER_SYSVIEW.o(.constdata)
+    .conststring                             0x00003d30   Section       80  SEGGER_SYSVIEW_FreeRTOS.o(.conststring)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     .data                                    0x20000000   Section        9  tc_485.o(.data)
     tmpState                                 0x20000000   Data           1  tc_485.o(.data)
     tmpEvent                                 0x20000001   Data           1  tc_485.o(.data)
@@ -1918,6 +2173,7 @@ Image Symbol Table
     _DownBuffer                              0x200000bc   Data           8  SEGGER_SYSVIEW.o(.data)
     .bss                                     0x200000c4   Section      100  tc_485.o(.bss)
     .bss                                     0x20000128   Section       24  tc_can.o(.bss)
+<<<<<<< HEAD
     .bss                                     0x20000140   Section     3584  heap_4.o(.bss)
     ucHeap                                   0x20000140   Data        3584  heap_4.o(.bss)
     .bss                                     0x20000f40   Section      240  tasks.o(.bss)
@@ -1940,6 +2196,30 @@ Image Symbol Table
     _SYSVIEW_Globals                         0x200015b0   Data          40  SEGGER_SYSVIEW.o(.bss)
     _aPacket                                 0x200015d8   Data         227  SEGGER_SYSVIEW.o(.bss)
     STACK                                    0x200016c0   Section      512  startup_lks32mc08x.o(STACK)
+=======
+    .bss                                     0x20000140   Section     4096  heap_4.o(.bss)
+    ucHeap                                   0x20000140   Data        4096  heap_4.o(.bss)
+    .bss                                     0x20001140   Section      240  tasks.o(.bss)
+    pxReadyTasksLists                        0x20001140   Data         140  tasks.o(.bss)
+    xDelayedTaskList1                        0x200011cc   Data          20  tasks.o(.bss)
+    xDelayedTaskList2                        0x200011e0   Data          20  tasks.o(.bss)
+    xPendingReadyList                        0x200011f4   Data          20  tasks.o(.bss)
+    xTasksWaitingTermination                 0x20001208   Data          20  tasks.o(.bss)
+    xSuspendedTaskList                       0x2000121c   Data          20  tasks.o(.bss)
+    .bss                                     0x20001230   Section       40  timers.o(.bss)
+    xActiveTimerList1                        0x20001230   Data          20  timers.o(.bss)
+    xActiveTimerList2                        0x20001244   Data          20  timers.o(.bss)
+    .bss                                     0x20001258   Section      160  SEGGER_SYSVIEW_FreeRTOS.o(.bss)
+    _aTasks                                  0x20001258   Data         160  SEGGER_SYSVIEW_FreeRTOS.o(.bss)
+    .bss                                     0x200012f8   Section      696  SEGGER_RTT.o(.bss)
+    _acUpBuffer                              0x200013a0   Data         512  SEGGER_RTT.o(.bss)
+    _acDownBuffer                            0x200015a0   Data          16  SEGGER_RTT.o(.bss)
+    .bss                                     0x200015b0   Section      779  SEGGER_SYSVIEW.o(.bss)
+    _UpBuffer                                0x200015b0   Data         512  SEGGER_SYSVIEW.o(.bss)
+    _SYSVIEW_Globals                         0x200017b0   Data          40  SEGGER_SYSVIEW.o(.bss)
+    _aPacket                                 0x200017d8   Data         227  SEGGER_SYSVIEW.o(.bss)
+    STACK                                    0x200018c0   Section      512  startup_lks32mc08x.o(STACK)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
     Global Symbols
 
@@ -2081,6 +2361,7 @@ Image Symbol Table
     SEGGER_SYSVIEW_OnTaskCreate              0x00000ea5   Thumb Code    62  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskCreate)
     SEGGER_SYSVIEW_OnTaskStartExec           0x00000ee9   Thumb Code    62  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStartExec)
     SEGGER_SYSVIEW_OnTaskStartReady          0x00000f2d   Thumb Code    62  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_OnTaskStartReady)
+<<<<<<< HEAD
     SEGGER_SYSVIEW_Print                     0x00000f71   Thumb Code    48  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Print)
     SEGGER_SYSVIEW_RecordSystime             0x00000fa5   Thumb Code    44  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordSystime)
     SEGGER_SYSVIEW_RecordU32                 0x00000fd5   Thumb Code    54  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32)
@@ -2189,6 +2470,115 @@ Image Symbol Table
     SYSVIEW_X_OS_TraceAPI                    0x00003d40   Data           8  SEGGER_SYSVIEW_FreeRTOS.o(.constdata)
     Region$$Table$$Base                      0x00003dc4   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x00003de4   Number         0  anon$$obj.o(Region$$Table)
+=======
+    SEGGER_SYSVIEW_RecordSystime             0x00000f71   Thumb Code    44  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordSystime)
+    SEGGER_SYSVIEW_RecordU32                 0x00000fa1   Thumb Code    54  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32)
+    SEGGER_SYSVIEW_RecordU32x2               0x00000fdd   Thumb Code    74  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x2)
+    SEGGER_SYSVIEW_RecordU32x3               0x0000102d   Thumb Code    92  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x3)
+    SEGGER_SYSVIEW_RecordU32x4               0x0000108d   Thumb Code   112  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordU32x4)
+    SEGGER_SYSVIEW_RecordVoid                0x00001101   Thumb Code    30  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_RecordVoid)
+    SEGGER_SYSVIEW_SendModule                0x00001125   Thumb Code   110  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendModule)
+    SEGGER_SYSVIEW_SendModuleDescription     0x0000119d   Thumb Code    24  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendModuleDescription)
+    SEGGER_SYSVIEW_SendNumModules            0x000011b9   Thumb Code    56  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendNumModules)
+    SEGGER_SYSVIEW_SendSysDesc               0x000011f9   Thumb Code    42  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendSysDesc)
+    SEGGER_SYSVIEW_SendTaskInfo              0x00001229   Thumb Code   182  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendTaskInfo)
+    SEGGER_SYSVIEW_SendTaskList              0x000012e5   Thumb Code    18  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SendTaskList)
+    SEGGER_SYSVIEW_SetRAMBase                0x000012fd   Thumb Code     6  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_SetRAMBase)
+    SEGGER_SYSVIEW_ShrinkId                  0x00001309   Thumb Code     8  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_ShrinkId)
+    SEGGER_SYSVIEW_Start                     0x00001315   Thumb Code   154  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Start)
+    SEGGER_SYSVIEW_Stop                      0x000013b9   Thumb Code    44  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Stop)
+    SEGGER_SYSVIEW_Warn                      0x000013e9   Thumb Code    50  SEGGER_SYSVIEW.o(i.SEGGER_SYSVIEW_Warn)
+    SEGGER_SYSVIEW_X_GetTimestamp            0x00001421   Thumb Code    20  common.o(i.SEGGER_SYSVIEW_X_GetTimestamp)
+    SFF_ID_Filter                            0x0000143d   Thumb Code    90  lks32mc08x_can.o(i.SFF_ID_Filter)
+    SPI0_IRQHandler                          0x0000149d   Thumb Code     2  interrupt.o(i.SPI0_IRQHandler)
+    SVC_Handler                              0x0000149f   Thumb Code     2  port.o(i.SVC_Handler)
+    SYSVIEW_AddTask                          0x000014a1   Thumb Code    84  SEGGER_SYSVIEW_FreeRTOS.o(i.SYSVIEW_AddTask)
+    SYSVIEW_SendTaskInfo                     0x00001509   Thumb Code    38  SEGGER_SYSVIEW_FreeRTOS.o(i.SYSVIEW_SendTaskInfo)
+    SYS_ModuleClockCmd                       0x00001531   Thumb Code    26  lks32mc08x_sys.o(i.SYS_ModuleClockCmd)
+    SoftDelay                                0x00001555   Thumb Code    18  hardware_init.o(i.SoftDelay)
+    SysTick_Handler                          0x00001579   Thumb Code    24  interrupt.o(i.SysTick_Handler)
+    SystemInit                               0x00001595   Thumb Code     8  hardware_init.o(i.SystemInit)
+    TC_485TransmitFrame                      0x000015ad   Thumb Code   110  tc_485.o(i.TC_485TransmitFrame)
+    TC_485_GPIO_Init                         0x00001639   Thumb Code   110  tc_485.o(i.TC_485_GPIO_Init)
+    TC_485_Init                              0x000016ad   Thumb Code    62  tc_485.o(i.TC_485_Init)
+    TC_485_UART_Init                         0x000016f9   Thumb Code    38  tc_485.o(i.TC_485_UART_Init)
+    TC_CAN_GPIO_Init                         0x00001755   Thumb Code    80  tc_can.o(i.TC_CAN_GPIO_Init)
+    TC_CAN_Init                              0x000017a9   Thumb Code    80  tc_can.o(i.TC_CAN_Init)
+    TC_FsmRunningFunc                        0x000017fd   Thumb Code    88  tc_485.o(i.TC_FsmRunningFunc)
+    TC_FsmStateTable_Init                    0x00001871   Thumb Code    92  tc_485.o(i.TC_FsmStateTable_Init)
+    TC_NVIC_Init                             0x00001969   Thumb Code    48  hardware_init.o(i.TC_NVIC_Init)
+    TC_SysTick_Config                        0x000019a1   Thumb Code    58  hardware_init.o(i.TC_SysTick_Config)
+    TC_TimeoutTimer_Init                     0x000019e5   Thumb Code    44  tc_485.o(i.TC_TimeoutTimer_Init)
+    TC_UARTSendBytes                         0x00001a19   Thumb Code    64  tc_uart .o(i.TC_UARTSendBytes)
+    TC_UART_GPIO_Init                        0x00001a65   Thumb Code    82  tc_uart .o(i.TC_UART_GPIO_Init)
+    TC_UART_Init                             0x00001abd   Thumb Code    42  tc_uart .o(i.TC_UART_Init)
+    TIM_TimerCmd                             0x00001aed   Thumb Code   124  lks32mc08x_tim.o(i.TIM_TimerCmd)
+    TIM_TimerInit                            0x00001b6d   Thumb Code   254  lks32mc08x_tim.o(i.TIM_TimerInit)
+    TIM_TimerStrutInit                       0x00001c71   Thumb Code    36  lks32mc08x_tim.o(i.TIM_TimerStrutInit)
+    UART0_IRQHandler                         0x00001c95   Thumb Code    62  interrupt.o(i.UART0_IRQHandler)
+    UART1_IRQHandler                         0x00001cdd   Thumb Code    36  interrupt.o(i.UART1_IRQHandler)
+    UART_ClearIRQFlag                        0x00001d05   Thumb Code     4  lks32mc08x_uart.o(i.UART_ClearIRQFlag)
+    UART_GetIRQFlag                          0x00001d09   Thumb Code    18  lks32mc08x_uart.o(i.UART_GetIRQFlag)
+    UART_Init                                0x00001d1d   Thumb Code   172  lks32mc08x_uart.o(i.UART_Init)
+    UART_SendData                            0x00001ddd   Thumb Code     4  lks32mc08x_uart.o(i.UART_SendData)
+    UART_StructInit                          0x00001de1   Thumb Code    30  lks32mc08x_uart.o(i.UART_StructInit)
+    UTIMER0_IRQHandler                       0x00001dff   Thumb Code     2  interrupt.o(i.UTIMER0_IRQHandler)
+    UTIMER1_IRQHandler                       0x00001e01   Thumb Code     2  interrupt.o(i.UTIMER1_IRQHandler)
+    UTIMER2_IRQHandler                       0x00001e03   Thumb Code     2  interrupt.o(i.UTIMER2_IRQHandler)
+    UTIMER3_IRQHandler                       0x00001e05   Thumb Code     2  interrupt.o(i.UTIMER3_IRQHandler)
+    __0printf$8                              0x000020e9   Thumb Code    24  printf8.o(i.__0printf$8)
+    __1printf$8                              0x000020e9   Thumb Code     0  printf8.o(i.__0printf$8)
+    __2printf                                0x000020e9   Thumb Code     0  printf8.o(i.__0printf$8)
+    __ARM_common_switch8                     0x00002109   Thumb Code    26  tc_485.o(i.__ARM_common_switch8)
+    __scatterload_copy                       0x00002181   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0000218f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00002191   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    fputc                                    0x000026b5   Thumb Code    24  tc_uart .o(i.fputc)
+    main                                     0x00002819   Thumb Code    42  main.o(i.main)
+    pvPortMalloc                             0x00002f2d   Thumb Code   168  heap_4.o(i.pvPortMalloc)
+    pxPortInitialiseStack                    0x00002fd9   Thumb Code    28  port.o(i.pxPortInitialiseStack)
+    uxListRemove                             0x00002ff9   Thumb Code    38  list.o(i.uxListRemove)
+    uxTaskGetNumberOfTasks                   0x00003021   Thumb Code     6  tasks.o(i.uxTaskGetNumberOfTasks)
+    vListInitialise                          0x0000302d   Thumb Code    22  list.o(i.vListInitialise)
+    vListInitialiseItem                      0x00003043   Thumb Code     6  list.o(i.vListInitialiseItem)
+    vListInsert                              0x00003049   Thumb Code    48  list.o(i.vListInsert)
+    vPortEnterCritical                       0x00003079   Thumb Code    20  port.o(i.vPortEnterCritical)
+    vPortExitCritical                        0x00003091   Thumb Code    22  port.o(i.vPortExitCritical)
+    vPortFree                                0x000030ad   Thumb Code    68  heap_4.o(i.vPortFree)
+    vPortSetupTimerInterrupt                 0x000030f5   Thumb Code    32  port.o(i.vPortSetupTimerInterrupt)
+    vPortYield                               0x0000311d   Thumb Code    18  port.o(i.vPortYield)
+    vQueueWaitForMessageRestricted           0x00003135   Thumb Code    68  queue.o(i.vQueueWaitForMessageRestricted)
+    vTaskDelay                               0x00003179   Thumb Code    52  tasks.o(i.vTaskDelay)
+    vTaskInternalSetTimeOutState             0x000031b1   Thumb Code    12  tasks.o(i.vTaskInternalSetTimeOutState)
+    vTaskMissedYield                         0x000031c1   Thumb Code     8  tasks.o(i.vTaskMissedYield)
+    vTaskPlaceOnEventList                    0x000031cd   Thumb Code    32  tasks.o(i.vTaskPlaceOnEventList)
+    vTaskPlaceOnEventListRestricted          0x000031f1   Thumb Code    76  tasks.o(i.vTaskPlaceOnEventListRestricted)
+    vTaskStartScheduler                      0x00003241   Thumb Code    90  tasks.o(i.vTaskStartScheduler)
+    vTaskSuspendAll                          0x000032ad   Thumb Code    10  tasks.o(i.vTaskSuspendAll)
+    vTaskSwitchContext                       0x000032bd   Thumb Code    98  tasks.o(i.vTaskSwitchContext)
+    xPortStartScheduler                      0x00003329   Thumb Code    40  port.o(i.xPortStartScheduler)
+    xPortSysTickHandler                      0x00003359   Thumb Code    32  port.o(i.xPortSysTickHandler)
+    xQueueGenericCreate                      0x0000337d   Thumb Code    94  queue.o(i.xQueueGenericCreate)
+    xQueueGenericReset                       0x000033db   Thumb Code   134  queue.o(i.xQueueGenericReset)
+    xQueueGenericSend                        0x00003461   Thumb Code   326  queue.o(i.xQueueGenericSend)
+    xQueueGenericSendFromISR                 0x000035a7   Thumb Code   190  queue.o(i.xQueueGenericSendFromISR)
+    xQueueReceive                            0x00003665   Thumb Code   320  queue.o(i.xQueueReceive)
+    xTaskCheckForTimeOut                     0x000037a5   Thumb Code    92  tasks.o(i.xTaskCheckForTimeOut)
+    xTaskCreate                              0x00003805   Thumb Code    84  tasks.o(i.xTaskCreate)
+    xTaskGetSchedulerState                   0x00003859   Thumb Code    26  tasks.o(i.xTaskGetSchedulerState)
+    xTaskGetTickCount                        0x00003879   Thumb Code     6  tasks.o(i.xTaskGetTickCount)
+    xTaskGetTickCountFromISR                 0x00003885   Thumb Code     6  tasks.o(i.xTaskGetTickCountFromISR)
+    xTaskIncrementTick                       0x00003891   Thumb Code   280  tasks.o(i.xTaskIncrementTick)
+    xTaskPriorityDisinherit                  0x000039b1   Thumb Code   140  tasks.o(i.xTaskPriorityDisinherit)
+    xTaskRemoveFromEventList                 0x00003a45   Thumb Code   196  tasks.o(i.xTaskRemoveFromEventList)
+    xTaskResumeAll                           0x00003b11   Thumb Code   252  tasks.o(i.xTaskResumeAll)
+    xTimerCreate                             0x00003c15   Thumb Code    88  timers.o(i.xTimerCreate)
+    xTimerCreateTimerTask                    0x00003c6d   Thumb Code    46  timers.o(i.xTimerCreateTimerTask)
+    xTimerGenericCommand                     0x00003cad   Thumb Code    76  timers.o(i.xTimerGenericCommand)
+    SYSVIEW_X_OS_TraceAPI                    0x00003cfc   Data           8  SEGGER_SYSVIEW_FreeRTOS.o(.constdata)
+    Region$$Table$$Base                      0x00003d80   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00003da0   Number         0  anon$$obj.o(Region$$Table)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     tc_485_Transmit                          0x20000002   Data           7  tc_485.o(.data)
     rs485_TxFlag                             0x20000009   Data           1  tc_uart .o(.data)
     __stdout                                 0x2000000c   Data           4  tc_uart .o(.data)
@@ -2207,8 +2597,13 @@ Image Symbol Table
     tc_FsmNodeTable                          0x200000c4   Data          80  tc_485.o(.bss)
     tc_485_Manage                            0x20000114   Data          20  tc_485.o(.bss)
     tc_CAN_Manage_t                          0x20000128   Data          24  tc_can.o(.bss)
+<<<<<<< HEAD
     _SEGGER_RTT                              0x200010f8   Data         168  SEGGER_RTT.o(.bss)
     __initial_sp                             0x200018c0   Data           0  startup_lks32mc08x.o(STACK)
+=======
+    _SEGGER_RTT                              0x200012f8   Data         168  SEGGER_RTT.o(.bss)
+    __initial_sp                             0x20001ac0   Data           0  startup_lks32mc08x.o(STACK)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
 
 
@@ -2218,13 +2613,20 @@ Memory Map of the image
 
   Image Entry point : 0x000000c1
 
+<<<<<<< HEAD
   Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003ea8, Max: 0x00010000, ABSOLUTE)
 
     Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00003de4, Max: 0x00010000, ABSOLUTE)
+=======
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003e64, Max: 0x00010000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00003da0, Max: 0x00010000, ABSOLUTE)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x000000c0   Data   RO         1909    RESET               startup_lks32mc08x.o
+<<<<<<< HEAD
     0x000000c0   0x00000000   Code   RO         3127  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
     0x000000c0   0x00000004   Code   RO         3409    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
     0x000000c4   0x00000004   Code   RO         3412    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
@@ -2250,11 +2652,39 @@ Memory Map of the image
     0x00000392   0x00000002   Code   RO         2100    i.ADC0_IRQHandler   interrupt.o
     0x00000394   0x0000000c   Code   RO         1346    i.CAN_GetIRQFlag    lks32mc08x_can.o
     0x000003a0   0x00000044   Code   RO         2102    i.CAN_IRQHandler    interrupt.o
+=======
+    0x000000c0   0x00000000   Code   RO         3123  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c0   0x00000004   Code   RO         3405    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000c4   0x00000004   Code   RO         3408    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000c8   0x00000000   Code   RO         3410    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000c8   0x00000000   Code   RO         3412    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000c8   0x00000008   Code   RO         3413    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d0   0x00000004   Code   RO         3420    .ARM.Collect$$$$0000000E  mc_p.l(entry12b.o)
+    0x000000d4   0x00000000   Code   RO         3415    .ARM.Collect$$$$0000000F  mc_p.l(entry10a.o)
+    0x000000d4   0x00000000   Code   RO         3417    .ARM.Collect$$$$00000011  mc_p.l(entry11a.o)
+    0x000000d4   0x00000004   Code   RO         3406    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000d8   0x00000078   Code   RO          525    .emb_text           port.o
+    0x00000150   0x00000028   Code   RO         1910    .text               startup_lks32mc08x.o
+    0x00000178   0x0000002c   Code   RO         3126    .text               mc_p.l(uidiv.o)
+    0x000001a4   0x0000004c   Code   RO         3130    .text               mc_p.l(ldiv.o)
+    0x000001f0   0x0000007a   Code   RO         3132    .text               mc_p.l(llmul.o)
+    0x0000026a   0x00000024   Code   RO         3134    .text               mc_p.l(memcpya.o)
+    0x0000028e   0x00000024   Code   RO         3136    .text               mc_p.l(memseta.o)
+    0x000002b2   0x0000001a   Code   RO         3140    .text               mc_p.l(memcmp.o)
+    0x000002cc   0x00000060   Code   RO         3421    .text               mc_p.l(uldiv.o)
+    0x0000032c   0x00000020   Code   RO         3423    .text               mc_p.l(llshl.o)
+    0x0000034c   0x00000024   Code   RO         3436    .text               mc_p.l(init.o)
+    0x00000370   0x00000022   Code   RO         3438    .text               mc_p.l(llushr.o)
+    0x00000392   0x00000002   Code   RO         2096    i.ADC0_IRQHandler   interrupt.o
+    0x00000394   0x0000000c   Code   RO         1346    i.CAN_GetIRQFlag    lks32mc08x_can.o
+    0x000003a0   0x00000044   Code   RO         2098    i.CAN_IRQHandler    interrupt.o
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     0x000003e4   0x00000044   Code   RO         1347    i.CAN_Init          lks32mc08x_can.o
     0x00000428   0x00000008   Code   RO         1352    i.CAN_ReadState     lks32mc08x_can.o
     0x00000430   0x000000b8   Code   RO         1355    i.CAN_Receive_Msg   lks32mc08x_can.o
     0x000004e8   0x0000004c   Code   RO         1356    i.CAN_Sleep         lks32mc08x_can.o
     0x00000534   0x00000016   Code   RO         1357    i.CAN_StructInit    lks32mc08x_can.o
+<<<<<<< HEAD
     0x0000054a   0x00000002   Code   RO         2103    i.CMP_IRQHandler    interrupt.o
     0x0000054c   0x00000026   Code   RO         1917    i.CheckSum          common.o
     0x00000572   0x00000002   PAD
@@ -2263,6 +2693,16 @@ Memory Map of the image
     0x000005a6   0x00000002   Code   RO         2105    i.ENCODER0_IRQHandler  interrupt.o
     0x000005a8   0x00000002   Code   RO         2106    i.ENCODER1_IRQHandler  interrupt.o
     0x000005aa   0x00000002   Code   RO         2107    i.GPIO_IRQHandler   interrupt.o
+=======
+    0x0000054a   0x00000002   Code   RO         2099    i.CMP_IRQHandler    interrupt.o
+    0x0000054c   0x00000026   Code   RO         1917    i.CheckSum          common.o
+    0x00000572   0x00000002   PAD
+    0x00000574   0x00000030   Code   RO         2021    i.Clock_Init        hardware_init.o
+    0x000005a4   0x00000002   Code   RO         2100    i.DMA_IRQHandler    interrupt.o
+    0x000005a6   0x00000002   Code   RO         2101    i.ENCODER0_IRQHandler  interrupt.o
+    0x000005a8   0x00000002   Code   RO         2102    i.ENCODER1_IRQHandler  interrupt.o
+    0x000005aa   0x00000002   Code   RO         2103    i.GPIO_IRQHandler   interrupt.o
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
     0x000005ac   0x0000007c   Code   RO         1500    i.GPIO_Init         lks32mc08x_gpio.o
     0x00000628   0x000000d4   Code   RO         1502    i.GPIO_PinAFConfig  lks32mc08x_gpio.o
     0x000006fc   0x0000000e   Code   RO         1506    i.GPIO_ReadOutputDataBit  lks32mc08x_gpio.o
@@ -2270,6 +2710,7 @@ Memory Map of the image
     0x00000714   0x0000000a   Code   RO         1508    i.GPIO_SetBits      lks32mc08x_gpio.o
     0x0000071e   0x0000000c   Code   RO         1509    i.GPIO_StructInit   lks32mc08x_gpio.o
     0x0000072a   0x00000010   Code   RO         1512    i.GPIO_WriteBit     lks32mc08x_gpio.o
+<<<<<<< HEAD
     0x0000073a   0x00000002   Code   RO         2108    i.HALL_IRQHandler   interrupt.o
     0x0000073c   0x0000001c   Code   RO         2109    i.HardFault_Handler  interrupt.o
     0x00000758   0x000000ac   Code   RO         2026    i.Hardware_Init     hardware_init.o
@@ -2462,6 +2903,199 @@ Memory Map of the image
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000018c0, Max: 0x00002000, ABSOLUTE)
+=======
+    0x0000073a   0x00000002   Code   RO         2104    i.HALL_IRQHandler   interrupt.o
+    0x0000073c   0x0000001c   Code   RO         2105    i.HardFault_Handler  interrupt.o
+    0x00000758   0x000000ac   Code   RO         2022    i.Hardware_Init     hardware_init.o
+    0x00000804   0x00000002   Code   RO         2106    i.I2C0_IRQHandler   interrupt.o
+    0x00000806   0x00000022   Code   RO         2023    i.Invers_GPIO       hardware_init.o
+    0x00000828   0x000002e8   Code   RO         1952    i.LKS_FREERTOS_Init  freertos.o
+    0x00000b10   0x00000002   Code   RO         2107    i.MCPWM_IRQHandler  interrupt.o
+    0x00000b12   0x00000002   PAD
+    0x00000b14   0x000000c8   Code   RO         1361    i.My_CAN_Send_Msg   lks32mc08x_can.o
+    0x00000bdc   0x00000002   Code   RO         2109    i.NMI_Handler       interrupt.o
+    0x00000bde   0x00000002   PAD
+    0x00000be0   0x00000064   Code   RO         2359    i.SEGGER_RTT_AllocUpBuffer  SEGGER_RTT.o
+    0x00000c44   0x00000058   Code   RO         2360    i.SEGGER_RTT_ConfigDownBuffer  SEGGER_RTT.o
+    0x00000c9c   0x00000080   Code   RO         2373    i.SEGGER_RTT_ReadNoLock  SEGGER_RTT.o
+    0x00000d1c   0x0000006c   Code   RO         2387    i.SEGGER_RTT_WriteSkipNoLock  SEGGER_RTT.o
+    0x00000d88   0x00000028   Code   RO         2280    i.SEGGER_SYSVIEW_Conf  SEGGER_SYSVIEW_Config_FreeRTOS.o
+    0x00000db0   0x00000074   Code   RO         2639    i.SEGGER_SYSVIEW_GetSysDesc  SEGGER_SYSVIEW.o
+    0x00000e24   0x0000005c   Code   RO         2644    i.SEGGER_SYSVIEW_Init  SEGGER_SYSVIEW.o
+    0x00000e80   0x00000024   Code   RO         2651    i.SEGGER_SYSVIEW_OnIdle  SEGGER_SYSVIEW.o
+    0x00000ea4   0x00000044   Code   RO         2652    i.SEGGER_SYSVIEW_OnTaskCreate  SEGGER_SYSVIEW.o
+    0x00000ee8   0x00000044   Code   RO         2653    i.SEGGER_SYSVIEW_OnTaskStartExec  SEGGER_SYSVIEW.o
+    0x00000f2c   0x00000044   Code   RO         2654    i.SEGGER_SYSVIEW_OnTaskStartReady  SEGGER_SYSVIEW.o
+    0x00000f70   0x00000030   Code   RO         2672    i.SEGGER_SYSVIEW_RecordSystime  SEGGER_SYSVIEW.o
+    0x00000fa0   0x0000003c   Code   RO         2673    i.SEGGER_SYSVIEW_RecordU32  SEGGER_SYSVIEW.o
+    0x00000fdc   0x00000050   Code   RO         2675    i.SEGGER_SYSVIEW_RecordU32x2  SEGGER_SYSVIEW.o
+    0x0000102c   0x00000060   Code   RO         2676    i.SEGGER_SYSVIEW_RecordU32x3  SEGGER_SYSVIEW.o
+    0x0000108c   0x00000074   Code   RO         2677    i.SEGGER_SYSVIEW_RecordU32x4  SEGGER_SYSVIEW.o
+    0x00001100   0x00000024   Code   RO         2683    i.SEGGER_SYSVIEW_RecordVoid  SEGGER_SYSVIEW.o
+    0x00001124   0x00000078   Code   RO         2685    i.SEGGER_SYSVIEW_SendModule  SEGGER_SYSVIEW.o
+    0x0000119c   0x0000001c   Code   RO         2686    i.SEGGER_SYSVIEW_SendModuleDescription  SEGGER_SYSVIEW.o
+    0x000011b8   0x00000040   Code   RO         2687    i.SEGGER_SYSVIEW_SendNumModules  SEGGER_SYSVIEW.o
+    0x000011f8   0x00000030   Code   RO         2689    i.SEGGER_SYSVIEW_SendSysDesc  SEGGER_SYSVIEW.o
+    0x00001228   0x000000bc   Code   RO         2690    i.SEGGER_SYSVIEW_SendTaskInfo  SEGGER_SYSVIEW.o
+    0x000012e4   0x00000018   Code   RO         2691    i.SEGGER_SYSVIEW_SendTaskList  SEGGER_SYSVIEW.o
+    0x000012fc   0x0000000c   Code   RO         2692    i.SEGGER_SYSVIEW_SetRAMBase  SEGGER_SYSVIEW.o
+    0x00001308   0x0000000c   Code   RO         2693    i.SEGGER_SYSVIEW_ShrinkId  SEGGER_SYSVIEW.o
+    0x00001314   0x000000a4   Code   RO         2694    i.SEGGER_SYSVIEW_Start  SEGGER_SYSVIEW.o
+    0x000013b8   0x00000030   Code   RO         2695    i.SEGGER_SYSVIEW_Stop  SEGGER_SYSVIEW.o
+    0x000013e8   0x00000038   Code   RO         2696    i.SEGGER_SYSVIEW_Warn  SEGGER_SYSVIEW.o
+    0x00001420   0x0000001c   Code   RO         1918    i.SEGGER_SYSVIEW_X_GetTimestamp  common.o
+    0x0000143c   0x00000060   Code   RO         1362    i.SFF_ID_Filter     lks32mc08x_can.o
+    0x0000149c   0x00000002   Code   RO         2110    i.SPI0_IRQHandler   interrupt.o
+    0x0000149e   0x00000002   Code   RO          526    i.SVC_Handler       port.o
+    0x000014a0   0x00000068   Code   RO         2306    i.SYSVIEW_AddTask   SEGGER_SYSVIEW_FreeRTOS.o
+    0x00001508   0x00000026   Code   RO         2308    i.SYSVIEW_SendTaskInfo  SEGGER_SYSVIEW_FreeRTOS.o
+    0x0000152e   0x00000002   PAD
+    0x00001530   0x00000024   Code   RO         1644    i.SYS_ModuleClockCmd  lks32mc08x_sys.o
+    0x00001554   0x00000012   Code   RO         2024    i.SoftDelay         hardware_init.o
+    0x00001566   0x00000002   PAD
+    0x00001568   0x00000010   Code   RO         1953    i.SysLedTimerCallback  freertos.o
+    0x00001578   0x0000001c   Code   RO         2112    i.SysTick_Handler   interrupt.o
+    0x00001594   0x00000008   Code   RO         2025    i.SystemInit        hardware_init.o
+    0x0000159c   0x00000010   Code   RO         1954    i.TC_485RxTaskFunc  freertos.o
+    0x000015ac   0x0000007c   Code   RO            3    i.TC_485TransmitFrame  tc_485.o
+    0x00001628   0x00000010   Code   RO         1955    i.TC_485TxTaskFunc  freertos.o
+    0x00001638   0x00000074   Code   RO            4    i.TC_485_GPIO_Init  tc_485.o
+    0x000016ac   0x0000004c   Code   RO            5    i.TC_485_Init       tc_485.o
+    0x000016f8   0x0000002c   Code   RO            6    i.TC_485_UART_Init  tc_485.o
+    0x00001724   0x0000000c   Code   RO         1956    i.TC_CANRxTaskFunc  freertos.o
+    0x00001730   0x00000024   Code   RO         1957    i.TC_CANTxTaskFunc  freertos.o
+    0x00001754   0x00000054   Code   RO          237    i.TC_CAN_GPIO_Init  tc_can.o
+    0x000017a8   0x00000054   Code   RO          238    i.TC_CAN_Init       tc_can.o
+    0x000017fc   0x00000074   Code   RO            7    i.TC_FsmRunningFunc  tc_485.o
+    0x00001870   0x00000088   Code   RO            8    i.TC_FsmStateTable_Init  tc_485.o
+    0x000018f8   0x00000070   Code   RO            9    i.TC_GetCurEvent    tc_485.o
+    0x00001968   0x00000038   Code   RO         2026    i.TC_NVIC_Init      hardware_init.o
+    0x000019a0   0x00000044   Code   RO         2027    i.TC_SysTick_Config  hardware_init.o
+    0x000019e4   0x00000034   Code   RO           10    i.TC_TimeoutTimer_Init  tc_485.o
+    0x00001a18   0x0000004c   Code   RO          280    i.TC_UARTSendBytes  tc_uart .o
+    0x00001a64   0x00000058   Code   RO          282    i.TC_UART_GPIO_Init  tc_uart .o
+    0x00001abc   0x00000030   Code   RO          283    i.TC_UART_Init      tc_uart .o
+    0x00001aec   0x00000080   Code   RO         1757    i.TIM_TimerCmd      lks32mc08x_tim.o
+    0x00001b6c   0x00000104   Code   RO         1758    i.TIM_TimerInit     lks32mc08x_tim.o
+    0x00001c70   0x00000024   Code   RO         1759    i.TIM_TimerStrutInit  lks32mc08x_tim.o
+    0x00001c94   0x00000048   Code   RO         2113    i.UART0_IRQHandler  interrupt.o
+    0x00001cdc   0x00000028   Code   RO         2114    i.UART1_IRQHandler  interrupt.o
+    0x00001d04   0x00000004   Code   RO         1847    i.UART_ClearIRQFlag  lks32mc08x_uart.o
+    0x00001d08   0x00000012   Code   RO         1848    i.UART_GetIRQFlag   lks32mc08x_uart.o
+    0x00001d1a   0x00000002   PAD
+    0x00001d1c   0x000000c0   Code   RO         1849    i.UART_Init         lks32mc08x_uart.o
+    0x00001ddc   0x00000004   Code   RO         1852    i.UART_SendData     lks32mc08x_uart.o
+    0x00001de0   0x0000001e   Code   RO         1854    i.UART_StructInit   lks32mc08x_uart.o
+    0x00001dfe   0x00000002   Code   RO         2115    i.UTIMER0_IRQHandler  interrupt.o
+    0x00001e00   0x00000002   Code   RO         2116    i.UTIMER1_IRQHandler  interrupt.o
+    0x00001e02   0x00000002   Code   RO         2117    i.UTIMER2_IRQHandler  interrupt.o
+    0x00001e04   0x00000002   Code   RO         2118    i.UTIMER3_IRQHandler  interrupt.o
+    0x00001e06   0x00000002   PAD
+    0x00001e08   0x00000068   Code   RO         2390    i._DoInit           SEGGER_RTT.o
+    0x00001e70   0x00000042   Code   RO         2699    i._EncodeStr        SEGGER_SYSVIEW.o
+    0x00001eb2   0x00000002   PAD
+    0x00001eb4   0x00000094   Code   RO         2700    i._HandleIncomingPacket  SEGGER_SYSVIEW.o
+    0x00001f48   0x00000138   Code   RO         2703    i._SendPacket       SEGGER_SYSVIEW.o
+    0x00002080   0x00000068   Code   RO         2705    i._TrySendOverflowPacket  SEGGER_SYSVIEW.o
+    0x000020e8   0x00000020   Code   RO         3351    i.__0printf$8       mc_p.l(printf8.o)
+    0x00002108   0x0000001a   Code   RO          114    i.__ARM_common_switch8  tc_485.o
+    0x00002122   0x00000002   PAD
+    0x00002124   0x00000018   Code   RO         2028    i.__NVIC_EnableIRQ  hardware_init.o
+    0x0000213c   0x00000044   Code   RO         2029    i.__NVIC_SetPriority  hardware_init.o
+    0x00002180   0x0000000e   Code   RO         3448    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x0000218e   0x00000002   Code   RO         3449    i.__scatterload_null  mc_p.l(handlers.o)
+    0x00002190   0x0000000e   Code   RO         3450    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x0000219e   0x00000014   Code   RO         2310    i._cbGetTime        SEGGER_SYSVIEW_FreeRTOS.o
+    0x000021b2   0x00000002   PAD
+    0x000021b4   0x00000058   Code   RO         2281    i._cbSendSystemDesc  SEGGER_SYSVIEW_Config_FreeRTOS.o
+    0x0000220c   0x00000034   Code   RO         2311    i._cbSendTaskList   SEGGER_SYSVIEW_FreeRTOS.o
+    0x00002240   0x00000428   Code   RO         3358    i._printf_core      mc_p.l(printf8.o)
+    0x00002668   0x00000020   Code   RO         3359    i._printf_post_padding  mc_p.l(printf8.o)
+    0x00002688   0x0000002c   Code   RO         3360    i._printf_pre_padding  mc_p.l(printf8.o)
+    0x000026b4   0x0000001c   Code   RO          285    i.fputc             tc_uart .o
+    0x000026d0   0x00000018   Code   RO           11    i.fsmActionData1    tc_485.o
+    0x000026e8   0x00000038   Code   RO           12    i.fsmActionData2    tc_485.o
+    0x00002720   0x00000020   Code   RO           13    i.fsmActionDst      tc_485.o
+    0x00002740   0x0000001c   Code   RO           14    i.fsmActionError    tc_485.o
+    0x0000275c   0x0000002c   Code   RO           15    i.fsmActionHead     tc_485.o
+    0x00002788   0x0000001c   Code   RO           16    i.fsmActionIdle     tc_485.o
+    0x000027a4   0x00000018   Code   RO           17    i.fsmActionLen      tc_485.o
+    0x000027bc   0x0000001c   Code   RO           18    i.fsmActionParity   tc_485.o
+    0x000027d8   0x00000020   Code   RO           19    i.fsmActionSrc      tc_485.o
+    0x000027f8   0x00000020   Code   RO           20    i.fsmActionType     tc_485.o
+    0x00002818   0x00000060   Code   RO         2257    i.main              main.o
+    0x00002878   0x00000074   Code   RO          785    i.prvAddCurrentTaskToDelayedList  tasks.o
+    0x000028ec   0x000000f8   Code   RO          786    i.prvAddNewTaskToReadyList  tasks.o
+    0x000029e4   0x00000040   Code   RO         1150    i.prvCheckForValidListAndQueue  timers.o
+    0x00002a24   0x00000026   Code   RO          620    i.prvCopyDataFromQueue  queue.o
+    0x00002a4a   0x00000070   Code   RO          621    i.prvCopyDataToQueue  queue.o
+    0x00002aba   0x00000012   Code   RO          787    i.prvDeleteTCB      tasks.o
+    0x00002acc   0x00000040   Code   RO          453    i.prvHeapInit       heap_4.o
+    0x00002b0c   0x00000048   Code   RO          788    i.prvIdleTask       tasks.o
+    0x00002b54   0x00000084   Code   RO          789    i.prvInitialiseNewTask  tasks.o
+    0x00002bd8   0x0000004c   Code   RO          454    i.prvInsertBlockIntoFreeList  heap_4.o
+    0x00002c24   0x00000038   Code   RO         1151    i.prvInsertTimerInActiveList  timers.o
+    0x00002c5c   0x0000001c   Code   RO          622    i.prvIsQueueEmpty   queue.o
+    0x00002c78   0x0000003c   Code   RO         1152    i.prvProcessExpiredTimer  timers.o
+    0x00002cb4   0x000000dc   Code   RO         1153    i.prvProcessReceivedCommands  timers.o
+    0x00002d90   0x00000060   Code   RO         1154    i.prvProcessTimerOrBlockTask  timers.o
+    0x00002df0   0x00000028   Code   RO         1155    i.prvReloadTimer    timers.o
+    0x00002e18   0x00000020   Code   RO          791    i.prvResetNextTaskUnblockTime  tasks.o
+    0x00002e38   0x00000044   Code   RO         1156    i.prvSampleTimeNow  timers.o
+    0x00002e7c   0x00000014   Code   RO          527    i.prvTaskExitError  port.o
+    0x00002e90   0x0000002c   Code   RO         1157    i.prvTimerTask      timers.o
+    0x00002ebc   0x00000070   Code   RO          623    i.prvUnlockQueue    queue.o
+    0x00002f2c   0x000000ac   Code   RO          456    i.pvPortMalloc      heap_4.o
+    0x00002fd8   0x00000020   Code   RO          528    i.pxPortInitialiseStack  port.o
+    0x00002ff8   0x00000026   Code   RO          346    i.uxListRemove      list.o
+    0x0000301e   0x00000002   PAD
+    0x00003020   0x0000000c   Code   RO          796    i.uxTaskGetNumberOfTasks  tasks.o
+    0x0000302c   0x00000016   Code   RO          347    i.vListInitialise   list.o
+    0x00003042   0x00000006   Code   RO          348    i.vListInitialiseItem  list.o
+    0x00003048   0x00000030   Code   RO          349    i.vListInsert       list.o
+    0x00003078   0x00000018   Code   RO          530    i.vPortEnterCritical  port.o
+    0x00003090   0x0000001c   Code   RO          531    i.vPortExitCritical  port.o
+    0x000030ac   0x00000048   Code   RO          457    i.vPortFree         heap_4.o
+    0x000030f4   0x00000028   Code   RO          532    i.vPortSetupTimerInterrupt  port.o
+    0x0000311c   0x00000018   Code   RO          533    i.vPortYield        port.o
+    0x00003134   0x00000044   Code   RO          631    i.vQueueWaitForMessageRestricted  queue.o
+    0x00003178   0x00000038   Code   RO          802    i.vTaskDelay        tasks.o
+    0x000031b0   0x00000010   Code   RO          807    i.vTaskInternalSetTimeOutState  tasks.o
+    0x000031c0   0x0000000c   Code   RO          808    i.vTaskMissedYield  tasks.o
+    0x000031cc   0x00000024   Code   RO          809    i.vTaskPlaceOnEventList  tasks.o
+    0x000031f0   0x00000050   Code   RO          810    i.vTaskPlaceOnEventListRestricted  tasks.o
+    0x00003240   0x0000006c   Code   RO          818    i.vTaskStartScheduler  tasks.o
+    0x000032ac   0x00000010   Code   RO          820    i.vTaskSuspendAll   tasks.o
+    0x000032bc   0x0000006c   Code   RO          821    i.vTaskSwitchContext  tasks.o
+    0x00003328   0x00000030   Code   RO          534    i.xPortStartScheduler  port.o
+    0x00003358   0x00000024   Code   RO          535    i.xPortSysTickHandler  port.o
+    0x0000337c   0x0000005e   Code   RO          633    i.xQueueGenericCreate  queue.o
+    0x000033da   0x00000086   Code   RO          634    i.xQueueGenericReset  queue.o
+    0x00003460   0x00000146   Code   RO          635    i.xQueueGenericSend  queue.o
+    0x000035a6   0x000000be   Code   RO          636    i.xQueueGenericSendFromISR  queue.o
+    0x00003664   0x00000140   Code   RO          642    i.xQueueReceive     queue.o
+    0x000037a4   0x00000060   Code   RO          823    i.xTaskCheckForTimeOut  tasks.o
+    0x00003804   0x00000054   Code   RO          824    i.xTaskCreate       tasks.o
+    0x00003858   0x00000020   Code   RO          832    i.xTaskGetSchedulerState  tasks.o
+    0x00003878   0x0000000c   Code   RO          833    i.xTaskGetTickCount  tasks.o
+    0x00003884   0x0000000c   Code   RO          834    i.xTaskGetTickCountFromISR  tasks.o
+    0x00003890   0x00000120   Code   RO          835    i.xTaskIncrementTick  tasks.o
+    0x000039b0   0x00000094   Code   RO          836    i.xTaskPriorityDisinherit  tasks.o
+    0x00003a44   0x000000cc   Code   RO          838    i.xTaskRemoveFromEventList  tasks.o
+    0x00003b10   0x00000104   Code   RO          839    i.xTaskResumeAll    tasks.o
+    0x00003c14   0x00000058   Code   RO         1164    i.xTimerCreate      timers.o
+    0x00003c6c   0x00000040   Code   RO         1165    i.xTimerCreateTimerTask  timers.o
+    0x00003cac   0x00000050   Code   RO         1166    i.xTimerGenericCommand  timers.o
+    0x00003cfc   0x00000008   Data   RO         2313    .constdata          SEGGER_SYSVIEW_FreeRTOS.o
+    0x00003d04   0x00000011   Data   RO         2396    .constdata          SEGGER_RTT.o
+    0x00003d15   0x0000001a   Data   RO         2709    .constdata          SEGGER_SYSVIEW.o
+    0x00003d2f   0x00000001   PAD
+    0x00003d30   0x00000050   Data   RO         2314    .conststring        SEGGER_SYSVIEW_FreeRTOS.o
+    0x00003d80   0x00000020   Data   RO         3446    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001ac0, Max: 0x00002000, ABSOLUTE)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2474,6 +3108,7 @@ Memory Map of the image
     0x20000030   0x00000040   Data   RW          842    .data               tasks.o
     0x20000070   0x00000014   Data   RW         1173    .data               timers.o
     0x20000084   0x00000024   Data   RW         1958    .data               freertos.o
+<<<<<<< HEAD
     0x200000a8   0x00000004   Data   RW         2034    .data               hardware_init.o
     0x200000ac   0x00000004   Data   RW         2319    .data               SEGGER_SYSVIEW_FreeRTOS.o
     0x200000b0   0x00000004   Data   RW         2714    .data               SEGGER_SYSVIEW.o
@@ -2488,6 +3123,22 @@ Memory Map of the image
     0x200013b0   0x0000030b   Zero   RW         2712    .bss                SEGGER_SYSVIEW.o
     0x200016bb   0x00000005   PAD
     0x200016c0   0x00000200   Zero   RW         1907    STACK               startup_lks32mc08x.o
+=======
+    0x200000a8   0x00000004   Data   RW         2030    .data               hardware_init.o
+    0x200000ac   0x00000004   Data   RW         2315    .data               SEGGER_SYSVIEW_FreeRTOS.o
+    0x200000b0   0x00000004   Data   RW         2710    .data               SEGGER_SYSVIEW.o
+    0x200000b4   0x00000010   Data   RW         2712    .data               SEGGER_SYSVIEW.o
+    0x200000c4   0x00000064   Zero   RW           21    .bss                tc_485.o
+    0x20000128   0x00000018   Zero   RW          240    .bss                tc_can.o
+    0x20000140   0x00001000   Zero   RW          462    .bss                heap_4.o
+    0x20001140   0x000000f0   Zero   RW          841    .bss                tasks.o
+    0x20001230   0x00000028   Zero   RW         1172    .bss                timers.o
+    0x20001258   0x000000a0   Zero   RW         2312    .bss                SEGGER_SYSVIEW_FreeRTOS.o
+    0x200012f8   0x000002b8   Zero   RW         2395    .bss                SEGGER_RTT.o
+    0x200015b0   0x0000030b   Zero   RW         2708    .bss                SEGGER_SYSVIEW.o
+    0x200018bb   0x00000005   PAD
+    0x200018c0   0x00000200   Zero   RW         1907    STACK               startup_lks32mc08x.o
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
 
 ==============================================================================
@@ -2497,6 +3148,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
+<<<<<<< HEAD
        528         44         17          0        696      10276   SEGGER_RTT.o
       2330        172         26         20        779      32788   SEGGER_SYSVIEW.o
        128         86          0          0          0       1062   SEGGER_SYSVIEW_Config_FreeRTOS.o
@@ -2524,6 +3176,35 @@ Image component sizes
 
     ----------------------------------------------------------------------
      13724       1716        356        196       6140     241827   Object Totals
+=======
+       528         44         17          0        696      10312   SEGGER_RTT.o
+      2278        168         26         20        779      32069   SEGGER_SYSVIEW.o
+       128         86          0          0          0       1070   SEGGER_SYSVIEW_Config_FreeRTOS.o
+       214         30         88          4        160       3921   SEGGER_SYSVIEW_FreeRTOS.o
+        66          8          0          0          0       1700   common.o
+       840        508          0         36          0       5786   freertos.o
+       496        114          0          4          0      12967   hardware_init.o
+       384         22          0         28       4096      10939   heap_4.o
+       266         34          0          0          0       9206   interrupt.o
+       114          0          0          0          0      16349   list.o
+       666         44          0          0          0       6045   lks32mc08x_can.o
+       398         28          0          0          0       5166   lks32mc08x_gpio.o
+        36         10          0          0          0        585   lks32mc08x_sys.o
+       424         10          0          0          0       2996   lks32mc08x_tim.o
+       248         20          0          0          0       3548   lks32mc08x_uart.o
+        96         54          0          0          0        455   main.o
+       374         56          0          4          0       6991   port.o
+      1422          0          0          0          0      13939   queue.o
+        40         14        192          0        512        668   startup_lks32mc08x.o
+      2198        146          0         64        240      28926   tasks.o
+      1130        194          0          9        100      47318   tc_485.o
+       168          8          0          0         24       2358   tc_can.o
+       240         28          0          5          0       4238   tc_uart .o
+       880         72          0         20         40      14588   timers.o
+
+    ----------------------------------------------------------------------
+     13656       1698        356        196       6652     242140   Object Totals
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
          0          0         32          0          0          0   (incl. Generated)
         22          0          1          2          5          0   (incl. Padding)
 
@@ -2573,6 +3254,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
+<<<<<<< HEAD
      15488       1784        356        196       6140     234511   Grand Totals
      15488       1784        356        196       6140     234511   ELF Image Totals
      15488       1784        356        196          0          0   ROM Totals
@@ -2582,6 +3264,17 @@ Image component sizes
     Total RO  Size (Code + RO Data)                15844 (  15.47kB)
     Total RW  Size (RW Data + ZI Data)              6336 (   6.19kB)
     Total ROM Size (Code + RO Data + RW Data)      16040 (  15.66kB)
+=======
+     15420       1766        356        196       6652     234868   Grand Totals
+     15420       1766        356        196       6652     234868   ELF Image Totals
+     15420       1766        356        196          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                15776 (  15.41kB)
+    Total RW  Size (RW Data + ZI Data)              6848 (   6.69kB)
+    Total ROM Size (Code + RO Data + RW Data)      15972 (  15.60kB)
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
 
 ==============================================================================
 

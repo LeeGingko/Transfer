@@ -6,4 +6,8 @@
 
 >>> ld
 
+<<<<<<< HEAD
 Program Size: Code=15488 RO-data=356 RW-data=196 ZI-data=6140  
+=======
+Program Size: Code=15412 RO-data=356 RW-data=196 ZI-data=6652  
+>>>>>>> f8c360a7820f93a4e56c75a85ac7587a560943c0
