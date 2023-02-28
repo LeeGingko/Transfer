@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>.\System\Src\common.c</FilePath>
             </File>
+            <File>
+              <FileName>datastream.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\Src\datastream.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

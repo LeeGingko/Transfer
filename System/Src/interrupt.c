@@ -60,7 +60,8 @@ void NMI_Handler(void)
 
     /* USER CODE END NonMaskableInt_IRQn 0 */
     /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
-    while (1) {
+    while (1)
+    {
     }
     /* USER CODE END NonMaskableInt_IRQn 1 */
 }
@@ -73,7 +74,8 @@ void HardFault_Handler(void)
     /* USER CODE BEGIN HardFault_IRQn 0 */
 
     /* USER CODE END HardFault_IRQn 0 */
-    while (1) {
+    while (1)
+    {
         /* USER CODE BEGIN W1_HardFault_IRQn 0 */
         SoftDelay(6400000);
         Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
@@ -89,7 +91,8 @@ void MemManage_Handler(void)
     /* USER CODE BEGIN MemoryManagement_IRQn 0 */
 
     /* USER CODE END MemoryManagement_IRQn 0 */
-    while (1) {
+    while (1)
+    {
         /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
         /* USER CODE END W1_MemoryManagement_IRQn 0 */
     }
@@ -103,7 +106,8 @@ void BusFault_Handler(void)
     /* USER CODE BEGIN BusFault_IRQn 0 */
 
     /* USER CODE END BusFault_IRQn 0 */
-    while (1) {
+    while (1)
+    {
         /* USER CODE BEGIN W1_BusFault_IRQn 0 */
         SoftDelay(3200000);
         Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
@@ -119,7 +123,8 @@ void UsageFault_Handler(void)
     /* USER CODE BEGIN UsageFault_IRQn 0 */
 
     /* USER CODE END UsageFault_IRQn 0 */
-    while (1) {
+    while (1)
+    {
         /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
         SoftDelay(1600000);
         Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
@@ -146,13 +151,17 @@ void CAN_IRQHandler(void)
     reg_sr = CAN_GetIRQFlag();  /*读取中断状态寄存器*/
     if (reg_sr & CAN_IF_TXDONE) /*发送完毕当前帧*/
     {
+
         test = 1;
     }
     if (reg_sr & CAN_IF_WERR) /*错误报警中断标志*/
     {
-        if (CAN_ReadState(CAN, CAN_ERROV)) { /*CAN传输产生的错误总数达到或超过CAN_EWL规定值*/
+        if (CAN_ReadState(CAN, CAN_ERROV))
+        { /*CAN传输产生的错误总数达到或超过CAN_EWL规定值*/
             tc_CAN_Manage_t.f_error_alarm |= 0X01;
-        } else { /*CAN 传输产生的错误总数低于 CAN_EWL 规定值*/
+        }
+        else
+        { /*CAN 传输产生的错误总数低于 CAN_EWL 规定值*/
             tc_CAN_Manage_t.f_error_alarm &= ~0X01;
         }
     }
@@ -458,21 +467,24 @@ void UART0_IRQHandler(void)
 {
     volatile u8 val;
 
-    if (UART0_IF & UART_IF_StopError) {
+    if (UART0_IF & UART_IF_StopError)
+    {
         UART0_IF = UART_IF_StopError;
     }
-    if (UART0_IF & UART_IRQEna_CheckError) {
+    if (UART0_IF & UART_IRQEna_CheckError)
+    {
         UART0_IF = UART_IRQEna_CheckError;
     }
-    if (UART0_IF & UART_IF_RcvOver) {
+    if (UART0_IF & UART_IF_RcvOver)
+    {
 
         UART0_IF = UART_IF_RcvOver;
         val      = UART0_BUFF & 0xFF;
         TC_FsmRunningFunc(val);
     }
-    if (UART0_IF & UART_IF_SendOver) {
-        UART0_IF     = UART_IF_SendOver;
-        // rs485_TxFlag = 1;
+    if (UART0_IF & UART_IF_SendOver)
+    {
+        UART0_IF = UART_IF_SendOver;
     }
 }
 

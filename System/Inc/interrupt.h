@@ -22,14 +22,14 @@
  * ÐÞ¸ÄÄÚÈÝ£º
  *
  *******************************************************************************/
- 
+
 #ifndef __INTERRUPT_H
 #define __INTERRUPT_H
 
 void SleepTimer_IRQHandler(void);
-void GPIO_IRQHandler      (void);
-void CSX_IRQHandler       (void);
-void I2C0_IRQHandler      (void);
+void GPIO_IRQHandler(void);
+void CSX_IRQHandler(void);
+void I2C0_IRQHandler(void);
 
 void SleepTimer_IRQHandler(void);
 void GPIO_IRQHandler(void);
@@ -52,7 +52,5 @@ void ADC0_IRQHandler(void);
 void MCPWM_IRQHandler(void);
 
 #endif
-
-
 
 /************************ (C) COPYRIGHT LINKO SEMICONDUCTOR *****END OF FILE****/

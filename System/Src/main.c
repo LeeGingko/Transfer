@@ -35,7 +35,8 @@ int main(void)
     /* Start RTOS Scheduler */
     vTaskStartScheduler();
     /* Main Loop */
-    while (1) { // 任务调度开启后永远不会进入主循环
+    while (1) /* 任务调度开启后永远不会进入主循环 */
+    {
         printf("vTaskStartScheduler();: Not enough RAM!\r\n");
         Invers_GPIO(SYS_LED_PORT, SYS_LED_PIN);
         SoftDelay(6400000);

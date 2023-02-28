@@ -5,8 +5,6 @@
 /* USER INCLUDE FILES END */
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ---------------------------------------------------------------------- */
-#define RS485_EN_PORT GPIO0
-#define RS485_EN_PIN  GPIO_Pin_11
 
 /* USER DEFINED MACROS END */
 /* USER DEFINED TYPEDEFINE BEGIN */
@@ -18,9 +16,9 @@
 /* Defined Variables --------------------------------------------------------------------- */
 u8 rs485_Rx[RS485_RX_LEN];
 
-TC_FsmStateNode_t tc_FsmNodeTable[10];  /* 状态机状态节点表 */
-TC_485Manage_t tc_485_Manage;           /* 485接收管理函数 */
-TC_485Transmit_t tc_485_Transmit = {0}; /* 485发送帧结构体 */
+TC_FsmStateNode_t tc_FsmNodeTable[10];   /* 状态机状态节点表 */
+TC_485Manage_t    tc_485_Manage;         /* 485接收管理函数 */
+TC_485Transmit_t  tc_485_Transmit = {0}; /* 485发送帧结构体 */
 /* USER DEFINED VARIABLES END */
 
 /* USER DEFINED FROTOTYPES BEGIN */
@@ -95,7 +93,7 @@ void TC_485_GPIO_Init(void)
     GPIO_StructInit(&GPIO_InitStruct); // 初始化结构体
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStruct.GPIO_Pin  = RS485_EN_PIN;
-    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(RS485_EN_PORT, &GPIO_InitStruct);
 }
 
@@ -141,7 +139,7 @@ TmOpState TC_485TransmitFrame(void)
 
     RS485_SWITCHTO(RS485_TX_EN);
 
-    tc_485_Transmit.f_head = F485_HEAD;
+    tc_485_Transmit.f_head = F485_CMD_HEAD;
     tc_485_Transmit.f_src  = F485_TENS;
     tc_485_Transmit.f_dst  = F485_MAIN;
     tc_485_Transmit.f_type = F485_DATA;
@@ -149,16 +147,19 @@ TmOpState TC_485TransmitFrame(void)
     tc_485_Transmit.f_data = 0x00;
 
     chk = CheckSum((u8 *)&tc_485_Transmit, 6);
-    if (chk == -1) {
+    if (chk == -1)
+    {
         RS485_SWITCHTO(RS485_RX_EN);
         return tmChErr;
     }
     tc_485_Transmit.f_pari = (chk & 0xFF);
 
-    if (TC_UARTSendBytes(UART0, (u8 *)&tc_485_Transmit, 7) == tmErr) {
+    if (TC_UARTSendBytes(UART0, (u8 *)&tc_485_Transmit, 7) == tmErr)
+    {
         RS485_SWITCHTO(RS485_RX_EN);
         return tmErr;
     }
+
     RS485_SWITCHTO(RS485_RX_EN);
 
     return tmOk;
@@ -235,9 +236,10 @@ void TC_485_Init(void)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionIdle(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveHead:
-            tc_485_Manage.f_head                 = F485_HEAD;
+            tc_485_Manage.f_head                 = F485_DAT_HEAD;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaHead;
             break;
         case fsmEveIdle:
@@ -261,9 +263,10 @@ static TC_485FsmState_t fsmActionIdle(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionHead(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveHead:
-            tc_485_Manage.f_head                 = F485_HEAD;
+            tc_485_Manage.f_head                 = F485_DAT_HEAD;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaHead;
             break;
         case fsmEveSrc:
@@ -291,7 +294,8 @@ static TC_485FsmState_t fsmActionHead(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionSrc(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveDst:
             tc_485_Manage.f_dst                  = F485_TENS;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaDst;
@@ -317,7 +321,8 @@ static TC_485FsmState_t fsmActionSrc(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionDst(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveType:
             tc_485_Manage.f_type                 = F485_UPDA;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaType;
@@ -343,7 +348,8 @@ static TC_485FsmState_t fsmActionDst(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionType(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveLen:
             tc_485_Manage.f_len                  = 0x02;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaLen;
@@ -369,7 +375,8 @@ static TC_485FsmState_t fsmActionType(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionLen(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveDat1:
             tc_485_Manage.f_data[0]              = *pData;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaDat1;
@@ -392,7 +399,8 @@ static TC_485FsmState_t fsmActionLen(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionData1(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveDat2:
             tc_485_Manage.f_data[1]              = *pData;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaDat2;
@@ -415,7 +423,8 @@ static TC_485FsmState_t fsmActionData1(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionData2(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEvePari:
             tc_485_Manage.f_pari                 = *pData;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaPari;
@@ -442,9 +451,10 @@ static TC_485FsmState_t fsmActionData2(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionParity(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveHead:
-            tc_485_Manage.f_head                 = F485_HEAD;
+            tc_485_Manage.f_head                 = F485_DAT_HEAD;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaHead;
             break;
         case fsmEveIdle:
@@ -468,9 +478,10 @@ static TC_485FsmState_t fsmActionParity(TC_485FsmEvent_t *pEvent, u8 *pData)
  *--------------------------------------------------------------------------------------------*/
 static TC_485FsmState_t fsmActionError(TC_485FsmEvent_t *pEvent, u8 *pData)
 {
-    switch (*pEvent) {
+    switch (*pEvent)
+    {
         case fsmEveHead:
-            tc_485_Manage.f_head                 = F485_HEAD;
+            tc_485_Manage.f_head                 = F485_DAT_HEAD;
             tc_485_Manage.fsmCurNode.fsmNexState = fsmStaHead;
             break;
         case fsmEveIdle:
@@ -535,43 +546,61 @@ static TC_485FsmState_t TC_GetCurState(void)
 static TC_485FsmEvent_t TC_GetCurEvent(const u8 data)
 {
     TC_485FsmEvent_t eveTmp;
-    s16 chkSum;
+    s16              chkSum;
 
-    switch (tc_485_Manage.curState) {
+    switch (tc_485_Manage.curState)
+    {
         case fsmStaIdle:
-            if (data == F485_HEAD) {
+            if (data == F485_DAT_HEAD)
+            {
                 eveTmp = fsmEveHead;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveIdle;
             }
             break;
         case fsmStaHead:
-            if (data == F485_HEAD) {
+            if (data == F485_DAT_HEAD)
+            {
                 eveTmp = fsmEveHead;
-            } else if (data == F485_MAIN) {
+            }
+            else if (data == F485_MAIN)
+            {
                 eveTmp = fsmEveSrc;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveErr;
             }
             break;
         case fsmStaSrc:
-            if (data == F485_TENS) {
+            if (data == F485_TENS)
+            {
                 eveTmp = fsmEveDst;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveErr;
             }
             break;
         case fsmStaDst:
-            if (data == F485_UPDA) {
+            if (data == F485_UPDA)
+            {
                 eveTmp = fsmEveType;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveErr;
             }
             break;
         case fsmStaType:
-            if (data == 0x02) {
+            if (data == 0x02)
+            {
                 eveTmp = fsmEveLen;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveErr;
             }
             break;
@@ -583,33 +612,46 @@ static TC_485FsmEvent_t TC_GetCurEvent(const u8 data)
             break;
         case fsmStaDat2:
             chkSum = CheckSum((u8 *)&tc_485_Manage, 7);
-            if (chkSum == -1) {
+            if (chkSum == -1)
+            {
                 return fsmEveIdle;
             }
-            if (data == (chkSum & 0xFF)) {
+            if (data == (chkSum & 0xFF))
+            {
                 eveTmp = fsmEvePari;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveErr;
             }
             break;
         case fsmStaPari:
-            if (data == F485_HEAD) {
+            if (data == F485_DAT_HEAD)
+            {
                 eveTmp = fsmEveHead;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveIdle;
             }
             break;
         case fsmStaErr:
-            if (data == F485_HEAD) {
+            if (data == F485_DAT_HEAD)
+            {
                 eveTmp = fsmEveHead;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveIdle;
             }
             break;
         default:
-            if (data == F485_HEAD) {
+            if (data == F485_DAT_HEAD)
+            {
                 eveTmp = fsmEveHead;
-            } else {
+            }
+            else
+            {
                 eveTmp = fsmEveIdle;
             }
             break;
@@ -657,10 +699,13 @@ void TC_FsmRunningFunc(u8 data)
     tmpState                 = TC_GetCurState();
     tmpEvent                 = TC_GetCurEvent(data);
     tc_485_Manage.fsmCurNode = tc_FsmNodeTable[tmpState];
-    if (tc_485_Manage.fsmCurNode.fsmStateCheck == tmpState) {
+    if (tc_485_Manage.fsmCurNode.fsmStateCheck == tmpState)
+    {
         tmpState = tc_485_Manage.fsmCurNode.fpAction(&tmpEvent, &data);
         TC_SetCurState(tmpState);
-    } else {
+    }
+    else
+    {
         TC_FsmCrash();
     }
 }

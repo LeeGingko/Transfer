@@ -97,14 +97,14 @@ void TC_CAN_Init(void)
     CAN_InitStruct.CAN_DMAEn      = ENABLE;                                    /* DMA使能 */
     CAN_InitStruct.CAN_WorkMode   = CAN_NORMAL_MODE;                           /* CAN工作模式 */
     CAN_InitStruct.CAN_ErrWarThre = 50;                                        /* 错误与警告门限值为50 */
-    CAN_InitStruct.IRQEna         = CAN_IE_RFIFONOEMPTY |                      /* RFIFI0有新的数据被接收到中断使能 */
-                            CAN_IE_TXDONE |                                    /* 发送完毕当前帧中断使能 */
-                            CAN_IE_WERR |                                      /* 错误报警中断使能 */
-                            CAN_IE_BUSERR |                                    /* 总线错误中断使能 */
-                            CAN_IE_LOSTARB |                                   /* 丢失仲裁中断使能 */
-                            CAN_IE_PASSIVEERR |                                /* 被动错误错误中断使能 */
-                            CAN_IE_RFIFOOV;                                    /* RFIFO数据发送溢出中断使能 */
-    ;                                                                          /* 中断标志使能 */
+    CAN_InitStruct.IRQEna         = CAN_IE_RFIFONOEMPTY                        /* RFIFI0有新的数据被接收到中断使能 */
+                            | CAN_IE_TXDONE                                    /* 发送完毕当前帧中断使能 */
+                            | CAN_IE_WERR                                      /* 错误报警中断使能 */
+                            | CAN_IE_BUSERR                                    /* 总线错误中断使能 */
+                            | CAN_IE_LOSTARB                                   /* 丢失仲裁中断使能 */
+                            | CAN_IE_PASSIVEERR                                /* 被动错误错误中断使能 */
+                            | CAN_IE_RFIFOOV;                                  /* RFIFO数据发送溢出中断使能 */
+                                                                               /* 中断标志使能 */
     CAN_Init(CAN, &CAN_InitStruct);                                            /* CAN初始化 */
     SFF_ID_Filter(CAN_COMMANDER_ADDR, 0x00, 0x0, 0x0, 0x81, 0x00, 0x23, 0x00); /* 接收滤波： ID:0x2F ,标志帧，BYTE1:0x81,BYTE:0x23 */
     TC_CAN_GPIO_Init();                                                        /* CAN GPIO初始化 */
@@ -128,14 +128,16 @@ void TC_CAN_Init(void)
  *--------------------------------------------------------------------------------------------*/
 void TC_CAN_DMA_TX(u8 ide, u8 frame_number, u8 frame_size, u8 *memaddr)
 {
-    u8 len = 0;
+    u8              len = 0;
     DMA_InitTypeDef DMA_InitStruct;
 
     DMA_StructInit(&DMA_InitStruct);
     if (ide) /*扩展帧*/
     {
         len = 5 + frame_size;
-    } else { /*标准帧*/
+    }
+    else
+    { /*标准帧*/
         len = 3 + frame_size;
     }
     DMA_InitStruct.DMA_IRQ_EN = DMA_TCIE;           /* DMA 传输完成中断使能 */
@@ -170,14 +172,16 @@ void TC_CAN_DMA_TX(u8 ide, u8 frame_number, u8 frame_size, u8 *memaddr)
  *--------------------------------------------------------------------------------------------*/
 void TC_CAN_DMA_RX(u8 ide, u8 frame_number, u8 frame_size, u8 *memaddr)
 {
-    u8 len = 0, rgsr = 0;
+    u8              len = 0, rgsr = 0;
     DMA_InitTypeDef DMA_InitStruct;
 
     DMA_StructInit(&DMA_InitStruct);
     if (ide) /*扩展帧*/
     {
         len = 5 + frame_size;
-    } else { /*标准帧*/
+    }
+    else
+    { /*标准帧*/
         len = 3 + frame_size;
     }
     DMA_InitStruct.DMA_IRQ_EN = DMA_TCIE;           /* DMA 传输完成中断使能 */

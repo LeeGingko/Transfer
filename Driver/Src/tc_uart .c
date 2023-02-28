@@ -57,8 +57,10 @@ int fputc(int ch, FILE *f)
 {
     // SEGGER_RTT_PutChar(0, ch);
     UART_SendData(UART1, ch);
-    while ((UART1->STT & BIT0) == FALSE)
-        ;
+    while ((UART1->STT & BIT1) == FALSE)
+            ;
+    // while ((UART1->STT & BIT0) == FALSE)
+    //     ;
     return ch;
 }
 
@@ -173,20 +175,18 @@ void TC_UART_DMA_Init(void)
  *-------------------------------------------------------------------------------------------*/
 TmOpState TC_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen)
 {
-    if (NULL == pData) {
+    if (NULL == pData)
+    {
         return tmErr;
     }
 
-    while (UARTx->IF & UART_IF_SendOver)
+    while ((UARTx->STT & BIT1) == FALSE)
         ;
-    for (int i = 0; i < uLen; i++) { /* C99 */
+    for (int i = 0; i < uLen; i++) /* C99 */
+    {
         UART_SendData(UARTx, pData[i]);
-        while ((UARTx->STT & BIT0) == FALSE)
-            ;
-        // while (rs485_TxFlag == 0)
-        //     ;
-        rs485_TxFlag = 0;
-        printf("%02X ", pData[i]);
+        while ((UARTx->STT & BIT1) == FALSE)
+            ; // 等待发送完成 TX_DONE发送完成（此时发送缓存如不为空，则可以继续发送缓存中的数据）1：完成； 0：未完成。
     }
 
     return tmOk;

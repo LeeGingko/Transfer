@@ -62,6 +62,9 @@ void TC_NVIC_Init(void)
     UART_ClearIRQFlag(UART1, UART_IF_SendOver);
     NVIC_SetPriority(UART1_IRQn, 13); // UART0中断优先级配置
     NVIC_EnableIRQ(UART1_IRQn);       // 使能UART0定时器中断
+
+    NVIC_SetPriority(CAN_IRQn, 1);
+    NVIC_EnableIRQ(CAN_IRQn);
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

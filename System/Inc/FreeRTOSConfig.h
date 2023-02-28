@@ -69,21 +69,20 @@ extern u32 SystemCoreClock; // 2023Äê2ÔÂ12ÈÕ
 #define configUSE_TICK_HOOK                     0
 #define configCPU_CLOCK_HZ                      (SystemCoreClock)
 #define configTICK_RATE_HZ                      ((TickType_t)1000)
-// #define configSYSTICK_CLOCK_HZ           ((TickType_t)1000) // 
-#define configMAX_PRIORITIES           (7)
-#define configMINIMAL_STACK_SIZE       ((uint16_t)64)
-#define configTOTAL_HEAP_SIZE          ((size_t)3584)
+#define configMAX_PRIORITIES                    (7)
+#define configMINIMAL_STACK_SIZE                ((uint16_t)64)
+#define configTOTAL_HEAP_SIZE                   ((size_t)4096)
 
-#define configMAX_TASK_NAME_LEN        (64)
-#define configUSE_16_BIT_TICKS         0
-#define configUSE_MUTEXES              1
-#define configQUEUE_REGISTRY_SIZE      0
+#define configMAX_TASK_NAME_LEN                 (64)
+#define configUSE_16_BIT_TICKS                  0
+#define configUSE_MUTEXES                       1
+#define configQUEUE_REGISTRY_SIZE               0
 
-#define configCHECK_FOR_STACK_OVERFLOW 0
-#define configUSE_TRACE_FACILITY       1
+#define configCHECK_FOR_STACK_OVERFLOW          0
+#define configUSE_TRACE_FACILITY                1
 
-#define INCLUDE_xTaskGetIdleTaskHandle 1
-#define INCLUDE_pxTaskGetStackStart    1
+#define INCLUDE_xTaskGetIdleTaskHandle          1
+#define INCLUDE_pxTaskGetStackStart             1
 
 /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
 /* Defaults to size_t for backward compatibility, but can be changed
@@ -141,7 +140,8 @@ See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
 header file. */
 /* USER CODE BEGIN 1 */
 #define configASSERT(x)           \
-    if ((x) == 0) {               \
+    if ((x) == 0)                 \
+    {                             \
         taskDISABLE_INTERRUPTS(); \
         for (;;)                  \
             ;                     \

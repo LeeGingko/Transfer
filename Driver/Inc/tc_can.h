@@ -31,12 +31,12 @@
 /* Defined Typedefine ------------------------------------------------------------------ */
 typedef struct
 {
-    u32 f_id;         /* 设备ID */
-    u8 f_ide;         /* 0：标准帧 1：扩展帧 */
-    u8 f_rtr;         /* 0：数据帧 1：远程帧 */
-    u8 f_txdata[8];   /* 接收数据缓冲 */
-    u8 f_rxdata[8];   /* 发送数据缓冲 */
-    u8 f_error_alarm; /* 错误报警 */
+    u32 f_id;          /* 设备ID */
+    u8  f_ide;         /* 0：标准帧 1：扩展帧 */
+    u8  f_rtr;         /* 0：数据帧 1：远程帧 */
+    u8  f_txdata[8];   /* 接收数据缓冲 */
+    u8  f_rxdata[8];   /* 发送数据缓冲 */
+    u8  f_error_alarm; /* 错误报警 */
 } TC_CANManage_t;
 
 /* USER DEFINED TYPEDEFINE END */

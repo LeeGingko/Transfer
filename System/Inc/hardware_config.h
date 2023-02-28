@@ -56,7 +56,7 @@
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-extern u8 Invers_GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+extern u8   Invers_GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
 extern void HW_NVIC_Init(void);
 // extern void TimeTickIncrenment(void);
 

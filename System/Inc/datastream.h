@@ -1,15 +1,29 @@
-#ifndef __TC_UART_H
-#define __TC_UART_H
+/*
+ * Copyright (c) xxxx（年）,xx单位xx部门
+ * All rights reserved.
+ *
+ * 文件名称：filename.h
+ * 文件标识：
+ * 摘    要：简要描述本文件的内容
+ *
+ * 当前版本：1.1
+ * 作    者：输入作者（或修改者）名字
+ * 完成日期：xxxx年xx月xx日
+ *
+ * 取代版本：1.0
+ * 原作者  ：输入原作者（或修改者）名字
+ * 完成日期：xxxx年xx月xx日
+ */
+#ifndef __DATASTREAM__H
+#define __DATASTREAM__H
+
 /* USER INCLUDE FILES BEGIN */
 /* Included Files ---------------------------------------------------------------------- */
-#include "basic.h"
-#include "common.h"
-#include "lks32mc08x_uart.h"
+
 /* USER INCLUDE FILES END */
 
 /* USER DEFINED MACROS BEGIN */
 /* Defined Macros ---------------------------------------------------------------------- */
-#define DUART_RX_LEN 128
 
 /* USER DEFINED MACROS END */
 
@@ -25,11 +39,6 @@
 
 /* USER STATEMENTS BEGIN */
 /* Defined Statements ------------------------------------------------------------------ */
-extern u8   rs485_TxFlag;
-extern u8   duart_TxFlag;
-extern void TC_UART_Init(void);
-// void TC_UART_DMA_Init(void);
-extern TmOpState TC_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen);
 
 /* USER STATEMENTS END */
 

@@ -28,9 +28,12 @@ void CAN_Init(CAN_TypeDef *CANx, CAN_InitTypeDef *CAN_InitStruct)
 {
     SYS_ModuleClockCmd(SYS_Module_CAN, ENABLE);
     CAN->MOD |= 1 << 0; // 复位模式
-    if (CAN_InitStruct->CAN_DMAEn) {
+    if (CAN_InitStruct->CAN_DMAEn)
+    {
         CANx->CMR |= BIT5;
-    } else {
+    }
+    else
+    {
         CANx->CMR &= ~BIT5;
     }
     CANx->EWLR = CAN_InitStruct->CAN_ErrWarThre;
@@ -88,7 +91,8 @@ void CAN_Sleep(u32 Baud)
     CAN_MODE |= BIT4;
     rate = 1632000 / Baud; // 此值为主频96MHz进行计算，主频48MHz写入的Baud适当加大
     // 等待16个波特率周期，正式进入休眠等待16个波特率周期，正式进入休眠
-    for (t_cnt = 0; t_cnt < rate; t_cnt++) {
+    for (t_cnt = 0; t_cnt < rate; t_cnt++)
+    {
         __NOP();
     }
 }
@@ -236,7 +240,8 @@ void ID1_Filter_Dual(u32 acr1, u32 amr1, u8 rtr_acr1, u8 rtr_amr1, u8 Byte_acr1,
 
         CAN_AMR1 = (u8)(amr1 >> 13);
         CAN_AMR0 = (u8)(amr1 >> 21);
-    } else /*标准帧*/
+    }
+    else /*标准帧*/
     {
         acr1 &= 0x7ff;
         CAN_ACR0 = (u8)(acr1 >> 3);
@@ -283,7 +288,9 @@ void ID2_Filter_Dual(u32 acr2, u32 amr2, u8 rtr_acr2, u8 rtr_amr2, u8 ide)
 
         CAN_AMR3 = (u8)(amr2 >> 13);
         CAN_AMR2 = (u8)(amr2 >> 21);
-    } else {
+    }
+    else
+    {
         acr2 &= 0x7ff;
         CAN_ACR3 &= 0x0f;
         CAN_ACR2 = (u8)(acr2 >> 3);
@@ -313,8 +320,8 @@ void ID2_Filter_Dual(u32 acr2, u32 amr2, u8 rtr_acr2, u8 rtr_amr2, u8 ide)
 *******************************************************************************/
 u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
 {
-    u8 frame_inf = 0;
-    u16 i        = 0;
+    u8  frame_inf = 0;
+    u16 i         = 0;
 
     if (CAN->SR & 0X04) // TFIFO 空
     {
@@ -323,7 +330,8 @@ u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
         frame_inf |= rtr << 6;  // 0,数据帧;1,遥控帧
         frame_inf |= len << 0;  // 发送数据长度
         CAN->TXRX0 = frame_inf; // 发送TX帧信息
-        if (0 == ide) {         // 标准帧
+        if (0 == ide)
+        { // 标准帧
             id &= 0x7ff;
             // 发送接收寄存器1
             CAN->TXRX1 = id >> 3;          // TX ID0
@@ -336,7 +344,9 @@ u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
             CAN->TXRX8 = msg[5];           // TX DATA5
             CAN->TXRX9 = msg[6];           // TX DATA6
             CAN->TXRXA = msg[7];           // TX DATA7
-        } else {                           // 扩展帧
+        }
+        else
+        { // 扩展帧
             id &= 0X1FFFFFFF;
             CAN->TXRX1 = (u8)(id >> 21);          // TX ID0
             CAN->TXRX2 = (u8)((id >> 13) & 0xFF); // TX ID1
@@ -354,17 +364,21 @@ u8 My_CAN_Send_Msg(u32 id, u8 ide, u8 rtr, u8 *msg, u8 len)
         if ((CAN->MOD) & CAN_SELFTEST_MODE) /*CAN工作在自测模式*/
         {
             CAN->CMR |= 1 << 4; // CAN发送数据的同时也将数据接收回来
-        } else {
+        }
+        else
+        {
             CAN->CMR |= 1 << 0; // CAN发送传输请求
         }
         while (!(CAN->SR & 0X08)) // 最近一次是否传输完成
         {
-            if ((i++) >= 0xfff) {
+            if ((i++) >= 0xfff)
+            {
                 return 0xff; // 发送失败
             }
         };
         return 0; // 发送完成
-    } else        // TFIFO非空
+    }
+    else // TFIFO非空
     {
         return 0xff; // 发送失败
     }
@@ -397,9 +411,12 @@ u8 CAN_Receive_Msg(uint32_t *id, u8 *ide, u8 *rtr, u8 *buf)
         {
             *ide = 1;
             *id  = (CAN->TXRX1 << 21) | (CAN->TXRX2 << 13) | (CAN->TXRX3 << 5) | (CAN->TXRX4 >> 3); // 获取ID
-            if (reg_inf & 0x40) {
+            if (reg_inf & 0x40)
+            {
                 *rtr = 1; // 遥控帧
-            } else {
+            }
+            else
+            {
                 *rtr = 0; // 数据帧
             }
             buf[0] = CAN->TXRX5; // 获取数据
@@ -410,12 +427,16 @@ u8 CAN_Receive_Msg(uint32_t *id, u8 *ide, u8 *rtr, u8 *buf)
             buf[5] = CAN->TXRXA;
             buf[6] = CAN->TXRXB;
             buf[7] = CAN->TXRXC;
-        } else // SFF（标准）帧
+        }
+        else // SFF（标准）帧
         {
             *ide = 0;
-            if (reg_inf & 0x40) {
+            if (reg_inf & 0x40)
+            {
                 *rtr = 1;
-            } else {
+            }
+            else
+            {
                 *rtr = 0;
             }
 
@@ -433,7 +454,8 @@ u8 CAN_Receive_Msg(uint32_t *id, u8 *ide, u8 *rtr, u8 *buf)
         CAN->CMR |= 0x04; // 释放接收缓冲区
 
         return 0; // 接收完成
-    } else        // fifo is empty
+    }             // fifo is empty
+    else
     {
         return 0xff; // 接收异常
     }
