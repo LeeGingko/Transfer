@@ -472,7 +472,7 @@ void UART0_IRQHandler(void)
     }
     if (UART0_IF & UART_IF_SendOver) {
         UART0_IF     = UART_IF_SendOver;
-        rs485_TxFlag = 1;
+        // rs485_TxFlag = 1;
     }
 }
 

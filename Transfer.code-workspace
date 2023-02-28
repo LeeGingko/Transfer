@@ -13,7 +13,8 @@
             "tc_uart.h": "c",
             "freertos.h": "c",
             "segger_sysview_freertos.h": "c",
-            "freertosconfig.h": "c"
+            "freertosconfig.h": "c",
+            "cmsis_armcc.h": "c"
         }
     },
     "extensions": {}

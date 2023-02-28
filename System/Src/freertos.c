@@ -7,6 +7,7 @@
 #include "tc_uart.h"
 #include "tc_485.h"
 #include "tc_can.h"
+#include "SEGGER_RTT.h"
 #include "hardware_config.h"
 
 /* USER INCLUDE FILES END */
@@ -184,7 +185,7 @@ void LKS_FREERTOS_Init(void)
 static void TC_485RxTaskFunc(void *pvParameters)
 {
     // TickType_t xTimerPeriod;
-
+    // printf("static void TC_485RxTaskFunc(void *pvParameters)!\r\n");
     TC_485TransmitFrame();
     while (1) {
         /* Query the period of the timer that expires. */
@@ -204,6 +205,7 @@ static void TC_485RxTaskFunc(void *pvParameters)
  *------------------------------------------------------------------------------------------*/
 static void TC_485TxTaskFunc(void *pvParameters)
 {
+    // printf("static void TC_485TxTaskFunc(void *pvParameters)!\r\n");
     TC_485TransmitFrame();
     while (1) {
         vTaskDelay(1000);
@@ -221,6 +223,7 @@ static void TC_485TxTaskFunc(void *pvParameters)
  *------------------------------------------------------------------------------------------*/
 static void TC_CANRxTaskFunc(void *pvParameters)
 {
+    // printf("static void TC_CANRxTaskFunc(void *pvParameters)!\r\n");
     while (1) {
         vTaskDelay(1000);
     }
@@ -237,8 +240,10 @@ static void TC_CANRxTaskFunc(void *pvParameters)
  *------------------------------------------------------------------------------------------*/
 static void TC_CANTxTaskFunc(void *pvParameters)
 {
+    // printf("static void TC_CANTxTaskFunc(void *pvParameters)!\r\n");
     while (1) {
         My_CAN_Send_Msg(CAN_TRANSFER_ADDR, CAN_FRAME_STAND, CAN_FUNC_DATA, Can_TX, 8);
+        SEGGER_SYSVIEW_Print("My_CAN_Send_Msg\r\n");
         vTaskDelay(1000);
     }
 }

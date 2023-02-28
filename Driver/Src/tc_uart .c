@@ -181,8 +181,10 @@ TmOpState TC_UARTSendBytes(UART_TypeDef *UARTx, const u8 *pData, u16 uLen)
         ;
     for (int i = 0; i < uLen; i++) { /* C99 */
         UART_SendData(UARTx, pData[i]);
-        while (rs485_TxFlag == 0)
+        while ((UARTx->STT & BIT0) == FALSE)
             ;
+        // while (rs485_TxFlag == 0)
+        //     ;
         rs485_TxFlag = 0;
         printf("%02X ", pData[i]);
     }

@@ -416,6 +416,7 @@ void OS_SIM_LeaveCriticalSection(void);
 *
 *       RTT lock configuration fallback
 */
+
 #ifndef   SEGGER_RTT_LOCK
   #define SEGGER_RTT_LOCK()                // Lock RTT (nestable)   (i.e. disable interrupts)
 #endif

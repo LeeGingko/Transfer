@@ -1,32 +1,167 @@
-[2023-02-27 11:22:57]	[done]
+[2023-02-27 16:27:44]	[done]
 	build successfully !
 
-[2023-02-27 11:26:11]	compilation failed at : "d:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\System\Src\freertos.c", exit code: 1
+[2023-02-27 16:29:52]	[done]
+	build successfully !
+
+[2023-02-27 16:32:43]	[done]
+	build successfully !
+
+[2023-02-27 16:33:48]	[done]
+	build successfully !
+
+[2023-02-27 16:35:21]	[done]
+	build successfully !
+
+[2023-02-27 16:36:33]	[done]
+	build successfully !
+
+[2023-02-27 16:39:05]	compilation failed at : "d:\LAM\XiangMu\ZhangLiJi\Files\ZhuanJie\RuanJian\Transfer\SystemView\RTT\SEGGER_RTT.c", exit code: 1
    at unify_builder.Program.Main(String[] args_)
 ---
-".\System\Src\freertos.c", line 54: Error:  #114: function "TC_485TxTaskFunc"  was referenced but not defined
-  static void TC_485TxTaskFunc(void *pvParameters);
-              ^
-".\System\Src\freertos.c", line 56: Error:  #114: function "TC_CANTxTaskFunc"  was referenced but not defined
-  static void TC_CANTxTaskFunc(void *pvParameters);
-              ^
-.\System\Src\freertos.c: 0 warnings, 2 errors
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 419: Warning:  #47-D: incompatible redefinition of macro "SEGGER_RTT_LOCK"  (declared at line 330)
+  #define SEGGER_RTT_LOCK ()       {                                               \ 
+          ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 419: Warning:  #2969-D: "\" followed by white space is not a line splice
+  #define SEGGER_RTT_LOCK ()       {                                               \ 
+                                                                                   ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 420: Error:  #7: unrecognized token
+                                   unsigned int LockState;                       \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 420: Error:  #169: expected a declaration
+                                   unsigned int LockState;                       \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 420: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                   unsigned int LockState;                       \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 421: Error:  #7: unrecognized token
+                                   __asm volatile  ("mrs   %0, primask  \n\t"     \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 421: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                   __asm volatile  ("mrs   %0, primask  \n\t"     \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 422: Error:  #7: unrecognized token
+                                                   "mov   r1, $1     \n\t"       \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 422: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                   "mov   r1, $1     \n\t"       \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 423: Error:  #7: unrecognized token
+                                                   "msr   primask, r1  \n\t"     \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 423: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                   "msr   primask, r1  \n\t"     \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 424: Error:  #7: unrecognized token
+                                                    : "=r"  (LockState)            \ 
+                                                                                   ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 424: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    : "=r"  (LockState)            \ 
+                                                                                   ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 425: Error:  #7: unrecognized token
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 425: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 426: Error:  #7: unrecognized token
+                                                    : "r1"                        \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 426: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    : "r1"                        \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 427: Warning:  #12-D: parsing restarts here after previous syntax error
+                                                   );                             
+                                                    ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 429: Warning:  #47-D: incompatible redefinition of macro "SEGGER_RTT_UNLOCK"  (declared at line 337)
+  #define SEGGER_RTT_UNLOCK ()       __asm volatile  ("msr   primask, %0  \n\t"     \ 
+          ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 429: Warning:  #2969-D: "\" followed by white space is not a line splice
+  #define SEGGER_RTT_UNLOCK ()       __asm volatile  ("msr   primask, %0  \n\t"     \ 
+                                                                                    ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 431: Error:  #169: expected a declaration
+                                                    :                             \ 
+                                                    ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 431: Error:  #7: unrecognized token
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 431: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 432: Error:  #7: unrecognized token
+                                                    : "r"  (LockState)             \ 
+                                                                                   ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 432: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    : "r"  (LockState)             \ 
+                                                                                   ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 433: Error:  #7: unrecognized token
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 433: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                    :                             \ 
+                                                                                  ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 434: Warning:  #12-D: parsing restarts here after previous syntax error
+                                                   );                            \ 
+                                                    ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 434: Error:  #7: unrecognized token
+                                                   );                            \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 434: Error:  #169: expected a declaration
+                                                   );                            \ 
+                                                                                 ^
+".\SystemView\RTT\../Config/SEGGER_RTT_Conf.h", line 434: Warning:  #2969-D: "\" followed by white space is not a line splice
+                                                   );                            \ 
+                                                                                 ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 320: Error:  #100: duplicate parameter name
+  extern _ARMABI void *calloc(size_t /*nmemb*/, size_t /*size*/);
+                                                ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 320: Error:  #92: identifier-list parameters may only be used in a function definition
+  extern _ARMABI void *calloc(size_t /*nmemb*/, size_t /*size*/);
+                       ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 334: Error:  #92: identifier-list parameters may only be used in a function definition
+  extern _ARMABI void *malloc(size_t /*size*/);
+                       ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 340: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI void *realloc(void * /*ptr*/, size_t /*size*/);
+                                               ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 357: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI int posix_memalign(void ** /*ret*/, size_t /*alignment*/, size_t /*size*/);
+                                                     ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 357: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI int posix_memalign(void ** /*ret*/, size_t /*alignment*/, size_t /*size*/);
+                                                                           ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 492: Error:  #20: identifier "size_t" is undefined
+                size_t /*nmemb*/, size_t /*size*/,
+                ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 492: Error:  #20: identifier "size_t" is undefined
+                size_t /*nmemb*/, size_t /*size*/,
+                                  ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 526: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI_THROW void qsort(void * /*base*/, size_t /*nmemb*/, size_t /*size*/,
+                                                   ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 526: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI_THROW void qsort(void * /*base*/, size_t /*nmemb*/, size_t /*size*/,
+                                                                     ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 701: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI int mblen(const char * /*s*/, size_t /*n*/);
+                                               ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 717: Error:  #20: identifier "size_t" is undefined
+                     const char * __restrict /*s*/, size_t /*n*/);
+                                                    ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 757: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI size_t mbstowcs(wchar_t * __restrict /*pwcs*/,
+                 ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 758: Error:  #20: identifier "size_t" is undefined
+                        const char * __restrict /*s*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+                                                       ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 775: Error:  #20: identifier "size_t" is undefined
+  extern _ARMABI size_t wcstombs(char * __restrict /*s*/,
+                 ^
+"f:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h", line 776: Error:  #20: identifier "size_t" is undefined
+                        const wchar_t * __restrict /*pwcs*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+                                                             ^
+.\SystemView\RTT\SEGGER_RTT.c: 17 warnings, 30 errors
 
-[2023-02-27 11:28:11]	[done]
-	build successfully !
-
-[2023-02-27 11:29:14]	[done]
-	build successfully !
-
-[2023-02-27 12:05:19]	[done]
-	build successfully !
-
-[2023-02-27 12:05:25]	[done]
-	build successfully !
-
-[2023-02-27 12:08:12]	[done]
-	build successfully !
-
-[2023-02-27 14:28:59]	[done]
+[2023-02-27 17:23:04]	[done]
 	build successfully !
 
